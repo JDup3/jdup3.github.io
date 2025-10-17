@@ -4,15 +4,15 @@ import { describe, it, expect } from 'vitest';
 import App from '../App';
 
 describe('App', () => {
-  it('renders navigation links', () => {
+  it('renders VS Code-style navigation with file extensions', () => {
     render(
       <BrowserRouter>
         <App />
       </BrowserRouter>
     );
 
-    expect(screen.getByText('Home')).toBeInTheDocument();
-    expect(screen.getByText('About')).toBeInTheDocument();
-    expect(screen.getByText('Contact')).toBeInTheDocument();
+    expect(screen.getByText('home.tsx')).toBeInTheDocument();
+    expect(screen.getByText('about.tsx')).toBeInTheDocument();
+    expect(screen.getByText('contact.tsx')).toBeInTheDocument();
   });
 });
