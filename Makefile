@@ -29,7 +29,7 @@ BASH := /usr/bin/env bash
 ASH := /bin/ash
 
 REACT := npm run dev -- --host 0.0.0.0
-TEST := npm test
+TEST := npm run test -- --run
 LINT := npm run lint
 FORMAT := npm run format
 
@@ -49,7 +49,7 @@ test:
 lint:
 	@$(call run,-it,$(project_name),$(LINT))
 
-.PHONY: format
+.PHONY: fmt
 fmt:
 	@$(call run,-it,$(project_name),$(FORMAT))
 

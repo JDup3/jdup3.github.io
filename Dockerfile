@@ -6,13 +6,20 @@ RUN apk add bash
 # make the 'app' folder the current working directory
 WORKDIR /app
 
-# copy both 'package.json' and 'package-lock.json' (if available)
-COPY package*.json ./
+# copy 'package.json' (if available)
+COPY package.json ./
 
 # install project dependencies
 RUN npm install
 
-# copy project files (after npm install for better caching)
-COPY . .
+# explicityly copy project files (after npm install for better caching)
+COPY tailwind.config.cjs ./
+COPY tsconfig.json ./
+COPY vite.config.ts ./
+COPY postcss.config.cjs ./
+COPY .eslintrc.cjs ./
+COPY .prettierrc ./
+COPY src ./src
+COPY public ./public
 
 EXPOSE 5173

@@ -1,129 +1,103 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
+  /* VS Code Dark+ Theme Colors */
+  --background: 217 19% 9%; /* #1e1e1e - VS Code background */
+  --foreground: 0 0% 88%; /* #e0e0e0 - VS Code foreground */
+  --card: 217 19% 12%; /* #252526 - VS Code panel background */
+  --card-foreground: 0 0% 88%;
+  --popover: 217 19% 12%;
+  --popover-foreground: 0 0% 88%;
+  --primary: 207 100% 68%; /* #569cd6 - VS Code keyword blue */
+  --primary-foreground: 217 19% 9%;
+  --secondary: 217 19% 15%; /* #2d2d30 - VS Code selection */
+  --secondary-foreground: 0 0% 88%;
+  --muted: 217 19% 15%;
+  --muted-foreground: 0 0% 60%; /* #999999 - VS Code comments */
+  --accent: 51 100% 50%; /* #dcdcaa - VS Code string yellow */
+  --accent-foreground: 217 19% 9%;
+  --destructive: 0 100% 67%; /* #f44747 - VS Code error red */
+  --destructive-foreground: 0 0% 88%;
+  --border: 217 19% 18%; /* #3e3e42 - VS Code borders */
+  --input: 217 19% 15%;
+  --ring: 207 100% 68%;
+  --radius: 0.25rem; /* Minimalist smaller radius */
 
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  -webkit-text-size-adjust: 100%;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
-}
-
-body {
-  margin: 0;
-  display: flex;
-  place-items: center;
-  min-width: 320px;
-  min-height: 100vh;
+  /* Additional VS Code inspired colors */
+  --success: 120 100% 40%; /* #4caf50 - Success green */
+  --warning: 45 100% 60%; /* #ff9800 - Warning orange */
+  --info: 200 100% 70%; /* #2196f3 - Info blue */
 }
 
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
+.dark {
+  /* Keep same colors for dark mode as it's already VS Code themed */
+  --background: 217 19% 9%;
+  --foreground: 0 0% 88%;
+  --card: 217 19% 12%;
+  --card-foreground: 0 0% 88%;
+  --popover: 217 19% 12%;
+  --popover-foreground: 0 0% 88%;
+  --primary: 207 100% 68%;
+  --primary-foreground: 217 19% 9%;
+  --secondary: 217 19% 15%;
+  --secondary-foreground: 0 0% 88%;
+  --muted: 217 19% 15%;
+  --muted-foreground: 0 0% 60%;
+  --accent: 51 100% 50%;
+  --accent-foreground: 217 19% 9%;
+  --destructive: 0 100% 67%;
+  --destructive-foreground: 0 0% 88%;
+  --border: 217 19% 18%;
+  --input: 217 19% 15%;
+  --ring: 207 100% 68%;
 }
 
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  color: inherit;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
+@layer base {
+  * {
+    @apply border-border;
   }
-  a:hover {
-    color: #747bff;
+  body {
+    @apply bg-background text-foreground font-sans;
+    font-family:
+      'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro',
+      monospace;
   }
-  button {
-    background-color: #f9f9f9;
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+  ::-webkit-scrollbar-track {
+    background: hsl(var(--background));
+  }
+  ::-webkit-scrollbar-thumb {
+    background: hsl(var(--border));
+    border-radius: 4px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--muted-foreground));
   }
 }
 
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
-  text-align: center;
-}
+@layer components {
+  /* VS Code window effect */
+  .vscode-window {
+    @apply bg-card border border-border/50 backdrop-blur-sm;
+  }
 
-/* Navigation styles */
-nav {
-  padding: 1rem 0;
-  margin-bottom: 2rem;
-  border-bottom: 1px solid #333;
-}
-
-nav ul {
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  display: flex;
-  justify-content: center;
-  gap: 2rem;
-}
-
-nav a {
-  text-decoration: none;
-  font-weight: 500;
-  padding: 0.5rem 1rem;
-  border-radius: 4px;
-  transition: background-color 0.25s;
-}
-
-nav a:hover {
-  background-color: rgba(100, 108, 255, 0.1);
-}
-
-nav a.active {
-  background-color: #646cff;
-  color: white;
-}
-
-/* Page content */
-.page-content {
-  max-width: 800px;
-  margin: 0 auto;
-  text-align: left;
-}
-
-.page-content h1 {
-  text-align: center;
-  margin-bottom: 2rem;
-}
-
-.card {
-  padding: 2em;
-  background-color: rgba(255, 255, 255, 0.1);
-  border-radius: 8px;
-  margin: 1rem 0;
+  /* Code syntax highlighting helpers */
+  .syntax-keyword {
+    @apply text-primary;
+  }
+  .syntax-string {
+    @apply text-green-400;
+  }
+  .syntax-comment {
+    @apply text-muted-foreground;
+  }
+  .syntax-function {
+    @apply text-accent;
+  }
 }
