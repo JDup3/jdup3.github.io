@@ -108,7 +108,9 @@ function About() {
                 <span className="text-foreground">],</span>
               </>,
               <>
-                <span className="ml-6 text-primary">"infrastructure_as_code"</span>
+                <span className="ml-6 text-primary">
+                  "infrastructure_as_code"
+                </span>
                 <span className="text-foreground">: [</span>
                 <span className="text-green-400">"Terraform"</span>
                 <span className="text-foreground">],</span>
@@ -148,7 +150,7 @@ function About() {
               </>,
               <>
                 <span className="ml-2 text-foreground">{'}'}</span>
-              </>
+              </>,
             ]}
           />
         </Card>

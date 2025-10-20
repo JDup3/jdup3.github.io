@@ -23,8 +23,8 @@ function Home() {
           <span className="text-foreground">):</span>
         </h1>
         <p className="text-lg text-muted-foreground font-mono max-w-6xl">
-          """ Lead Software Developer with 7+ years of experience architecting and
-          developing scalable systems with AWS, Python, and modern web
+          """ Lead Software Developer with 7+ years of experience architecting
+          and developing scalable systems with AWS, Python, and modern web
           technologies. Passionate about building efficient, data-driven
           solutions, while learning as much as possible along the way. """
         </p>

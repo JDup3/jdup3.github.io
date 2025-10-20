@@ -62,7 +62,9 @@ function Experience() {
                 <>
                   <span className="ml-6 text-primary">position</span>
                   <span className="text-foreground"> = </span>
-                  <span className="text-green-400">"Senior Software Developer"</span>
+                  <span className="text-green-400">
+                    "Senior Software Developer"
+                  </span>
                 </>,
                 <>
                   <span className="ml-6 text-primary">duration</span>
@@ -74,19 +76,25 @@ function Experience() {
                   <span className="text-foreground"> = [</span>
                 </>,
                 <>
-                  <span className="ml-10 text-green-400">"Big Data Platforms"</span>
+                  <span className="ml-10 text-green-400">
+                    "Big Data Platforms"
+                  </span>
                   <span className="text-foreground">,</span>
                 </>,
                 <>
-                  <span className="ml-10 text-green-400">"Leadership and Mentorship"</span>
+                  <span className="ml-10 text-green-400">
+                    "Leadership and Mentorship"
+                  </span>
                   <span className="text-foreground">,</span>
                 </>,
                 <>
-                  <span className="ml-10 text-green-400">"System Design and Architecture"</span>
+                  <span className="ml-10 text-green-400">
+                    "System Design and Architecture"
+                  </span>
                 </>,
                 <>
                   <span className="ml-6 text-foreground">]</span>
-                </>
+                </>,
               ]}
             />
           </Card>
@@ -117,7 +125,9 @@ function Experience() {
                 <>
                   <span className="ml-6 text-primary">position</span>
                   <span className="text-foreground"> = </span>
-                  <span className="text-green-400">"Lead Software Developer"</span>
+                  <span className="text-green-400">
+                    "Lead Software Developer"
+                  </span>
                 </>,
                 <>
                   <span className="ml-6 text-primary">duration</span>
@@ -129,15 +139,21 @@ function Experience() {
                   <span className="text-foreground"> = [</span>
                 </>,
                 <>
-                  <span className="ml-10 text-green-400">"Senior Software Developer"</span>
+                  <span className="ml-10 text-green-400">
+                    "Senior Software Developer"
+                  </span>
                   <span className="text-foreground">,</span>
                 </>,
                 <>
-                  <span className="ml-10 text-green-400">"Software Developer"</span>
+                  <span className="ml-10 text-green-400">
+                    "Software Developer"
+                  </span>
                   <span className="text-foreground">,</span>
                 </>,
                 <>
-                  <span className="ml-10 text-green-400">"Software Developer Coop"</span>
+                  <span className="ml-10 text-green-400">
+                    "Software Developer Coop"
+                  </span>
                 </>,
                 <>
                   <span className="ml-6 text-foreground">]</span>
@@ -147,19 +163,25 @@ function Experience() {
                   <span className="text-foreground"> = [</span>
                 </>,
                 <>
-                  <span className="ml-10 text-green-400">"XDR Platform Development"</span>
+                  <span className="ml-10 text-green-400">
+                    "XDR Platform Development"
+                  </span>
                   <span className="text-foreground">,</span>
                 </>,
                 <>
-                  <span className="ml-10 text-green-400">"Founded the Architecture Review Board"</span>
+                  <span className="ml-10 text-green-400">
+                    "Founded the Architecture Review Board"
+                  </span>
                   <span className="text-foreground">,</span>
                 </>,
                 <>
-                  <span className="ml-10 text-green-400">"On-prem to AWS Migration"</span>
+                  <span className="ml-10 text-green-400">
+                    "On-prem to AWS Migration"
+                  </span>
                 </>,
                 <>
                   <span className="ml-6 text-foreground">]</span>
-                </>
+                </>,
               ]}
             />
           </Card>
@@ -169,7 +191,8 @@ function Experience() {
       {/* Education & Certifications */}
       <div className="space-y-6">
         <h2 className="text-xl font-mono font-semibold text-primary">
-          <span className="text-muted-foreground">//</span> Education & Certifications
+          <span className="text-muted-foreground">//</span> Education &
+          Certifications
         </h2>
 
         <div className="grid gap-6 md:grid-cols-2">
@@ -192,13 +215,17 @@ function Experience() {
                 <>
                   <span className="ml-6 text-primary">"bachelor"</span>
                   <span className="text-foreground">: </span>
-                  <span className="text-green-400">"Computer Science, Honours"</span>
+                  <span className="text-green-400">
+                    "Computer Science, Honours"
+                  </span>
                   <span className="text-foreground">,</span>
                 </>,
                 <>
                   <span className="ml-6 text-primary">"university"</span>
                   <span className="text-foreground">: </span>
-                  <span className="text-green-400">"University of Waterloo"</span>
+                  <span className="text-green-400">
+                    "University of Waterloo"
+                  </span>
                   <span className="text-foreground">,</span>
                 </>,
                 <>
@@ -212,22 +239,28 @@ function Experience() {
                   <span className="text-foreground">: [</span>
                 </>,
                 <>
-                  <span className="ml-10 text-green-400">"Quality Assurance"</span>
+                  <span className="ml-10 text-green-400">
+                    "Quality Assurance"
+                  </span>
                   <span className="text-foreground">,</span>
                 </>,
                 <>
-                  <span className="ml-10 text-green-400">"Artificial Intelligence"</span>
+                  <span className="ml-10 text-green-400">
+                    "Artificial Intelligence"
+                  </span>
                   <span className="text-foreground">,</span>
                 </>,
                 <>
-                  <span className="ml-10 text-green-400">"Database Design"</span>
+                  <span className="ml-10 text-green-400">
+                    "Database Design"
+                  </span>
                 </>,
                 <>
                   <span className="ml-6 text-foreground">]</span>
                 </>,
                 <>
                   <span className="ml-2 text-foreground">{'}'}</span>
-                </>
+                </>,
               ]}
             />
           </Card>
@@ -279,11 +312,7 @@ function Experience() {
                     social-media-platform.py
                   </span>
                 </div>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="font-mono text-xs"
-                >
+                <Button variant="ghost" size="sm" className="font-mono text-xs">
                   <span className="text-primary">$</span> view details
                 </Button>
               </div>
@@ -294,15 +323,24 @@ function Experience() {
                   Big Data Social Media Analytics Platform
                 </h3>
                 <p className="text-sm text-muted-foreground font-mono">
-                  Architected and developed a scalable social media listening platform processing millions of posts daily.
-                  Built with AWS services, Python, and real-time analytics capabilities.
+                  Architected and developed a scalable social media listening
+                  platform processing millions of posts daily. Built with AWS
+                  services, Python, and real-time analytics capabilities.
                 </p>
               </div>
               <div className="flex flex-wrap gap-2">
-                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">AWS</span>
-                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">Python</span>
-                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">Big Data</span>
-                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">Real-time Analytics</span>
+                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">
+                  AWS
+                </span>
+                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">
+                  Python
+                </span>
+                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">
+                  Big Data
+                </span>
+                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">
+                  Real-time Analytics
+                </span>
               </div>
             </CardContent>
           </Card>
@@ -317,11 +355,7 @@ function Experience() {
                     xdr-platform.js
                   </span>
                 </div>
-                <Button
-                  variant="ghost"
-                  size="sm"
-                  className="font-mono text-xs"
-                >
+                <Button variant="ghost" size="sm" className="font-mono text-xs">
                   <span className="text-primary">$</span> view details
                 </Button>
               </div>
@@ -332,15 +366,25 @@ function Experience() {
                   Extended Detection & Response (XDR) Platform
                 </h3>
                 <p className="text-sm text-muted-foreground font-mono">
-                  Led development of cybersecurity platform handling massive data volumes for threat detection and response.
-                  Implemented machine learning algorithms and real-time data processing pipelines.
+                  Led development of cybersecurity platform handling massive
+                  data volumes for threat detection and response. Implemented
+                  machine learning algorithms and real-time data processing
+                  pipelines.
                 </p>
               </div>
               <div className="flex flex-wrap gap-2">
-                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">Cybersecurity</span>
-                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">Machine Learning</span>
-                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">Data Pipelines</span>
-                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">Team Leadership</span>
+                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">
+                  Cybersecurity
+                </span>
+                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">
+                  Machine Learning
+                </span>
+                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">
+                  Data Pipelines
+                </span>
+                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">
+                  Team Leadership
+                </span>
               </div>
             </CardContent>
           </Card>
@@ -377,15 +421,24 @@ function Experience() {
                   VS Code Themed Portfolio Website
                 </h3>
                 <p className="text-sm text-muted-foreground font-mono">
-                  Modern portfolio website built with React, TypeScript, and Tailwind CSS.
-                  Features VS Code-inspired design with reusable components and responsive layout.
+                  Modern portfolio website built with React, TypeScript, and
+                  Tailwind CSS. Features VS Code-inspired design with reusable
+                  components and responsive layout.
                 </p>
               </div>
               <div className="flex flex-wrap gap-2">
-                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">React</span>
-                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">TypeScript</span>
-                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">Tailwind CSS</span>
-                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">Responsive Design</span>
+                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">
+                  React
+                </span>
+                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">
+                  TypeScript
+                </span>
+                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">
+                  Tailwind CSS
+                </span>
+                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">
+                  Responsive Design
+                </span>
               </div>
             </CardContent>
           </Card>
