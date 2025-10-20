@@ -45,6 +45,22 @@ function Navigation() {
             </li>
             <li>
               <NavLink
+                to="/experience"
+                className={({ isActive }) =>
+                  cn(
+                    'px-3 py-2 text-sm font-mono transition-all duration-200 rounded-sm',
+                    'hover:bg-secondary hover:text-primary',
+                    isActive
+                      ? 'bg-primary/10 text-primary border-b-2 border-primary'
+                      : 'text-muted-foreground'
+                  )
+                }
+              >
+                experience.tsx
+              </NavLink>
+            </li>
+            <li>
+              <NavLink
                 to="/contact"
                 className={({ isActive }) =>
                   cn(

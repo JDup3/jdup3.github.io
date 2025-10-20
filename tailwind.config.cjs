@@ -51,6 +51,9 @@ module.exports = {
           DEFAULT: 'hsl(var(--card))',
           foreground: 'hsl(var(--card-foreground))',
         },
+        success: 'hsl(var(--success))',
+        warning: 'hsl(var(--warning))',
+        info: 'hsl(var(--info))',
       },
       borderRadius: {
         lg: 'var(--radius)',
@@ -73,16 +76,5 @@ module.exports = {
       },
     },
   },
-  plugins: [
-    require('tailwindcss/plugin')(function ({ addBase }) {
-      addBase({
-        '*': {
-          '@apply border-border': {},
-        },
-        body: {
-          '@apply bg-background text-foreground': {},
-        },
-      });
-    }),
-  ],
+  plugins: [],
 };

@@ -1,4 +1,9 @@
-import { Card, CardContent, CardHeader } from '../components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardContentWithCode,
+} from '../components/ui/card';
 
 function About() {
   return (
@@ -13,15 +18,15 @@ function About() {
         <h1 className="text-3xl font-mono font-bold text-foreground">
           <span className="text-accent">class</span>
           <span className="text-foreground"> </span>
-          <span className="text-primary">Developer</span>
+          <span className="text-primary">JonathanDupe</span>
           <span className="text-foreground"> extends </span>
-          <span className="text-primary">Human</span>
+          <span className="text-primary">SoftwareArchitect</span>
         </h1>
       </div>
 
       {/* Skills Grid */}
       <div className="grid gap-6 md:grid-cols-2">
-        {/* Frontend Skills */}
+        {/* Backend & Cloud Skills */}
         <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
           <CardHeader className="pb-3">
             <div className="flex items-center space-x-2">
@@ -29,59 +34,54 @@ function About() {
               <span className="w-3 h-3 bg-warning rounded-full"></span>
               <span className="w-3 h-3 bg-green-500 rounded-full"></span>
               <span className="text-xs font-mono text-muted-foreground ml-2">
-                frontend.ts
+                backend.py
               </span>
             </div>
           </CardHeader>
-          <CardContent className="space-y-3 font-mono text-sm">
-            <div className="space-y-1">
-              <div>
-                <span className="text-muted-foreground">1</span>
+          <CardContentWithCode
+            className="space-y-3"
+            lines={[
+              <>
                 <span className="ml-2 text-accent">export const</span>
                 <span className="text-primary"> skills </span>
                 <span className="text-foreground">= {'{'}</span>
-              </div>
-              <div className="ml-4">
-                <span className="text-muted-foreground">2</span>
-                <span className="ml-2 text-primary">frameworks</span>
+              </>,
+              <>
+                <span className="ml-6 text-primary">languages</span>
                 <span className="text-foreground">: [</span>
-              </div>
-              <div className="ml-8">
-                <span className="text-muted-foreground">3</span>
-                <span className="ml-2 text-green-400">'React'</span>
+              </>,
+              <>
+                <span className="ml-10 text-green-400">'Python'</span>
                 <span className="text-foreground">,</span>
-              </div>
-              <div className="ml-8">
-                <span className="text-muted-foreground">4</span>
-                <span className="ml-2 text-green-400">'TypeScript'</span>
+              </>,
+              <>
+                <span className="ml-10 text-green-400">'TypeScript'</span>
                 <span className="text-foreground">,</span>
-              </div>
-              <div className="ml-8">
-                <span className="text-muted-foreground">5</span>
-                <span className="ml-2 text-green-400">'Vite'</span>
-              </div>
-              <div className="ml-4">
-                <span className="text-muted-foreground">6</span>
-                <span className="ml-2 text-foreground">],</span>
-              </div>
-              <div className="ml-4">
-                <span className="text-muted-foreground">7</span>
-                <span className="ml-2 text-primary">styling</span>
+              </>,
+              <>
+                <span className="ml-10 text-green-400">'JavaScript'</span>
+              </>,
+              <>
+                <span className="ml-6 text-foreground">],</span>
+              </>,
+              <>
+                <span className="ml-6 text-primary">tools</span>
                 <span className="text-foreground">: [</span>
-                <span className="text-green-400">'Tailwind'</span>
+                <span className="text-green-400">'Docker'</span>
                 <span className="text-foreground">, </span>
-                <span className="text-green-400">'shadcn/ui'</span>
+                <span className="text-green-400">'Make'</span>
+                <span className="text-foreground">, </span>
+                <span className="text-green-400">'Git'</span>
                 <span className="text-foreground">]</span>
-              </div>
-              <div>
-                <span className="text-muted-foreground">8</span>
+              </>,
+              <>
                 <span className="ml-2 text-foreground">{'}'}</span>
-              </div>
-            </div>
-          </CardContent>
+              </>,
+            ]}
+          />
         </Card>
 
-        {/* Tools */}
+        {/* Tools & Infrastructure */}
         <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
           <CardHeader className="pb-3">
             <div className="flex items-center space-x-2">
@@ -89,49 +89,70 @@ function About() {
               <span className="w-3 h-3 bg-warning rounded-full"></span>
               <span className="w-3 h-3 bg-green-500 rounded-full"></span>
               <span className="text-xs font-mono text-muted-foreground ml-2">
-                tools.json
+                infrastructure.json
               </span>
             </div>
           </CardHeader>
-          <CardContent className="space-y-3 font-mono text-sm">
-            <div className="space-y-1">
-              <div>
-                <span className="text-muted-foreground">1</span>
+          <CardContentWithCode
+            className="space-y-3"
+            lines={[
+              <>
                 <span className="ml-2 text-foreground">{'{'}</span>
-              </div>
-              <div className="ml-4">
-                <span className="text-muted-foreground">2</span>
-                <span className="ml-2 text-primary">"editor"</span>
-                <span className="text-foreground">: </span>
-                <span className="text-green-400">"VS Code"</span>
-                <span className="text-foreground">,</span>
-              </div>
-              <div className="ml-4">
-                <span className="text-muted-foreground">3</span>
-                <span className="ml-2 text-primary">"version_control"</span>
-                <span className="text-foreground">: </span>
-                <span className="text-green-400">"Git"</span>
-                <span className="text-foreground">,</span>
-              </div>
-              <div className="ml-4">
-                <span className="text-muted-foreground">4</span>
-                <span className="ml-2 text-primary">"testing"</span>
-                <span className="text-foreground">: </span>
-                <span className="text-green-400">"Vitest"</span>
-                <span className="text-foreground">,</span>
-              </div>
-              <div className="ml-4">
-                <span className="text-muted-foreground">5</span>
-                <span className="ml-2 text-primary">"deployment"</span>
-                <span className="text-foreground">: </span>
-                <span className="text-green-400">"GitHub Actions"</span>
-              </div>
-              <div>
-                <span className="text-muted-foreground">6</span>
+              </>,
+              <>
+                <span className="ml-6 text-primary">"cloud"</span>
+                <span className="text-foreground">: [</span>
+                <span className="text-green-400">"AWS"</span>
+                <span className="text-foreground">, </span>
+                <span className="text-green-400">"GCP"</span>
+                <span className="text-foreground">],</span>
+              </>,
+              <>
+                <span className="ml-6 text-primary">
+                  "infrastructure_as_code"
+                </span>
+                <span className="text-foreground">: [</span>
+                <span className="text-green-400">"Terraform"</span>
+                <span className="text-foreground">],</span>
+              </>,
+              <>
+                <span className="ml-6 text-primary">"deployment"</span>
+                <span className="text-foreground">: [</span>
+                <span className="text-green-400">"Github Actions"</span>
+                <span className="text-foreground">, </span>
+                <span className="text-green-400">"Jenkins"</span>
+                <span className="text-foreground">],</span>
+              </>,
+              <>
+                <span className="ml-6 text-primary">"databases"</span>
+                <span className="text-foreground">: {'{'}</span>
+              </>,
+              <>
+                <span className="ml-10 text-primary">"no_sql"</span>
+                <span className="text-foreground">: [</span>
+                <span className="text-green-400">"DynamoDB"</span>
+                <span className="text-foreground">, </span>
+                <span className="text-green-400">"OpenSearch"</span>
+                <span className="text-foreground">, </span>
+                <span className="text-green-400">"Redis"</span>
+                <span className="text-foreground">],</span>
+              </>,
+              <>
+                <span className="ml-10 text-primary">"sql"</span>
+                <span className="text-foreground">: [</span>
+                <span className="text-green-400">"PostgreSQL"</span>
+                <span className="text-foreground">, </span>
+                <span className="text-green-400">"MySQL"</span>
+                <span className="text-foreground">]</span>
+              </>,
+              <>
+                <span className="ml-6 text-foreground">{'}'}</span>
+              </>,
+              <>
                 <span className="ml-2 text-foreground">{'}'}</span>
-              </div>
-            </div>
-          </CardContent>
+              </>,
+            ]}
+          />
         </Card>
       </div>
 
@@ -149,20 +170,26 @@ function About() {
         </CardHeader>
         <CardContent className="space-y-4 font-mono text-sm">
           <div className="space-y-2">
-            <p className="text-muted-foreground"># Development Philosophy</p>
+            <p className="text-muted-foreground"># Professional Summary</p>
             <div className="space-y-1 ml-4">
               <p className="text-foreground">
-                - Write clean, maintainable code
+                - Lead Software Developer at eSentire Inc
               </p>
-              <p className="text-foreground">- Follow modern best practices</p>
-              <p className="text-foreground">- Continuous learning mindset</p>
-              <p className="text-foreground">- Focus on user experience</p>
+              <p className="text-foreground">
+                - 7+ years of software development experience
+              </p>
+              <p className="text-foreground">
+                - Expert in AWS cloud architecture & Python
+              </p>
+              <p className="text-foreground">
+                - Technical leadership & mentoring
+              </p>
             </div>
           </div>
           <div className="pt-2 text-muted-foreground">
             <p className="text-xs">
-              <span className="text-primary">{'>'}</span> Passionate about
-              building efficient, scalable applications
+              <span className="text-primary">{'>'}</span> Passionate, motivated,
+              enthusiastic, optimistic, and data-driven software architect
             </p>
           </div>
         </CardContent>
@@ -177,8 +204,9 @@ function About() {
               <span className="text-muted-foreground">whoami</span>
             </div>
             <div className="text-foreground ml-4">
-              Full-stack developer focused on modern web technologies and
-              exceptional user experiences.
+              Computer Scientist & Software Developer/Architect with expertise
+              in building scalable XDR platforms and data pipelines using AWS
+              and Python.
             </div>
             <div className="flex items-center space-x-2 pt-2">
               <span className="text-primary">$</span>
