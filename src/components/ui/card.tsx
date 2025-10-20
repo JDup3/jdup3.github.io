@@ -76,6 +76,108 @@ const CardFooter = React.forwardRef<
 ));
 CardFooter.displayName = 'CardFooter';
 
+interface CodeLineProps extends React.HTMLAttributes<HTMLDivElement> {
+  lineNumber?: number;
+  showLineNumber?: boolean;
+  lineNumberClassName?: string;
+}
+
+const CodeLine = React.forwardRef<HTMLDivElement, CodeLineProps>(
+  (
+    {
+      className,
+      children,
+      lineNumber,
+      showLineNumber = true,
+      lineNumberClassName,
+      ...props
+    },
+    ref
+  ) => (
+    <div ref={ref} className={className} {...props}>
+      {showLineNumber && lineNumber !== undefined && (
+        <span className={cn('text-muted-foreground mr-2 inline-block w-6 text-right', lineNumberClassName)}>
+          {lineNumber}
+        </span>
+      )}
+      {children}
+    </div>
+  )
+);
+CodeLine.displayName = 'CodeLine';
+
+interface CodeBlockProps extends React.HTMLAttributes<HTMLDivElement> {
+  startLine?: number;
+  showLineNumbers?: boolean;
+  lineNumberClassName?: string;
+  lines: React.ReactNode[];
+}
+
+const CodeBlock = React.forwardRef<HTMLDivElement, CodeBlockProps>(
+  (
+    {
+      className,
+      startLine = 1,
+      showLineNumbers = true,
+      lineNumberClassName,
+      lines,
+      ...props
+    },
+    ref
+  ) => (
+    <div ref={ref} className={cn('space-y-1', className)} {...props}>
+      {lines.map((line, index) => (
+        <CodeLine
+          key={startLine + index}
+          lineNumber={startLine + index}
+          showLineNumber={showLineNumbers}
+          lineNumberClassName={lineNumberClassName}
+        >
+          {line}
+        </CodeLine>
+      ))}
+    </div>
+  )
+);
+CodeBlock.displayName = 'CodeBlock';
+
+interface CardContentWithCodeProps
+  extends React.HTMLAttributes<HTMLDivElement> {
+  startLine?: number;
+  showLineNumbers?: boolean;
+  lineNumberClassName?: string;
+  lines: React.ReactNode[];
+}
+
+const CardContentWithCode = React.forwardRef<
+  HTMLDivElement,
+  CardContentWithCodeProps
+>(
+  (
+    {
+      className,
+      startLine = 1,
+      showLineNumbers = true,
+      lineNumberClassName,
+      lines,
+      ...props
+    },
+    ref
+  ) => (
+    <div ref={ref} className={cn('p-6 pt-0', className)} {...props}>
+      <div className="font-mono text-sm">
+        <CodeBlock
+          startLine={startLine}
+          showLineNumbers={showLineNumbers}
+          lineNumberClassName={lineNumberClassName}
+          lines={lines}
+        />
+      </div>
+    </div>
+  )
+);
+CardContentWithCode.displayName = 'CardContentWithCode';
+
 export {
   Card,
   CardHeader,
@@ -83,4 +185,7 @@ export {
   CardTitle,
   CardDescription,
   CardContent,
+  CardContentWithCode,
+  CodeBlock,
+  CodeLine,
 };

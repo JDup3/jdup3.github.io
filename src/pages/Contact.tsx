@@ -1,4 +1,9 @@
-import { Card, CardContent, CardHeader } from '../components/ui/card';
+import {
+  Card,
+  CardContent,
+  CardHeader,
+  CardContentWithCode,
+} from '../components/ui/card';
 import { Button } from '../components/ui/button';
 
 function Contact() {
@@ -28,8 +33,6 @@ function Contact() {
         <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
           <CardHeader className="pb-3">
             <div className="flex items-center space-x-2">
-              <span className="w-3 h-3 bg-destructive rounded-full"></span>
-              <span className="w-3 h-3 bg-warning rounded-full"></span>
               <span className="w-3 h-3 bg-green-500 rounded-full"></span>
               <span className="text-xs font-mono text-muted-foreground ml-2">
                 links.ts
@@ -70,7 +73,7 @@ function Contact() {
                   asChild
                   className="font-mono text-xs"
                 >
-                  <a href="mailto:contact@jdup3.dev">contact@jdup3.dev</a>
+                  <a href="mailto:dupjon277@gmail.com">dupjon277@gmail.com</a>
                 </Button>
               </div>
 
@@ -102,58 +105,54 @@ function Contact() {
         <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
           <CardHeader className="pb-3">
             <div className="flex items-center space-x-2">
-              <span className="w-3 h-3 bg-destructive rounded-full"></span>
-              <span className="w-3 h-3 bg-warning rounded-full"></span>
               <span className="w-3 h-3 bg-green-500 rounded-full"></span>
               <span className="text-xs font-mono text-muted-foreground ml-2">
                 interests.js
               </span>
             </div>
           </CardHeader>
-          <CardContent className="space-y-3 font-mono text-sm">
-            <div className="space-y-1">
-              <div>
-                <span className="text-muted-foreground">1</span>
+          <CardContentWithCode
+            className="space-y-3"
+            lines={[
+              <>
                 <span className="ml-2 text-accent">const</span>
                 <span className="text-primary"> interests </span>
                 <span className="text-foreground">= [</span>
-              </div>
-              <div className="ml-4">
-                <span className="text-muted-foreground">2</span>
-                <span className="ml-2 text-green-400">
-                  'React applications'
+              </>,
+              <>
+                <span className="ml-6 text-green-400">
+                  'Cloud architecture & AWS'
                 </span>
                 <span className="text-foreground">,</span>
-              </div>
-              <div className="ml-4">
-                <span className="text-muted-foreground">3</span>
-                <span className="ml-2 text-green-400">
-                  'TypeScript development'
+              </>,
+              <>
+                <span className="ml-6 text-green-400">
+                  'Python development'
                 </span>
                 <span className="text-foreground">,</span>
-              </div>
-              <div className="ml-4">
-                <span className="text-muted-foreground">4</span>
-                <span className="ml-2 text-green-400">
-                  'Performance optimization'
+              </>,
+              <>
+                <span className="ml-6 text-green-400">
+                  'System architecture'
                 </span>
                 <span className="text-foreground">,</span>
-              </div>
-              <div className="ml-4">
-                <span className="text-muted-foreground">5</span>
-                <span className="ml-2 text-green-400">'Developer tooling'</span>
+              </>,
+              <>
+                <span className="ml-6 text-green-400">
+                  'Technical leadership'
+                </span>
                 <span className="text-foreground">,</span>
-              </div>
-              <div className="ml-4">
-                <span className="text-muted-foreground">6</span>
-                <span className="ml-2 text-green-400">'Open source'</span>
-              </div>
-              <div>
-                <span className="text-muted-foreground">7</span>
+              </>,
+              <>
+                <span className="ml-6 text-green-400">
+                  '3D Printing & PC Building'
+                </span>
+              </>,
+              <>
                 <span className="ml-2 text-foreground">]</span>
-              </div>
-            </div>
-          </CardContent>
+              </>,
+            ]}
+          />
         </Card>
       </div>
 
@@ -161,8 +160,6 @@ function Contact() {
       <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
         <CardHeader className="pb-3">
           <div className="flex items-center space-x-2">
-            <span className="w-3 h-3 bg-destructive rounded-full"></span>
-            <span className="w-3 h-3 bg-warning rounded-full"></span>
             <span className="w-3 h-3 bg-green-500 rounded-full"></span>
             <span className="text-xs font-mono text-muted-foreground ml-2">
               README.md
@@ -176,10 +173,12 @@ function Contact() {
             </p>
             <div className="space-y-1 ml-0 text-foreground">
               <p>Always excited to discuss:</p>
-              <p className="ml-2">- Interesting projects and opportunities</p>
-              <p className="ml-2">- Modern web development challenges</p>
-              <p className="ml-2">- Collaboration on open source</p>
-              <p className="ml-2">- Tech discussions and knowledge sharing</p>
+              <p className="ml-2">
+                - Software architecture and scalable systems
+              </p>
+              <p className="ml-2">- AWS cloud solutions and infrastructure</p>
+              <p className="ml-2">- Technical leadership opportunities</p>
+              <p className="ml-2">- Hardware tinkering and game development</p>
             </div>
           </div>
         </CardContent>
