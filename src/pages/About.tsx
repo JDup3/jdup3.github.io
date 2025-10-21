@@ -54,7 +54,7 @@ function About() {
             <div className="flex items-center space-x-2">
               <span className="w-3 h-3 bg-green-500 rounded-full"></span>
               <span className="text-xs font-mono text-muted-foreground ml-2">
-                backend.py
+                backend.json
               </span>
             </div>
           </CardHeader>
@@ -63,52 +63,60 @@ function About() {
             cardId="about-backend-skills"
             lines={[
               <>
-                <span className="ml-2 text-accent">export const</span>
-                <span className="text-primary"> skills </span>
-                <span className="text-foreground">= {'{'}</span>
+                <span className="ml-2 text-foreground">{'{'}</span>
               </>,
               <>
-                <span className="ml-6 text-primary">languages</span>
+                <span className="ml-6 text-primary">"languages"</span>
                 <span className="text-foreground">: [</span>
               </>,
               <>
-                <span className="ml-10 text-green-400">'Python'</span>
+                <span className="ml-10 text-green-400">"Python"</span>
                 <span className="text-foreground">,</span>
               </>,
               <>
-                <span className="ml-10 text-green-400">'TypeScript'</span>
+                <span className="ml-10 text-green-400">"TypeScript"</span>
                 <span className="text-foreground">,</span>
               </>,
               <>
-                <span className="ml-10 text-green-400">'JavaScript'</span>
+                <span className="ml-10 text-green-400">"JavaScript"</span>
               </>,
               <>
                 <span className="ml-6 text-foreground">],</span>
               </>,
               <>
-                <span className="ml-6 text-primary">tools</span>
+                <span className="ml-6 text-primary">"tools"</span>
                 <span className="text-foreground">: [</span>
-                <span className="text-green-400">'Docker'</span>
+                <span className="text-green-400">"Docker"</span>
                 <span className="text-foreground">, </span>
-                <span className="text-green-400">'Make'</span>
+                <span className="text-green-400">"Make"</span>
                 <span className="text-foreground">, </span>
-                <span className="text-green-400">'Git'</span>
+                <span className="text-green-400">"Git"</span>
                 <span className="text-foreground">],</span>
               </>,
               <>
-                <span className="ml-6 text-primary">softskills</span>
+                <span className="ml-6 text-primary">"python_libs"</span>
+                <span className="text-foreground">: [</span>
+                <span className="text-green-400">"pyspark"</span>
+                <span className="text-foreground">, </span>
+                <span className="text-green-400">"boto3"</span>
+                <span className="text-foreground">, </span>
+                <span className="text-green-400">"jinja"</span>
+                <span className="text-foreground">],</span>
+              </>,
+              <>
+                <span className="ml-6 text-primary">"softSkills"</span>
                 <span className="text-foreground">: [</span>
               </>,
               <>
-                <span className="ml-10 text-green-400">'Mentorship'</span>
+                <span className="ml-10 text-green-400">"Mentorship"</span>
                 <span className="text-foreground">,</span>
               </>,
               <>
-                <span className="ml-10 text-green-400">'Leadership'</span>
+                <span className="ml-10 text-green-400">"Leadership"</span>
                 <span className="text-foreground">,</span>
               </>,
               <>
-                <span className="ml-10 text-green-400">'Documentation'</span>
+                <span className="ml-10 text-green-400">"Documentation"</span>
               </>,
               <>
                 <span className="ml-6 text-foreground">]</span>
@@ -126,7 +134,7 @@ function About() {
             <div className="flex items-center space-x-2">
               <span className="w-3 h-3 bg-green-500 rounded-full"></span>
               <span className="text-xs font-mono text-muted-foreground ml-2">
-                infrastructure.json
+                infrastructure.tfvars
               </span>
             </div>
           </CardHeader>
@@ -135,39 +143,45 @@ function About() {
             cardId="about-infrastructure"
             lines={[
               <>
-                <span className="ml-2 text-foreground">{'{'}</span>
+                <span className="ml-2 text-primary">infrastructure_stack</span>
+                <span className="text-foreground"> = {'{'}</span>
               </>,
               <>
-                <span className="ml-6 text-primary">"cloud"</span>
-                <span className="text-foreground">: [</span>
+                <span className="ml-6 text-primary">cloud_providers</span>
+                <span className="text-foreground"> = [</span>
                 <span className="text-green-400">"AWS"</span>
                 <span className="text-foreground">, </span>
                 <span className="text-green-400">"GCP"</span>
-                <span className="text-foreground">],</span>
+                <span className="text-foreground">]</span>
               </>,
               <>
-                <span className="ml-6 text-primary">
-                  "infrastructure_as_code"
-                </span>
-                <span className="text-foreground">: [</span>
+                <span className="ml-6 text-primary">iac_tools</span>
+                <span className="text-foreground"> = [</span>
                 <span className="text-green-400">"Terraform"</span>
-                <span className="text-foreground">],</span>
+                <span className="text-foreground">]</span>
               </>,
               <>
-                <span className="ml-6 text-primary">"deployment"</span>
-                <span className="text-foreground">: [</span>
-                <span className="text-green-400">"Github Actions"</span>
-                <span className="text-foreground">, </span>
-                <span className="text-green-400">"Jenkins"</span>
-                <span className="text-foreground">],</span>
+                <span className="ml-6 text-primary">deployment</span>
+                <span className="text-foreground"> = [</span>
               </>,
               <>
-                <span className="ml-6 text-primary">"databases"</span>
-                <span className="text-foreground">: {'{'}</span>
+                <span className="ml-10 text-green-400">"Github Actions"</span>
+                <span className="text-foreground">,</span>
               </>,
               <>
-                <span className="ml-10 text-primary">"no_sql"</span>
-                <span className="text-foreground">: [</span>
+                <span className="ml-10 text-green-400">"Jenkins"</span>
+                <span className="text-foreground">,</span>
+              </>,
+              <>
+                <span className="ml-6 text-foreground">]</span>
+              </>,
+              <>
+                <span className="ml-6 text-primary">databases</span>
+                <span className="text-foreground"> = {'{'}</span>
+              </>,
+              <>
+                <span className="ml-10 text-primary">nosql</span>
+                <span className="text-foreground"> = [</span>
               </>,
               <>
                 <span className="ml-14 text-green-400">"DynamoDB"</span>
@@ -179,16 +193,17 @@ function About() {
               </>,
               <>
                 <span className="ml-14 text-green-400">"Redis"</span>
+                <span className="text-foreground">,</span>
               </>,
               <>
-                <span className="ml-10 text-foreground">],</span>
+                <span className="ml-10 text-foreground">]</span>
               </>,
               <>
-                <span className="ml-10 text-primary">"sql"</span>
-                <span className="text-foreground">: [</span>
+                <span className="ml-10 text-primary">sql</span>
+                <span className="text-foreground"> = [</span>
                 <span className="text-green-400">"PostgreSQL"</span>
                 <span className="text-foreground">, </span>
-                <span className="text-green-400">"MySQL"</span>
+                <span className="text-green-400">"RDS"</span>
                 <span className="text-foreground">]</span>
               </>,
               <>
