@@ -14,7 +14,7 @@ function Home() {
         <div className="flex items-center space-x-2 text-sm font-mono text-muted-foreground">
           <span className="text-primary"># Personal Portfolio</span>
         </div>
-        <h1 className="text-3xl font-mono font-bold text-foreground">
+        <h1 className="text-xl sm:text-2xl md:text-3xl font-mono font-bold text-foreground">
           <span className="text-accent">class</span>
           <span className="text-foreground"> </span>
           <span className="text-primary">JonathanDupe</span>
@@ -22,7 +22,7 @@ function Home() {
           <span className="text-primary">SoftwareArchitect</span>
           <span className="text-foreground">):</span>
         </h1>
-        <p className="text-lg text-muted-foreground font-mono max-w-6xl">
+        <p className="text-sm sm:text-base md:text-lg text-muted-foreground font-mono max-w-6xl">
           """ Lead Software Developer with 7+ years of experience architecting
           and developing scalable systems with AWS, Python, and modern web
           technologies. Passionate about building efficient, data-driven
@@ -83,22 +83,25 @@ function Home() {
             <div className="flex items-center space-x-2">
               <span className="w-3 h-3 bg-green-500 rounded-full"></span>
               <span className="text-xs font-mono text-muted-foreground ml-2">
-                current_project.tsx
+                current_project.md
               </span>
             </div>
           </CardHeader>
-          <CardContent className="space-y-3">
+          <CardContent className="space-y-3 font-mono text-sm">
             <div className="space-y-2">
-              <h3 className="font-mono text-sm text-primary">
-                Current Experience
-              </h3>
-              <div className="space-y-1 text-sm font-mono">
+              <p className="text-muted-foreground">
+                <span className="text-primary">#</span> Current Experience
+              </p>
+              <div className="space-y-1 ml-4">
                 <p className="text-foreground">
-                  Pendulum Intel - Senior Software Developer
+                  <span className="text-primary">## **</span>Pendulum Intel
+                  <span className="text-primary">**</span> - Lead Software
+                  Developer
                 </p>
                 <p className="text-muted-foreground">
-                  Architecting and Developing a Big Data Social Media Listening
-                  Platform and Analytics Tools in AWS
+                  <span className="text-primary">{'>'}</span> Architecting and
+                  Developing a Big Data Social Media Listening Platform and
+                  Analytics Tools in AWS
                 </p>
               </div>
             </div>

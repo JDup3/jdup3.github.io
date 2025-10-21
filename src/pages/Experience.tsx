@@ -63,7 +63,7 @@ function Experience() {
                   <span className="ml-6 text-primary">position</span>
                   <span className="text-foreground"> = </span>
                   <span className="text-green-400">
-                    "Senior Software Developer"
+                    "Lead Software Developer"
                   </span>
                 </>,
                 <>
@@ -90,6 +90,30 @@ function Experience() {
                 <>
                   <span className="ml-10 text-green-400">
                     "System Design and Architecture"
+                  </span>
+                </>,
+                <>
+                  <span className="ml-6 text-foreground">]</span>
+                </>,
+                <>
+                  <span className="ml-6 text-primary">achievements</span>
+                  <span className="text-foreground"> = [</span>
+                </>,
+                <>
+                  <span className="ml-10 text-green-400">
+                    "Realtime ML Enrichment Pipeline"
+                  </span>
+                  <span className="text-foreground">,</span>
+                </>,
+                <>
+                  <span className="ml-10 text-green-400">
+                    "Realtime Smart Social Alerting System"
+                  </span>
+                  <span className="text-foreground">,</span>
+                </>,
+                <>
+                  <span className="ml-10 text-green-400">
+                    "Company Munch and Learns"
                   </span>
                 </>,
                 <>
@@ -309,7 +333,7 @@ function Experience() {
                 <div className="flex items-center space-x-2">
                   <span className="w-3 h-3 bg-green-500 rounded-full"></span>
                   <span className="text-xs font-mono text-muted-foreground ml-2">
-                    social-media-platform.py
+                    social-media-platform.md
                   </span>
                 </div>
                 <Button variant="ghost" size="sm" className="font-mono text-xs">
@@ -320,7 +344,7 @@ function Experience() {
             <CardContent className="space-y-4">
               <div>
                 <h3 className="font-mono text-lg text-primary mb-2">
-                  Big Data Social Media Analytics Platform
+                  # Big Data Social Media Analytics Platform
                 </h3>
                 <p className="text-sm text-muted-foreground font-mono">
                   Architected and developed a scalable social media listening
@@ -331,6 +355,9 @@ function Experience() {
               <div className="flex flex-wrap gap-2">
                 <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">
                   AWS
+                </span>
+                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">
+                  Machine Learning
                 </span>
                 <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">
                   Python
@@ -352,7 +379,7 @@ function Experience() {
                 <div className="flex items-center space-x-2">
                   <span className="w-3 h-3 bg-yellow-500 rounded-full"></span>
                   <span className="text-xs font-mono text-muted-foreground ml-2">
-                    xdr-platform.js
+                    xdr-platform.md
                   </span>
                 </div>
                 <Button variant="ghost" size="sm" className="font-mono text-xs">
@@ -363,7 +390,7 @@ function Experience() {
             <CardContent className="space-y-4">
               <div>
                 <h3 className="font-mono text-lg text-primary mb-2">
-                  Extended Detection & Response (XDR) Platform
+                  # Extended Detection & Response (XDR) Platform
                 </h3>
                 <p className="text-sm text-muted-foreground font-mono">
                   Led development of cybersecurity platform handling massive
@@ -396,7 +423,7 @@ function Experience() {
                 <div className="flex items-center space-x-2">
                   <span className="w-3 h-3 bg-blue-500 rounded-full"></span>
                   <span className="text-xs font-mono text-muted-foreground ml-2">
-                    portfolio.tsx
+                    portfolio.md
                   </span>
                 </div>
                 <Button
@@ -418,7 +445,7 @@ function Experience() {
             <CardContent className="space-y-4">
               <div>
                 <h3 className="font-mono text-lg text-primary mb-2">
-                  VS Code Themed Portfolio Website
+                  # VS Code Themed Portfolio Website
                 </h3>
                 <p className="text-sm text-muted-foreground font-mono">
                   Modern portfolio website built with React, TypeScript, and
@@ -460,8 +487,8 @@ function Experience() {
             <div>
               <h4 className="text-primary mb-2"># Backend & Cloud</h4>
               <ul className="space-y-1 text-muted-foreground text-xs">
-                <li>- Python (Flask, FastAPI, Django)</li>
-                <li>- AWS (Lambda, DynamoDB, S3, EC2)</li>
+                <li>- Python</li>
+                <li>- AWS (Lambda, Sagemaker, DynamoDB, etc.)</li>
                 <li>- Docker & Containerization</li>
                 <li>- Terraform Infrastructure</li>
               </ul>

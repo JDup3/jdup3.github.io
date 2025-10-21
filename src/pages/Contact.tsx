@@ -1,9 +1,4 @@
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  CardContentWithCode,
-} from '../components/ui/card';
+import { Card, CardContent, CardHeader } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 
 function Contact() {
@@ -101,88 +96,36 @@ function Contact() {
           </CardContent>
         </Card>
 
-        {/* Interests */}
+        {/* Message */}
         <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
           <CardHeader className="pb-3">
             <div className="flex items-center space-x-2">
               <span className="w-3 h-3 bg-green-500 rounded-full"></span>
               <span className="text-xs font-mono text-muted-foreground ml-2">
-                interests.js
+                README.md
               </span>
             </div>
           </CardHeader>
-          <CardContentWithCode
-            className="space-y-3"
-            lines={[
-              <>
-                <span className="ml-2 text-accent">const</span>
-                <span className="text-primary"> interests </span>
-                <span className="text-foreground">= [</span>
-              </>,
-              <>
-                <span className="ml-6 text-green-400">
-                  'Cloud architecture & AWS'
-                </span>
-                <span className="text-foreground">,</span>
-              </>,
-              <>
-                <span className="ml-6 text-green-400">
-                  'Python development'
-                </span>
-                <span className="text-foreground">,</span>
-              </>,
-              <>
-                <span className="ml-6 text-green-400">
-                  'System architecture'
-                </span>
-                <span className="text-foreground">,</span>
-              </>,
-              <>
-                <span className="ml-6 text-green-400">
-                  'Technical leadership'
-                </span>
-                <span className="text-foreground">,</span>
-              </>,
-              <>
-                <span className="ml-6 text-green-400">
-                  '3D Printing & PC Building'
-                </span>
-              </>,
-              <>
-                <span className="ml-2 text-foreground">]</span>
-              </>,
-            ]}
-          />
+          <CardContent className="space-y-4 font-mono text-sm">
+            <div className="space-y-2">
+              <p className="text-muted-foreground">
+                # Let's Build Something Together
+              </p>
+              <div className="space-y-1 ml-0 text-foreground">
+                <p>Always excited to discuss:</p>
+                <p className="ml-2">
+                  - Software architecture and scalable systems
+                </p>
+                <p className="ml-2">- AWS cloud solutions and infrastructure</p>
+                <p className="ml-2">- Technical leadership opportunities</p>
+                <p className="ml-2">
+                  - Hardware tinkering and game development
+                </p>
+              </div>
+            </div>
+          </CardContent>
         </Card>
       </div>
-
-      {/* Message */}
-      <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
-        <CardHeader className="pb-3">
-          <div className="flex items-center space-x-2">
-            <span className="w-3 h-3 bg-green-500 rounded-full"></span>
-            <span className="text-xs font-mono text-muted-foreground ml-2">
-              README.md
-            </span>
-          </div>
-        </CardHeader>
-        <CardContent className="space-y-4 font-mono text-sm">
-          <div className="space-y-2">
-            <p className="text-muted-foreground">
-              # Let's Build Something Together
-            </p>
-            <div className="space-y-1 ml-0 text-foreground">
-              <p>Always excited to discuss:</p>
-              <p className="ml-2">
-                - Software architecture and scalable systems
-              </p>
-              <p className="ml-2">- AWS cloud solutions and infrastructure</p>
-              <p className="ml-2">- Technical leadership opportunities</p>
-              <p className="ml-2">- Hardware tinkering and game development</p>
-            </div>
-          </div>
-        </CardContent>
-      </Card>
 
       {/* Terminal */}
       <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
