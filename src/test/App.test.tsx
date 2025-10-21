@@ -11,8 +11,10 @@ describe('App', () => {
       </BrowserRouter>
     );
 
-    expect(screen.getByText('home.tsx')).toBeInTheDocument();
-    expect(screen.getByText('about.tsx')).toBeInTheDocument();
-    expect(screen.getByText('contact.tsx')).toBeInTheDocument();
+    // Check that navigation items appear (should have both desktop and mobile versions)
+    expect(screen.getAllByText('home.tsx')).toHaveLength(2);
+    expect(screen.getAllByText('about.tsx')).toHaveLength(2);
+    expect(screen.getAllByText('experience.tsx')).toHaveLength(2);
+    expect(screen.getAllByText('contact.tsx')).toHaveLength(2);
   });
 });

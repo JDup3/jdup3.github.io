@@ -9,7 +9,7 @@ function App() {
   return (
     <div className="min-h-screen bg-background font-mono">
       <Navigation />
-      <main className="container mx-auto px-6 py-12 max-w-5xl">
+      <main className="container mx-auto px-4 sm:px-6 py-12 max-w-5xl">
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/about" element={<About />} />

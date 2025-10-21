@@ -94,18 +94,18 @@ const CodeLine = React.forwardRef<HTMLDivElement, CodeLineProps>(
     },
     ref
   ) => (
-    <div ref={ref} className={className} {...props}>
+    <div ref={ref} className={cn('flex', className)} {...props}>
       {showLineNumber && lineNumber !== undefined && (
         <span
           className={cn(
-            'text-muted-foreground mr-2 inline-block w-6 text-right',
+            'text-muted-foreground mr-2 flex-shrink-0 w-6 text-right',
             lineNumberClassName
           )}
         >
           {lineNumber}
         </span>
       )}
-      {children}
+      <div className="flex-1 min-w-0">{children}</div>
     </div>
   )
 );
