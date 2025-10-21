@@ -1,130 +1,88 @@
-# Card Component with Line Numbers
+# Enhanced Card Components with Line Numbers & Typing Animation
 
-The Card component now includes reusable line number functionality through several new components:
+## Overview
 
-## Components
+The Card component system includes two main features: static line-numbered code display and animated typing effects that simulate real-time code writing.
 
-### `CardContentWithCode`
+## Core Components
 
-A specialized CardContent that automatically adds line numbers to code content.
+### Static Components
 
-**Props:**
+- **`CardContentWithCode`** - Code display with automatic line numbering
+- **`CodeBlock`** - Standalone code container with line numbers
+- **`CodeLine`** - Individual line with optional numbering
 
-- `startLine?: number` - Starting line number (default: 1)
-- `showLineNumbers?: boolean` - Whether to show line numbers (default: true)
-- `lineNumberClassName?: string` - Custom className for line numbers
-- `lines: React.ReactNode[]` - Array of line content
+### Animated Components
 
-### `CodeBlock`
+- **`AnimatedCardContentWithCode`** - Drop-in replacement with typing animation
+- **`AnimatedCodeBlock`** - Sequential line-by-line typing container
+- **`AnimatedCodeLine`** - Individual line with typing cursor support
 
-A standalone component for displaying code with line numbers.
+## Key Features
 
-**Props:**
+### Line Numbering System
 
-- `startLine?: number` - Starting line number (default: 1)
-- `showLineNumbers?: boolean` - Whether to show line numbers (default: true)
-- `lineNumberClassName?: string` - Custom className for line numbers
-- `lines: React.ReactNode[]` - Array of line content
+- Automatic sequential numbering starting from any line
+- Fixed-width alignment that prevents layout shifts
+- Responsive design with proper text wrapping
+- Customizable styling for different themes
 
-### `CodeLine`
+### Typing Animation
 
-A component for individual code lines with optional line numbers.
-
-**Props:**
-
-- `lineNumber?: number` - Line number to display
-- `showLineNumber?: boolean` - Whether to show line number (default: true)
-- `lineNumberClassName?: string` - Custom className for line number
+- Character-by-character typing simulation
+- **Viewport-triggered**: Animations start only when cards become visible
+- **One-time execution**: Each animation runs once per page visit
+- **Navigation-triggered**: Animations restart when navigating between pages
+- Configurable speed (30-50ms per character) and line delays (300-500ms)
+- Flashing cursor during typing and persistent terminal cursor after completion
+- Preserves all React element styling and structure during animation
 
 ## Usage Examples
 
-### Basic Usage with CardContentWithCode
-
-```tsx
-import { Card, CardHeader, CardContentWithCode } from '../components/ui/card';
-
-<Card>
-  <CardHeader>
-    <h3>Example Code</h3>
-  </CardHeader>
-  <CardContentWithCode
-    lines={[
-      <>const message = "Hello World";</>,
-      <>console.log(message);</>,
-      <>// This is a comment</>,
-    ]}
-  />
-</Card>;
-```
-
-### Custom Starting Line Number
+### Static Code Card
 
 ```tsx
 <CardContentWithCode
-  startLine={10}
-  lines={[<>function example() {'{'}</>, <> return true;</>, <>{'}'}</>]}
+  startLine={1}
+  lines={[<>const message = "Hello World";</>, <>console.log(message);</>]}
 />
 ```
 
-### Hide Line Numbers
+### Animated Code Card
 
 ```tsx
-<CardContentWithCode
-  showLineNumbers={false}
-  lines={[<>No line numbers here</>, <>Just plain content</>]}
-/>
-```
-
-### Custom Line Number Styling
-
-```tsx
-<CardContentWithCode
-  lineNumberClassName="text-blue-500 font-bold"
-  lines={[<>Custom styled line numbers</>, <>Look different from default</>]}
-/>
-```
-
-### Using CodeBlock Standalone
-
-```tsx
-import { CodeBlock } from '../components/ui/card';
-
-<CodeBlock
+<AnimatedCardContentWithCode
+  typingSpeed={30}        // Fast typing
+  lineDelay={300}         // Quick line transitions
   lines={[
-    <>import React from 'react';</>,
-    <>export default function App() {'{'}</>,
-    <>
-      {' '}
-      return <div>Hello</div>;
-    </>,
-    <>{'}'}</>,
+    <>interface Developer {</>,
+    <>  name: string;</>,
+    <>  skills: string[];</>,
+    <>}</>,
   ]}
-/>;
+/>
 ```
 
-### Manual Line Creation
+## Animation Behavior
 
-```tsx
-import { CodeLine } from '../components/ui/card';
+1. **Viewport Detection**: Card waits until it becomes visible (10% threshold)
+2. **Start**: Card appears empty and animation begins
+3. **Typing**: Each line types character-by-character with flashing cursor
+4. **Transition**: Brief pause between lines for readability
+5. **Completion**: Shows persistent terminal prompt (`$` with flashing cursor)
+6. **Reset**: Animation resets when navigating to different pages and back
 
-<div className="space-y-1">
-  <CodeLine lineNumber={1}>
-    <>const x = 1;</>
-  </CodeLine>
-  <CodeLine lineNumber={2}>
-    <>const y = 2;</>
-  </CodeLine>
-  <CodeLine hideLineNumber>
-    <>// This line has no number</>
-  </CodeLine>
-</div>;
-```
+## Technical Implementation
+
+- **State Management**: Tracks current line, character position, and completion status
+- **Content Processing**: Recursively handles React elements while preserving styling
+- **Performance**: Uses efficient timers with proper cleanup and minimal re-renders
+- **Responsive**: Maintains mobile compatibility and proper text wrapping
 
 ## Benefits
 
-1. **Consistent Styling**: All line numbers use the same styling by default
-2. **Flexible Starting Point**: Can start from any line number
-3. **Optional Display**: Can easily hide/show line numbers
-4. **Customizable**: Can override line number styling
-5. **Reusable**: Works across different card types and contexts
-6. **Type Safe**: Full TypeScript support with proper prop types
+- **Engaging UX**: Creates dynamic, interactive feel for portfolio content
+- **Consistent Styling**: Matches VS Code theme with proper syntax highlighting
+- **Flexible Configuration**: Adjustable speeds for different content types
+- **Accessibility Ready**: Framework supports reduced motion preferences
+- **Type Safe**: Full TypeScript support with comprehensive prop types

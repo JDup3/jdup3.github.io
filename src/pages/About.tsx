@@ -2,7 +2,7 @@ import {
   Card,
   CardContent,
   CardHeader,
-  CardContentWithCode,
+  AnimatedCardContentWithCode,
 } from '../components/ui/card';
 
 function About() {
@@ -58,7 +58,7 @@ function About() {
               </span>
             </div>
           </CardHeader>
-          <CardContentWithCode
+          <AnimatedCardContentWithCode
             className="space-y-3"
             lines={[
               <>
@@ -129,7 +129,7 @@ function About() {
               </span>
             </div>
           </CardHeader>
-          <CardContentWithCode
+          <AnimatedCardContentWithCode
             className="space-y-3"
             lines={[
               <>
@@ -212,7 +212,7 @@ function About() {
               </span>
             </div>
           </CardHeader>
-          <CardContentWithCode
+          <AnimatedCardContentWithCode
             className="space-y-3"
             lines={[
               <>

@@ -111,16 +111,34 @@ function Contact() {
               <p className="text-muted-foreground">
                 # Let's Build Something Together
               </p>
-              <div className="space-y-1 ml-0 text-foreground">
-                <p>Always excited to discuss:</p>
-                <p className="ml-2">
-                  - Software architecture and scalable systems
-                </p>
-                <p className="ml-2">- AWS cloud solutions and infrastructure</p>
-                <p className="ml-2">- Technical leadership opportunities</p>
-                <p className="ml-2">
-                  - Hardware tinkering and game development
-                </p>
+              <div className="text-foreground">
+                <p className="mb-2">Always excited to discuss:</p>
+                <div className="space-y-1 ml-4">
+                  <div className="text-foreground flex">
+                    <span className="mr-2">-</span>
+                    <span className="flex-1">
+                      Software architecture and scalable systems
+                    </span>
+                  </div>
+                  <div className="text-foreground flex">
+                    <span className="mr-2">-</span>
+                    <span className="flex-1">
+                      AWS cloud solutions and infrastructure
+                    </span>
+                  </div>
+                  <div className="text-foreground flex">
+                    <span className="mr-2">-</span>
+                    <span className="flex-1">
+                      Technical leadership opportunities
+                    </span>
+                  </div>
+                  <div className="text-foreground flex">
+                    <span className="mr-2">-</span>
+                    <span className="flex-1">
+                      Hardware tinkering and game development
+                    </span>
+                  </div>
+                </div>
               </div>
             </div>
           </CardContent>
