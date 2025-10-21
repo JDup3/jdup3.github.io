@@ -2,7 +2,7 @@ import {
   Card,
   CardContent,
   CardHeader,
-  CardContentWithCode,
+  AnimatedCardContentWithCode,
 } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 
@@ -41,8 +41,10 @@ function Home() {
               </span>
             </div>
           </CardHeader>
-          <CardContentWithCode
+          <AnimatedCardContentWithCode
             className="space-y-3"
+            typingSpeed={15}
+            lineDelay={150}
             lines={[
               <>
                 <span className="ml-2 text-accent">interface</span>

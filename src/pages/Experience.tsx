@@ -2,7 +2,7 @@ import {
   Card,
   CardContent,
   CardHeader,
-  CardContentWithCode,
+  AnimatedCardContentWithCode,
 } from '../components/ui/card';
 import { Button } from '../components/ui/button';
 
@@ -46,7 +46,7 @@ function Experience() {
                 </span>
               </div>
             </CardHeader>
-            <CardContentWithCode
+            <AnimatedCardContentWithCode
               className="space-y-3"
               lines={[
                 <>
@@ -133,7 +133,7 @@ function Experience() {
                 </span>
               </div>
             </CardHeader>
-            <CardContentWithCode
+            <AnimatedCardContentWithCode
               className="space-y-3"
               lines={[
                 <>
@@ -230,7 +230,7 @@ function Experience() {
                 </span>
               </div>
             </CardHeader>
-            <CardContentWithCode
+            <AnimatedCardContentWithCode
               className="space-y-3"
               lines={[
                 <>
