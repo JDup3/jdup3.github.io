@@ -203,7 +203,7 @@ function About() {
                 <span className="text-foreground"> = [</span>
                 <span className="text-green-400">"PostgreSQL"</span>
                 <span className="text-foreground">, </span>
-                <span className="text-green-400">"RDS"</span>
+                <span className="text-green-400">"MySQL"</span>
                 <span className="text-foreground">]</span>
               </>,
               <>
