@@ -48,6 +48,7 @@ function Experience() {
             </CardHeader>
             <AnimatedCardContentWithCode
               className="space-y-3"
+              cardId="experience-current-role"
               lines={[
                 <>
                   <span className="ml-2 text-accent">class</span>
@@ -135,6 +136,7 @@ function Experience() {
             </CardHeader>
             <AnimatedCardContentWithCode
               className="space-y-3"
+              cardId="experience-previous-role"
               lines={[
                 <>
                   <span className="ml-2 text-accent">class</span>
@@ -232,6 +234,7 @@ function Experience() {
             </CardHeader>
             <AnimatedCardContentWithCode
               className="space-y-3"
+              cardId="experience-education"
               lines={[
                 <>
                   <span className="ml-2 text-foreground">{'{'}</span>

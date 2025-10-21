@@ -1,10 +1,11 @@
 import { Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import Navigation from './components/Navigation';
 import Home from './pages/Home';
 import About from './pages/About';
 import Experience from './pages/Experience';
 import Contact from './pages/Contact';
+import { AnimationProvider } from './contexts/AnimationContext';
 
 // Component to scroll to top on route change
 function ScrollToTop() {
@@ -23,18 +24,23 @@ function ScrollToTop() {
 }
 
 function App() {
+  // Create a unique key that changes on page refresh but persists during navigation
+  const [appKey] = useState(() => `app-${Date.now()}`);
+
   return (
     <div className="min-h-screen bg-background font-mono">
-      <ScrollToTop />
-      <Navigation />
-      <main className="container mx-auto px-4 sm:px-6 py-12 max-w-5xl">
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/about" element={<About />} />
-          <Route path="/experience" element={<Experience />} />
-          <Route path="/contact" element={<Contact />} />
-        </Routes>
-      </main>
+      <AnimationProvider key={appKey}>
+        <ScrollToTop />
+        <Navigation />
+        <main className="container mx-auto px-4 sm:px-6 py-12 max-w-5xl">
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/experience" element={<Experience />} />
+            <Route path="/contact" element={<Contact />} />
+          </Routes>
+        </main>
+      </AnimationProvider>
     </div>
   );
 }
