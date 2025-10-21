@@ -644,22 +644,34 @@ const AnimatedCardContentWithCode = React.forwardRef<
       ...props
     },
     ref
-  ) => (
-    <div ref={ref} className={cn('p-6 pt-0', className)} {...props}>
-      <div className="font-mono text-sm">
-        <AnimatedCodeBlock
-          startLine={startLine}
-          showLineNumbers={showLineNumbers}
-          lineNumberClassName={lineNumberClassName}
-          lines={lines}
-          typingSpeed={typingSpeed}
-          lineDelay={lineDelay}
-          enableAnimation={enableAnimation}
-          cardId={cardId}
-        />
+  ) => {
+    // Determine card size class based on number of lines to prevent mobile layout shifts
+    const getCardSizeClass = () => {
+      const lineCount = lines.length;
+      if (lineCount <= 6) return 'card-content-small';
+      if (lineCount <= 10) return 'card-content-medium';
+      return 'card-content-large';
+    };
+
+    const sizeClass = enableAnimation ? getCardSizeClass() : '';
+
+    return (
+      <div ref={ref} className={cn('p-6 pt-0', sizeClass, className)} {...props}>
+        <div className="font-mono text-sm animated-code-content">
+          <AnimatedCodeBlock
+            startLine={startLine}
+            showLineNumbers={showLineNumbers}
+            lineNumberClassName={lineNumberClassName}
+            lines={lines}
+            typingSpeed={typingSpeed}
+            lineDelay={lineDelay}
+            enableAnimation={enableAnimation}
+            cardId={cardId}
+          />
+        </div>
       </div>
-    </div>
-  )
+    );
+  }
 );
 AnimatedCardContentWithCode.displayName = 'AnimatedCardContentWithCode';
 
