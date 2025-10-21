@@ -31,8 +31,8 @@ The Card component system includes two main features: static line-numbered code 
 
 - Character-by-character typing simulation
 - **Viewport-triggered**: Animations start only when cards become visible
-- **One-time execution**: Each animation runs once per page visit
-- **Navigation-triggered**: Animations restart when navigating between pages
+- **One-time execution**: Each animation runs once per website visit
+- **Session persistence**: Animations persist until browser refresh or new session
 - Configurable speed (30-50ms per character) and line delays (300-500ms)
 - Flashing cursor during typing and persistent terminal cursor after completion
 - Preserves all React element styling and structure during animation
@@ -70,7 +70,8 @@ The Card component system includes two main features: static line-numbered code 
 3. **Typing**: Each line types character-by-character with flashing cursor
 4. **Transition**: Brief pause between lines for readability
 5. **Completion**: Shows persistent terminal prompt (`$` with flashing cursor)
-6. **Reset**: Animation resets when navigating to different pages and back
+6. **Session Persistence**: Animation state persists across page navigation
+7. **Reset**: Animation only resets on browser refresh or new session
 
 ## Technical Implementation
 

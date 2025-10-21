@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { useState, useEffect, useRef, useCallback } from 'react';
+import { useAnimationState } from '../../contexts/AnimationContext';
 
 import { cn } from '../../lib/utils';
 
@@ -80,30 +81,53 @@ const CardFooter = React.forwardRef<
 ));
 CardFooter.displayName = 'CardFooter';
 
-// Custom hook for intersection observer
+// Custom hook for intersection observer with React context animation tracking
 const useIntersectionObserver = (
-  options: { threshold?: number; rootMargin?: string } = {}
+  options: { threshold?: number; rootMargin?: string; cardId?: string } = {}
 ): [React.RefObject<HTMLDivElement>, boolean] => {
   const [isIntersecting, setIsIntersecting] = useState(false);
-  const [hasAnimated, setHasAnimated] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const { hasAnimated, markAsAnimated } = useAnimationState();
 
-  const { threshold = 0.1, rootMargin = '0px' } = options;
+  const { threshold = 0.1, rootMargin = '0px', cardId } = options;
+
+  // Generate a unique card ID if not provided
+  const uniqueCardId =
+    cardId || `card-${Math.random().toString(36).substr(2, 9)}`;
 
   useEffect(() => {
+    // Check if this card has already been animated
+    const hasBeenAnimated = hasAnimated(uniqueCardId);
+
+    console.log(`📍 Intersection Observer for ${uniqueCardId}:`, {
+      hasBeenAnimated,
+      element: ref.current ? 'exists' : 'null',
+    });
+
+    // If already animated, show content immediately without animation
+    if (hasBeenAnimated) {
+      console.log(`✅ Card ${uniqueCardId} already animated, setting visible`);
+      setIsIntersecting(true);
+      return;
+    }
+
     const element = ref.current;
     if (!element || typeof IntersectionObserver === 'undefined') {
       // Fallback for environments without IntersectionObserver (like tests)
+      console.log(`🔄 Fallback for ${uniqueCardId}, setting visible`);
       setIsIntersecting(true);
-      setHasAnimated(true);
+      // Don't mark as animated here either - let the animation complete
       return;
     }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting && !hasAnimated) {
+        if (entry.isIntersecting) {
+          console.log(
+            `👁️ Card ${uniqueCardId} came into view, setting visible`
+          );
           setIsIntersecting(true);
-          setHasAnimated(true);
+          // Don't mark as animated here - let the animation finish first
         }
       },
       { threshold, rootMargin }
@@ -114,18 +138,7 @@ const useIntersectionObserver = (
     return () => {
       observer.unobserve(element);
     };
-  }, [threshold, rootMargin, hasAnimated]);
-
-  // Reset animation state when component remounts (navigation)
-  useEffect(() => {
-    const resetAnimation = () => {
-      setHasAnimated(false);
-      setIsIntersecting(false);
-    };
-
-    // Reset on mount
-    resetAnimation();
-  }, []);
+  }, [threshold, rootMargin, uniqueCardId, hasAnimated, markAsAnimated]);
 
   return [ref, isIntersecting];
 };
@@ -135,28 +148,57 @@ const useTypingAnimation = (
   lines: React.ReactNode[],
   typingSpeed: number = defaultTypingSpeed,
   lineDelay: number = defaultLineDelay,
-  shouldStart: boolean = true
+  shouldStart: boolean = true,
+  skipAnimation: boolean = false,
+  cardId?: string
 ) => {
   const [displayedLines, setDisplayedLines] = useState<React.ReactNode[]>([]);
   const [currentLineIndex, setCurrentLineIndex] = useState(0);
   const [currentCharIndex, setCurrentCharIndex] = useState(0);
   const [isTypingComplete, setIsTypingComplete] = useState(false);
 
+  const { markAsAnimated } = useAnimationState();
+
+  // If animation should be skipped, show all content immediately
+  useEffect(() => {
+    if (skipAnimation) {
+      console.log('🚀 Skipping animation, showing all content');
+      setDisplayedLines(lines);
+      setCurrentLineIndex(lines.length);
+      setCurrentCharIndex(0);
+      setIsTypingComplete(true);
+      return;
+    }
+  }, [skipAnimation, lines]);
+
   // Reset animation when shouldStart changes
   useEffect(() => {
-    if (shouldStart) {
+    if (shouldStart && !skipAnimation) {
+      console.log('🎯 Starting animation');
       setDisplayedLines([]);
       setCurrentLineIndex(0);
       setCurrentCharIndex(0);
       setIsTypingComplete(false);
     }
-  }, [shouldStart]);
+  }, [shouldStart, skipAnimation]);
 
   useEffect(() => {
-    if (!shouldStart) return;
+    if (!shouldStart || skipAnimation) return;
+
+    console.log('⚡ Animation effect triggered:', {
+      shouldStart,
+      skipAnimation,
+      currentLineIndex,
+      totalLines: lines.length,
+    });
 
     if (currentLineIndex >= lines.length) {
       setIsTypingComplete(true);
+      // Mark as animated when typing is actually complete
+      if (cardId && !skipAnimation) {
+        console.log(`✅ Animation complete for ${cardId}, marking as animated`);
+        markAsAnimated(cardId);
+      }
       return;
     }
 
@@ -200,6 +242,9 @@ const useTypingAnimation = (
     typingSpeed,
     lineDelay,
     shouldStart,
+    skipAnimation,
+    cardId,
+    markAsAnimated,
   ]);
 
   // Create partially typed current line
@@ -395,6 +440,7 @@ interface AnimatedCodeBlockProps extends React.HTMLAttributes<HTMLDivElement> {
   typingSpeed?: number;
   lineDelay?: number;
   enableAnimation?: boolean;
+  cardId?: string; // Optional unique identifier for global animation tracking
 }
 
 const AnimatedCodeBlock = React.forwardRef<
@@ -411,17 +457,41 @@ const AnimatedCodeBlock = React.forwardRef<
       typingSpeed = defaultTypingSpeed,
       lineDelay = defaultLineDelay,
       enableAnimation = true,
+      cardId,
       ...props
     },
     ref
   ) => {
+    // Generate a unique card ID if not provided - do this once at the top
+    const uniqueCardId =
+      cardId || `card-${Math.random().toString(36).substr(2, 9)}`;
+
     const [intersectionRef, isVisible] = useIntersectionObserver({
       threshold: 0.1,
       rootMargin: '0px',
+      cardId: uniqueCardId, // Use the same ID
+    });
+
+    // Check if this card has already been animated using context
+    const { hasAnimated } = useAnimationState();
+    const hasBeenAnimated = hasAnimated(uniqueCardId);
+
+    // Debug logging
+    console.log(`🔍 Animation Debug for ${uniqueCardId}:`, {
+      isVisible,
+      hasBeenAnimated,
+      enableAnimation,
     });
 
     const { displayedLines, currentLine, isTypingComplete, showCursor } =
-      useTypingAnimation(lines, typingSpeed, lineDelay, isVisible);
+      useTypingAnimation(
+        lines,
+        typingSpeed,
+        lineDelay,
+        isVisible,
+        hasBeenAnimated,
+        uniqueCardId
+      );
 
     // Combine refs
     const combinedRef = useCallback(
@@ -553,6 +623,7 @@ interface AnimatedCardContentWithCodeProps
   typingSpeed?: number;
   lineDelay?: number;
   enableAnimation?: boolean;
+  cardId?: string; // Optional unique identifier for global animation tracking
 }
 
 const AnimatedCardContentWithCode = React.forwardRef<
@@ -569,6 +640,7 @@ const AnimatedCardContentWithCode = React.forwardRef<
       typingSpeed = defaultTypingSpeed,
       lineDelay = defaultLineDelay,
       enableAnimation = true,
+      cardId,
       ...props
     },
     ref
@@ -583,6 +655,7 @@ const AnimatedCardContentWithCode = React.forwardRef<
           typingSpeed={typingSpeed}
           lineDelay={lineDelay}
           enableAnimation={enableAnimation}
+          cardId={cardId}
         />
       </div>
     </div>

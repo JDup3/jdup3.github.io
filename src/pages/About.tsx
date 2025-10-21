@@ -60,6 +60,7 @@ function About() {
           </CardHeader>
           <AnimatedCardContentWithCode
             className="space-y-3"
+            cardId="about-backend-skills"
             lines={[
               <>
                 <span className="ml-2 text-accent">export const</span>
@@ -131,6 +132,7 @@ function About() {
           </CardHeader>
           <AnimatedCardContentWithCode
             className="space-y-3"
+            cardId="about-infrastructure"
             lines={[
               <>
                 <span className="ml-2 text-foreground">{'{'}</span>
@@ -214,6 +216,7 @@ function About() {
           </CardHeader>
           <AnimatedCardContentWithCode
             className="space-y-3"
+            cardId="about-interests"
             lines={[
               <>
                 <span className="ml-2 text-accent">const</span>

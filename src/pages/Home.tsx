@@ -45,6 +45,7 @@ function Home() {
             className="space-y-3"
             typingSpeed={15}
             lineDelay={150}
+            cardId="home-about-me"
             lines={[
               <>
                 <span className="ml-2 text-accent">interface</span>
