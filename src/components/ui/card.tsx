@@ -656,7 +656,11 @@ const AnimatedCardContentWithCode = React.forwardRef<
     const sizeClass = enableAnimation ? getCardSizeClass() : '';
 
     return (
-      <div ref={ref} className={cn('p-6 pt-0', sizeClass, className)} {...props}>
+      <div
+        ref={ref}
+        className={cn('p-6 pt-0', sizeClass, className)}
+        {...props}
+      >
         <div className="font-mono text-sm animated-code-content">
           <AnimatedCodeBlock
             startLine={startLine}
