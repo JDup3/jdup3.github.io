@@ -107,4 +107,26 @@
   .syntax-function {
     @apply text-accent;
   }
+
+  /* Animation stability for mobile devices */
+  .animated-code-content {
+    /* Prevent layout shifts during typing animation */
+    min-height: fit-content;
+    contain: layout;
+    /* Ensure consistent line spacing for mobile */
+    line-height: 1.5;
+  }
+
+  /* Pre-allocate height for common card sizes to prevent expansion */
+  .card-content-small {
+    min-height: 8rem; /* ~5-6 lines of code */
+  }
+
+  .card-content-medium {
+    min-height: 12rem; /* ~8-10 lines of code */
+  }
+
+  .card-content-large {
+    min-height: 18rem; /* ~12-15 lines of code */
+  }
 }
