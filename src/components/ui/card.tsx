@@ -86,6 +86,7 @@ const useIntersectionObserver = (
   options: { threshold?: number; rootMargin?: string; cardId?: string } = {}
 ): [React.RefObject<HTMLDivElement>, boolean] => {
   const [isIntersecting, setIsIntersecting] = useState(false);
+  const [hasStartedAnimation, setHasStartedAnimation] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
   const { hasAnimated, markAsAnimated } = useAnimationState();
 
@@ -101,6 +102,7 @@ const useIntersectionObserver = (
 
     console.log(`📍 Intersection Observer for ${uniqueCardId}:`, {
       hasBeenAnimated,
+      hasStartedAnimation,
       element: ref.current ? 'exists' : 'null',
     });
 
@@ -108,6 +110,7 @@ const useIntersectionObserver = (
     if (hasBeenAnimated) {
       console.log(`✅ Card ${uniqueCardId} already animated, setting visible`);
       setIsIntersecting(true);
+      setHasStartedAnimation(true);
       return;
     }
 
@@ -116,18 +119,24 @@ const useIntersectionObserver = (
       // Fallback for environments without IntersectionObserver (like tests)
       console.log(`🔄 Fallback for ${uniqueCardId}, setting visible`);
       setIsIntersecting(true);
-      // Don't mark as animated here either - let the animation complete
+      setHasStartedAnimation(true);
       return;
     }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        if (entry.isIntersecting) {
+        if (entry.isIntersecting && !hasStartedAnimation) {
           console.log(
-            `👁️ Card ${uniqueCardId} came into view, setting visible`
+            `👁️ Card ${uniqueCardId} came into view, starting animation`
           );
           setIsIntersecting(true);
-          // Don't mark as animated here - let the animation finish first
+          setHasStartedAnimation(true);
+        } else if (!entry.isIntersecting && hasStartedAnimation) {
+          console.log(
+            `👁️ Card ${uniqueCardId} left view but animation started, continuing`
+          );
+          // Keep isIntersecting true to continue animation even when out of view
+          // This prevents the card from becoming empty during animation
         }
       },
       { threshold, rootMargin }
@@ -138,7 +147,14 @@ const useIntersectionObserver = (
     return () => {
       observer.unobserve(element);
     };
-  }, [threshold, rootMargin, uniqueCardId, hasAnimated, markAsAnimated]);
+  }, [
+    threshold,
+    rootMargin,
+    uniqueCardId,
+    hasAnimated,
+    markAsAnimated,
+    hasStartedAnimation,
+  ]);
 
   return [ref, isIntersecting];
 };
