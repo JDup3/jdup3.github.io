@@ -396,7 +396,10 @@ function Experience() {
                   # Extended Detection & Response (XDR) Platform
                 </h3>
                 <p className="text-sm text-muted-foreground font-mono">
-                  Participated in and led development of cybersecurity platform for threat detection and response. Implemented real-time data processing pipelines, Restful APIs, UIs, and data pulling systems.
+                  Participated in and led development of cybersecurity platform
+                  for threat detection and response. Implemented real-time data
+                  processing pipelines, Restful APIs, UIs, and data pulling
+                  systems.
                 </p>
               </div>
               <div className="flex flex-wrap gap-2">
