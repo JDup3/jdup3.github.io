@@ -407,7 +407,10 @@ function Experience() {
                   Cybersecurity
                 </span>
                 <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">
-                  Machine Learning
+                  AWS
+                </span>
+                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">
+                  UI Development
                 </span>
                 <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">
                   Data Pipelines
