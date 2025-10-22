@@ -352,7 +352,7 @@ function Experience() {
                 <p className="text-sm text-muted-foreground font-mono">
                   Architected and developed a scalable social media listening
                   platform processing millions of posts daily. Built with AWS
-                  services, Python, and real-time analytics capabilities.
+                  services, Python, Machine Learning, and AI.
                 </p>
               </div>
               <div className="flex flex-wrap gap-2">
@@ -396,10 +396,10 @@ function Experience() {
                   # Extended Detection & Response (XDR) Platform
                 </h3>
                 <p className="text-sm text-muted-foreground font-mono">
-                  Led development of cybersecurity platform handling massive
-                  data volumes for threat detection and response. Implemented
-                  machine learning algorithms and real-time data processing
-                  pipelines.
+                  Participated in and led development of cybersecurity platform
+                  for threat detection and response. Implemented real-time data
+                  processing pipelines, Restful APIs, UIs, and data pulling
+                  systems.
                 </p>
               </div>
               <div className="flex flex-wrap gap-2">
