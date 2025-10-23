@@ -5,7 +5,7 @@ A modern React portfolio website built with Vite and TypeScript, deployed automa
 ## 🚀 Features
 
 - **Modern React Stack**: Built with React 18, TypeScript, and Vite for fast development and builds
-- **Responsive Design**: Mobile-first design with dark/light theme support
+- **Responsive Design**: Mobile-first design
 - **React Router**: Client-side routing for a smooth single-page application experience
 - **Automated CI/CD**: GitHub Actions workflow for formatting, linting, testing, and deployment
 - **Code Quality**: ESLint, Prettier, and Vitest for maintaining high code standards
