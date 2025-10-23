@@ -133,6 +133,11 @@ function Home() {
         <CardContent className="py-4">
           <div className="flex items-center justify-between text-xs font-mono">
             <div className="flex items-center space-x-4 text-muted-foreground">
+              <span>WSL: Ubuntu 22.04</span>
+              <span>portfolio-deployment*</span>
+            </div>
+            <div className="flex items-center space-x-4 text-muted-foreground">
+              <span>Python 3.13</span>
               <span>React 18.2.0</span>
               <span>TypeScript 5.2.2</span>
             </div>
