@@ -64,7 +64,7 @@ A modern React portfolio website built with Vite and TypeScript, deployed automa
 2. Start the development server using Docker:
 
    ```bash
-   make run-react
+   make run-react-local
    ```
 
 3. Open [http://localhost:5173](http://localhost:5173) to view it in the browser.
@@ -87,9 +87,10 @@ This project includes Docker support for a containerized development environment
 
 ### Docker Commands
 
-- `make run-react` - Start React development server in Docker container
-- `make run-node` - Start an interactive bash session in the Node.js container
-- `make template-node` - Copy Node.js template files (if available)
+- `make run-react-local` - Start React development server in Docker container
+- `make fmt` - Format the src code with Prettier 
+- `make lint` - Lint the src code with ESLint
+- `make test` - Run unit tests
 
 ### Docker Architecture
 
