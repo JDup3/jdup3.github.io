@@ -483,7 +483,7 @@ function Experience() {
               <div className="flex items-center space-x-2">
                 <span className="w-3 h-3 bg-purple-500 rounded-full"></span>
                 <span className="text-xs font-mono text-muted-foreground ml-2">
-                  certifications.ts
+                  certifications.txt
                 </span>
               </div>
             </CardHeader>
