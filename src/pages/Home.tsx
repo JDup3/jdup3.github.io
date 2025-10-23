@@ -120,7 +120,7 @@ function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <span className="text-primary">$</span> git clone portfolio
+                  <span className="text-primary">$</span> git clone profile
                 </a>
               </Button>
             </div>
