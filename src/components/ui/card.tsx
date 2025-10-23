@@ -100,7 +100,7 @@ const useIntersectionObserver = (
     // Check if this card has already been animated
     const hasBeenAnimated = hasAnimated(uniqueCardId);
 
-    console.log(`📍 Intersection Observer for ${uniqueCardId}:`, {
+    console.log(`Intersection Observer for ${uniqueCardId}:`, {
       hasBeenAnimated,
       hasStartedAnimation,
       element: ref.current ? 'exists' : 'null',
@@ -108,7 +108,7 @@ const useIntersectionObserver = (
 
     // If already animated, show content immediately without animation
     if (hasBeenAnimated) {
-      console.log(`✅ Card ${uniqueCardId} already animated, setting visible`);
+      console.log(`Card ${uniqueCardId} already animated, setting visible`);
       setIsIntersecting(true);
       setHasStartedAnimation(true);
       return;
@@ -117,7 +117,7 @@ const useIntersectionObserver = (
     const element = ref.current;
     if (!element || typeof IntersectionObserver === 'undefined') {
       // Fallback for environments without IntersectionObserver (like tests)
-      console.log(`🔄 Fallback for ${uniqueCardId}, setting visible`);
+      console.log(`Fallback for ${uniqueCardId}, setting visible`);
       setIsIntersecting(true);
       setHasStartedAnimation(true);
       return;
@@ -127,13 +127,13 @@ const useIntersectionObserver = (
       ([entry]) => {
         if (entry.isIntersecting && !hasStartedAnimation) {
           console.log(
-            `👁️ Card ${uniqueCardId} came into view, starting animation`
+            `Card ${uniqueCardId} came into view, starting animation`
           );
           setIsIntersecting(true);
           setHasStartedAnimation(true);
         } else if (!entry.isIntersecting && hasStartedAnimation) {
           console.log(
-            `👁️ Card ${uniqueCardId} left view but animation started, continuing`
+            `Card ${uniqueCardId} left view but animation started, continuing`
           );
           // Keep isIntersecting true to continue animation even when out of view
           // This prevents the card from becoming empty during animation
@@ -178,7 +178,7 @@ const useTypingAnimation = (
   // If animation should be skipped, show all content immediately
   useEffect(() => {
     if (skipAnimation) {
-      console.log('🚀 Skipping animation, showing all content');
+      console.log('Skipping animation, showing all content');
       setDisplayedLines(lines);
       setCurrentLineIndex(lines.length);
       setCurrentCharIndex(0);
@@ -190,7 +190,7 @@ const useTypingAnimation = (
   // Reset animation when shouldStart changes
   useEffect(() => {
     if (shouldStart && !skipAnimation) {
-      console.log('🎯 Starting animation');
+      console.log('Starting animation');
       setDisplayedLines([]);
       setCurrentLineIndex(0);
       setCurrentCharIndex(0);
@@ -201,7 +201,7 @@ const useTypingAnimation = (
   useEffect(() => {
     if (!shouldStart || skipAnimation) return;
 
-    console.log('⚡ Animation effect triggered:', {
+    console.log('Animation effect triggered:', {
       shouldStart,
       skipAnimation,
       currentLineIndex,
@@ -212,7 +212,7 @@ const useTypingAnimation = (
       setIsTypingComplete(true);
       // Mark as animated when typing is actually complete
       if (cardId && !skipAnimation) {
-        console.log(`✅ Animation complete for ${cardId}, marking as animated`);
+        console.log(`Animation complete for ${cardId}, marking as animated`);
         markAsAnimated(cardId);
       }
       return;
