@@ -385,6 +385,8 @@ function Experience() {
                   <span className="text-green-400">"React"</span>
                   <span className="text-foreground">, </span>
                   <span className="text-green-400">"Vue.js"</span>
+                  <span className="text-foreground">, </span>
+                  <span className="text-green-400">"Vite"</span>
                   <span className="text-foreground">]</span>
                 </>,
                 <>

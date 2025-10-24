@@ -88,7 +88,7 @@ This project includes Docker support for a containerized development environment
 ### Docker Commands
 
 - `make run-react-local` - Start React development server in Docker container
-- `make fmt` - Format the src code with Prettier 
+- `make fmt` - Format the src code with Prettier
 - `make lint` - Lint the src code with ESLint
 - `make test` - Run unit tests
 
