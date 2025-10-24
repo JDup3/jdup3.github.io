@@ -2,7 +2,7 @@
 
 A modern React portfolio website built with Vite and TypeScript, deployed automatically to GitHub Pages.
 
-## 🚀 Features
+## Features
 
 - **Modern React Stack**: Built with React 18, TypeScript, and Vite for fast development and builds
 - **Responsive Design**: Mobile-first design
@@ -11,7 +11,7 @@ A modern React portfolio website built with Vite and TypeScript, deployed automa
 - **Code Quality**: ESLint, Prettier, and Vitest for maintaining high code standards
 - **GitHub Pages**: Automatically deployed to GitHub Pages on every push to main
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Frontend**: React 18, TypeScript, React Router
 - **Build Tool**: Vite
@@ -21,7 +21,7 @@ A modern React portfolio website built with Vite and TypeScript, deployed automa
 - **CI/CD**: GitHub Actions
 - **Deployment**: GitHub Pages
 
-## 📦 Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -76,7 +76,7 @@ The Docker setup automatically:
 - Mounts your local project directory for live reloading
 - Exposes the development server on port 5173
 
-## 🐳 Docker Development
+## Docker Development
 
 This project includes Docker support for a containerized development environment. The Docker setup provides:
 
@@ -108,7 +108,7 @@ The Makefile provides convenient commands that:
 - Mount your project directory for live reloading
 - Handle port mapping and container cleanup
 
-## 🧪 Available Scripts
+## Available Scripts
 
 - `npm run dev` - Start development server
 - `npm run build` - Build for production
@@ -121,7 +121,7 @@ The Makefile provides convenient commands that:
 - `npm run test:ui` - Run tests with UI
 - `npm run test:coverage` - Run tests with coverage report
 
-## 🚀 Deployment
+## Deployment
 
 The site is automatically deployed to GitHub Pages when changes are pushed to the main branch. The deployment process includes:
 
@@ -130,33 +130,38 @@ The site is automatically deployed to GitHub Pages when changes are pushed to th
 3. **Build**: Production build with Vite
 4. **Deploy**: Automatic deployment to GitHub Pages
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 src/
+├── components/     # Reusable React components
+│   ├── Navigation.tsx
+│   └── ui/         # UI component library
+│       ├── button.tsx
+│       ├── card.tsx
+│       └── card-examples.md
+├── contexts/       # React context providers
+│   └── AnimationContext.tsx
+├── lib/            # Utility functions and helpers
+│   └── utils.ts
 ├── pages/          # React page components
 │   ├── Home.tsx
 │   ├── About.tsx
-│   └── Contact.tsx
+│   ├── Contact.tsx
+│   └── Experience.tsx
 ├── test/           # Test utilities and setup
+│   ├── App.test.tsx
+│   └── setup.ts
 ├── App.tsx         # Main app component with routing
 ├── main.tsx        # Application entry point
 └── index.css       # Global styles
 ```
 
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch: `git checkout -b feature/new-feature`
-3. Commit your changes: `git commit -am 'Add new feature'`
-4. Push to the branch: `git push origin feature/new-feature`
-5. Submit a pull request
-
-## 📄 License
+## License
 
 This project is open source and available under the [MIT License](LICENSE).
 
-## 🔗 Links
+## Links
 
 - **Live Site**: [https://jdup3.github.io/jdup3.github.io/](https://jdup3.github.io/jdup3.github.io/)
 - **Repository**: [https://github.com/JDup3/jdup3.github.io](https://github.com/JDup3/jdup3.github.io)
