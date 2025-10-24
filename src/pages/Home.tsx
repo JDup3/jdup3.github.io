@@ -24,9 +24,10 @@ function Home() {
         </h1>
         <p className="text-sm sm:text-base md:text-lg text-muted-foreground font-mono max-w-6xl">
           """ Lead Software Developer with 7+ years of experience architecting
-          and developing scalable systems with AWS, Python, and modern web
-          technologies. Passionate about building efficient, data-driven
-          solutions, while learning as much as possible along the way. """
+          and developing scalable systems with AWS, Python, modern web
+          technologies, and Machine Learning & AI. Passionate about building
+          efficient, data-driven solutions, while learning as much as possible
+          along the way. """
         </p>
       </div>
 
@@ -75,6 +76,27 @@ function Home() {
                 <span className="text-foreground">]</span>
               </>,
               <>
+                <span className="ml-6 text-primary">topSkills</span>
+                <span className="text-foreground">: [</span>
+              </>,
+              <>
+                <span className="ml-10 text-green-400">'System Design'</span>
+                <span className="text-foreground">,</span>
+              </>,
+              <>
+                <span className="ml-10 text-green-400">
+                  'Technical Product Management'
+                </span>
+                <span className="text-foreground">,</span>
+              </>,
+              <>
+                <span className="ml-10 text-green-400">'MLOps'</span>
+                <span className="text-foreground">,</span>
+              </>,
+              <>
+                <span className="ml-6 text-foreground">]</span>
+              </>,
+              <>
                 <span className="ml-2 text-foreground">{'}'}</span>
               </>,
             ]}
@@ -101,11 +123,27 @@ function Home() {
                   <span className="text-primary">**</span> - Lead Software
                   Developer
                 </p>
-                <p className="text-muted-foreground">
-                  <span className="text-primary">{'>'}</span> Architecting and
-                  Developing a Big Data Social Media Listening Platform and
-                  Analytics Tools in AWS
-                </p>
+                <div className="text-foreground flex text-muted-foreground">
+                  <span className="mr-2">-</span>
+                  <span className="flex-1">
+                    Architecting and developing a Big Data Social Media
+                    Listening Platform and Analytics Tools in AWS
+                  </span>
+                </div>
+                <div className="text-foreground flex text-muted-foreground">
+                  <span className="mr-2">-</span>
+                  <span className="flex-1">
+                    Providing mentorship and technical leadership to a team of
+                    developers
+                  </span>
+                </div>
+                <div className="text-foreground flex text-muted-foreground">
+                  <span className="mr-2">-</span>
+                  <span className="flex-1">
+                    Collaborating with cross-functional teams to align on
+                    product vision and technical requirements
+                  </span>
+                </div>
               </div>
             </div>
             <div className="pt-2">

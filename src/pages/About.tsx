@@ -216,7 +216,13 @@ function About() {
                 <span className="ml-10 text-green-400">"Documentation"</span>
               </>,
               <>
-                <span className="ml-6 text-foreground">]</span>
+                <span className="ml-6 text-foreground">],</span>
+              </>,
+              <>
+                <span className="ml-6 text-primary">"code_agents"</span>
+                <span className="text-foreground">: [</span>
+                <span className="text-green-400">"Github Copilot"</span>
+                <span className="text-foreground">],</span>
               </>,
               <>
                 <span className="ml-2 text-foreground">{'}'}</span>
