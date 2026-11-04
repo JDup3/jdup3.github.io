@@ -84,10 +84,10 @@ CardFooter.displayName = 'CardFooter';
 // Custom hook for intersection observer with React context animation tracking
 const useIntersectionObserver = (
   options: { threshold?: number; rootMargin?: string; cardId?: string } = {}
-): [React.RefObject<HTMLDivElement>, boolean] => {
+): [React.MutableRefObject<HTMLDivElement | null>, boolean] => {
   const [isIntersecting, setIsIntersecting] = useState(false);
   const [hasStartedAnimation, setHasStartedAnimation] = useState(false);
-  const ref = useRef<HTMLDivElement>(null);
+  const ref = useRef<HTMLDivElement | null>(null);
   const { hasAnimated, markAsAnimated } = useAnimationState();
 
   const { threshold = 0.1, rootMargin = '0px', cardId } = options;
