@@ -3,7 +3,7 @@ import {
   CardContent,
   CardHeader,
   AnimatedCardContentWithCode,
-} from '../components/ui/card';
+} from '@/components/ui/card';
 
 function About() {
   return (
@@ -25,7 +25,7 @@ function About() {
       </div>
 
       {/* Terminal Output */}
-      <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
+      <Card className="border-border/50 bg-card/50 backdrop-blur-xs">
         <CardContent className="py-4">
           <div className="space-y-1 font-mono text-sm">
             <div className="flex items-center space-x-2">
@@ -49,11 +49,11 @@ function About() {
       {/* Personal Grid */}
       <div className="grid gap-6 md:grid-cols-2">
         {/* Philosophy */}
-        <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
+        <Card className="border-border/50 bg-card/50 backdrop-blur-xs">
           <CardHeader className="pb-3">
             <div className="flex items-center space-x-2">
               <span className="h-3 w-3 rounded-full bg-warning"></span>
-              <span className="ml-2 font-mono text-xs text-muted-foreground">
+              <span className="font-mono text-xs text-muted-foreground">
                 philosophy.md
               </span>
             </div>
@@ -98,11 +98,11 @@ function About() {
           </CardContent>
         </Card>
         {/* Interests */}
-        <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
+        <Card className="border-border/50 bg-card/50 backdrop-blur-xs">
           <CardHeader className="pb-3">
             <div className="flex items-center space-x-2">
               <span className="h-3 w-3 rounded-full bg-warning"></span>
-              <span className="ml-2 font-mono text-xs text-muted-foreground">
+              <span className="font-mono text-xs text-muted-foreground">
                 interests.js
               </span>
             </div>
@@ -117,33 +117,35 @@ function About() {
                 <span className="text-foreground">= [</span>
               </>,
               <>
-                <span className="ml-6 text-green-400">
+                <span className="ml-6 text-syntax-string">
                   'Software development'
                 </span>
                 <span className="text-foreground">,</span>
               </>,
               <>
-                <span className="ml-6 text-green-400">
+                <span className="ml-6 text-syntax-string">
                   'System architecture'
                 </span>
                 <span className="text-foreground">,</span>
               </>,
               <>
-                <span className="ml-6 text-green-400">
+                <span className="ml-6 text-syntax-string">
                   'Video game development'
                 </span>
                 <span className="text-foreground">,</span>
               </>,
               <>
-                <span className="ml-6 text-green-400">'Tabletop gaming'</span>
+                <span className="ml-6 text-syntax-string">
+                  'Tabletop gaming'
+                </span>
                 <span className="text-foreground">,</span>
               </>,
               <>
-                <span className="ml-6 text-green-400">'3D Printing'</span>
+                <span className="ml-6 text-syntax-string">'3D Printing'</span>
                 <span className="text-foreground">,</span>
               </>,
               <>
-                <span className="ml-6 text-green-400">'PC Building'</span>
+                <span className="ml-6 text-syntax-string">'PC Building'</span>
               </>,
               <>
                 <span className="ml-2 text-foreground">]</span>
@@ -156,11 +158,11 @@ function About() {
       {/* Skills Grid */}
       <div className="grid gap-6 md:grid-cols-2">
         {/* Backend & Cloud Skills */}
-        <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
+        <Card className="border-border/50 bg-card/50 backdrop-blur-xs">
           <CardHeader className="pb-3">
             <div className="flex items-center space-x-2">
-              <span className="h-3 w-3 rounded-full bg-green-500"></span>
-              <span className="ml-2 font-mono text-xs text-muted-foreground">
+              <span className="h-3 w-3 rounded-full bg-success"></span>
+              <span className="font-mono text-xs text-muted-foreground">
                 backend.json
               </span>
             </div>
@@ -177,15 +179,15 @@ function About() {
                 <span className="text-foreground">: [</span>
               </>,
               <>
-                <span className="ml-10 text-green-400">"Python"</span>
+                <span className="ml-10 text-syntax-string">"Python"</span>
                 <span className="text-foreground">,</span>
               </>,
               <>
-                <span className="ml-10 text-green-400">"TypeScript"</span>
+                <span className="ml-10 text-syntax-string">"TypeScript"</span>
                 <span className="text-foreground">,</span>
               </>,
               <>
-                <span className="ml-10 text-green-400">"JavaScript"</span>
+                <span className="ml-10 text-syntax-string">"JavaScript"</span>
               </>,
               <>
                 <span className="ml-6 text-foreground">],</span>
@@ -193,11 +195,11 @@ function About() {
               <>
                 <span className="ml-6 text-primary">"tools"</span>
                 <span className="text-foreground">: [</span>
-                <span className="text-green-400">"Docker"</span>
+                <span className="text-syntax-string">"Docker"</span>
                 <span className="text-foreground">, </span>
-                <span className="text-green-400">"Make"</span>
+                <span className="text-syntax-string">"Make"</span>
                 <span className="text-foreground">, </span>
-                <span className="text-green-400">"Git"</span>
+                <span className="text-syntax-string">"Git"</span>
                 <span className="text-foreground">],</span>
               </>,
               <>
@@ -205,15 +207,17 @@ function About() {
                 <span className="text-foreground">: [</span>
               </>,
               <>
-                <span className="ml-10 text-green-400">"Mentorship"</span>
+                <span className="ml-10 text-syntax-string">"Mentorship"</span>
                 <span className="text-foreground">,</span>
               </>,
               <>
-                <span className="ml-10 text-green-400">"Leadership"</span>
+                <span className="ml-10 text-syntax-string">"Leadership"</span>
                 <span className="text-foreground">,</span>
               </>,
               <>
-                <span className="ml-10 text-green-400">"Documentation"</span>
+                <span className="ml-10 text-syntax-string">
+                  "Documentation"
+                </span>
               </>,
               <>
                 <span className="ml-6 text-foreground">],</span>
@@ -221,7 +225,7 @@ function About() {
               <>
                 <span className="ml-6 text-primary">"code_agents"</span>
                 <span className="text-foreground">: [</span>
-                <span className="text-green-400">"Github Copilot"</span>
+                <span className="text-syntax-string">"Github Copilot"</span>
                 <span className="text-foreground">],</span>
               </>,
               <>
@@ -232,11 +236,11 @@ function About() {
         </Card>
 
         {/* Tools & Infrastructure */}
-        <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
+        <Card className="border-border/50 bg-card/50 backdrop-blur-xs">
           <CardHeader className="pb-3">
             <div className="flex items-center space-x-2">
-              <span className="h-3 w-3 rounded-full bg-green-500"></span>
-              <span className="ml-2 font-mono text-xs text-muted-foreground">
+              <span className="h-3 w-3 rounded-full bg-success"></span>
+              <span className="font-mono text-xs text-muted-foreground">
                 infrastructure.tfvars
               </span>
             </div>
@@ -252,15 +256,15 @@ function About() {
               <>
                 <span className="ml-6 text-primary">cloud_providers</span>
                 <span className="text-foreground"> = [</span>
-                <span className="text-green-400">"AWS"</span>
+                <span className="text-syntax-string">"AWS"</span>
                 <span className="text-foreground">, </span>
-                <span className="text-green-400">"GCP"</span>
+                <span className="text-syntax-string">"GCP"</span>
                 <span className="text-foreground">]</span>
               </>,
               <>
                 <span className="ml-6 text-primary">iac_tools</span>
                 <span className="text-foreground"> = [</span>
-                <span className="text-green-400">"Terraform"</span>
+                <span className="text-syntax-string">"Terraform"</span>
                 <span className="text-foreground">]</span>
               </>,
               <>
@@ -268,11 +272,13 @@ function About() {
                 <span className="text-foreground"> = [</span>
               </>,
               <>
-                <span className="ml-10 text-green-400">"Github Actions"</span>
+                <span className="ml-10 text-syntax-string">
+                  "Github Actions"
+                </span>
                 <span className="text-foreground">,</span>
               </>,
               <>
-                <span className="ml-10 text-green-400">"Jenkins"</span>
+                <span className="ml-10 text-syntax-string">"Jenkins"</span>
                 <span className="text-foreground">,</span>
               </>,
               <>
@@ -281,7 +287,7 @@ function About() {
               <>
                 <span className="ml-6 text-primary">qa_tools</span>
                 <span className="text-foreground"> = [</span>
-                <span className="text-green-400">"pytest"</span>
+                <span className="text-syntax-string">"pytest"</span>
                 <span className="text-foreground">]</span>
               </>,
               <>
@@ -289,15 +295,15 @@ function About() {
                 <span className="text-foreground"> = [</span>
               </>,
               <>
-                <span className="ml-10 text-green-400">"grafana"</span>
+                <span className="ml-10 text-syntax-string">"grafana"</span>
                 <span className="text-foreground">,</span>
               </>,
               <>
-                <span className="ml-10 text-green-400">"prometheus"</span>
+                <span className="ml-10 text-syntax-string">"prometheus"</span>
                 <span className="text-foreground">,</span>
               </>,
               <>
-                <span className="ml-10 text-green-400">"cloudwatch"</span>
+                <span className="ml-10 text-syntax-string">"cloudwatch"</span>
                 <span className="text-foreground">,</span>
               </>,
               <>

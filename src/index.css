@@ -1,62 +1,100 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import 'tailwindcss';
 
+/* shadcn `dark:` variant; <html class="dark"> because the site is dark only. */
+@custom-variant dark (&:is(.dark *));
+
+/*
+  Design tokens. The site is dark only (VS Code Dark+ inspired), so the tokens
+  live on :root and there is no light/.dark split. Values are OKLCH; each is
+  the exact equivalent of the HSL value the site used on Tailwind 3, so the
+  rendered colours are unchanged. The hex comment is the sRGB value.
+*/
 :root {
-  /* VS Code Dark+ Theme Colors */
-  --background: 217 19% 9%; /* #1e1e1e - VS Code background */
-  --foreground: 0 0% 88%; /* #e0e0e0 - VS Code foreground */
-  --card: 217 19% 12%; /* #252526 - VS Code panel background */
-  --card-foreground: 0 0% 88%;
-  --popover: 217 19% 12%;
-  --popover-foreground: 0 0% 88%;
-  --primary: 207 100% 68%; /* #569cd6 - VS Code keyword blue */
-  --primary-foreground: 217 19% 9%;
-  --secondary: 217 19% 15%; /* #2d2d30 - VS Code selection */
-  --secondary-foreground: 0 0% 88%;
-  --muted: 217 19% 15%;
-  --muted-foreground: 0 0% 60%; /* #999999 - VS Code comments */
-  --accent: 51 100% 50%; /* #dcdcaa - VS Code string yellow */
-  --accent-foreground: 217 19% 9%;
-  --destructive: 0 100% 67%; /* #f44747 - VS Code error red */
-  --destructive-foreground: 0 0% 88%;
-  --border: 217 19% 18%; /* #3e3e42 - VS Code borders */
-  --input: 217 19% 15%;
-  --ring: 207 100% 68%;
-  --radius: 0.25rem; /* Minimalist smaller radius */
+  --radius: 0.25rem;
 
-  /* Additional VS Code inspired colors */
-  --success: 120 100% 40%; /* #4caf50 - Success green */
-  --warning: 45 100% 60%; /* #ff9800 - Warning orange */
-  --info: 200 100% 70%; /* #2196f3 - Info blue */
+  /* shadcn/ui tokens */
+  --background: oklch(19.88% 0.012 259.9); /* #13161b */
+  --foreground: oklch(90.79% 0 0); /* #e0e0e0 */
+  --card: oklch(23.05% 0.0155 259.88); /* #191d24 */
+  --card-foreground: var(--foreground);
+  --popover: var(--card);
+  --popover-foreground: var(--foreground);
+  --primary: oklch(75.05% 0.1369 245.75); /* #5cb6ff */
+  --primary-foreground: var(--background);
+  --secondary: oklch(26.11% 0.0187 259.87); /* #1f252e */
+  --secondary-foreground: var(--foreground);
+  --muted: var(--secondary);
+  --muted-foreground: oklch(68.3% 0 0); /* #999999 */
+  --accent: oklch(89.02% 0.1832 96.08); /* #ffd900 */
+  --accent-foreground: var(--background);
+  --destructive: oklch(68.43% 0.2045 24.3); /* #ff5757 */
+  --destructive-foreground: var(--foreground);
+  --border: oklch(29.08% 0.0219 259.86); /* #252c37 */
+  --input: var(--secondary);
+  --ring: var(--primary);
+
+  /* Status colours */
+  --success: oklch(72.27% 0.192 149.58); /* #22c55e */
+  --warning: oklch(86.66% 0.1647 88.68); /* #ffcc33 */
+  --info: oklch(80.39% 0.1192 232.69); /* #66ccff */
+
+  /* Syntax colours for the code-styled cards */
+  --syntax-keyword: var(--primary);
+  --syntax-string: oklch(80.03% 0.1821 151.71); /* #4ade80 */
+  --syntax-comment: var(--muted-foreground);
+  --syntax-function: var(--accent);
 }
 
-.dark {
-  /* Keep same colors for dark mode as it's already VS Code themed */
-  --background: 217 19% 9%;
-  --foreground: 0 0% 88%;
-  --card: 217 19% 12%;
-  --card-foreground: 0 0% 88%;
-  --popover: 217 19% 12%;
-  --popover-foreground: 0 0% 88%;
-  --primary: 207 100% 68%;
-  --primary-foreground: 217 19% 9%;
-  --secondary: 217 19% 15%;
-  --secondary-foreground: 0 0% 88%;
-  --muted: 217 19% 15%;
-  --muted-foreground: 0 0% 60%;
-  --accent: 51 100% 50%;
-  --accent-foreground: 217 19% 9%;
-  --destructive: 0 100% 67%;
-  --destructive-foreground: 0 0% 88%;
-  --border: 217 19% 18%;
-  --input: 217 19% 15%;
-  --ring: 207 100% 68%;
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --color-success: var(--success);
+  --color-warning: var(--warning);
+  --color-info: var(--info);
+
+  --color-syntax-keyword: var(--syntax-keyword);
+  --color-syntax-string: var(--syntax-string);
+  --color-syntax-comment: var(--syntax-comment);
+  --color-syntax-function: var(--syntax-function);
+
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+}
+
+/* Tailwind 3's `container` settings: centred, 2rem padding, 1400px max. */
+@utility container {
+  margin-inline: auto;
+  padding-inline: 2rem;
+  @media (width >= --theme(--breakpoint-sm)) {
+    max-width: none;
+  }
+  @media (width >= 1400px) {
+    max-width: 1400px;
+  }
 }
 
 @layer base {
   * {
-    border-color: hsl(var(--border));
+    @apply border-border;
   }
 
   html {
@@ -65,10 +103,16 @@
   }
 
   body {
-    @apply bg-background font-sans text-foreground;
+    @apply bg-background text-foreground;
     font-family:
       'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro',
       monospace;
+  }
+
+  /* Tailwind 4 resets buttons to the default cursor; keep Tailwind 3's pointer. */
+  button:not(:disabled),
+  [role='button']:not(:disabled) {
+    cursor: pointer;
   }
 
   /* Custom scrollbar for webkit browsers */
@@ -76,59 +120,55 @@
     width: 12px;
   }
   ::-webkit-scrollbar-track {
-    background: hsl(var(--background));
+    background: var(--background);
   }
   ::-webkit-scrollbar-thumb {
-    background: hsl(var(--border));
+    background: var(--border);
     border-radius: 6px;
-    border: 2px solid hsl(var(--background));
+    border: 2px solid var(--background);
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--muted-foreground));
+    background: var(--muted-foreground);
   }
 }
 
-@layer components {
-  /* VS Code window effect */
-  .vscode-window {
-    @apply border border-border/50 bg-card backdrop-blur-sm;
-  }
+/* VS Code window effect */
+@utility vscode-window {
+  @apply border border-border/50 bg-card backdrop-blur-xs;
+}
 
-  /* Code syntax highlighting helpers */
-  .syntax-keyword {
-    @apply text-primary;
-  }
-  .syntax-string {
-    @apply text-green-400;
-  }
-  .syntax-comment {
-    @apply text-muted-foreground;
-  }
-  .syntax-function {
-    @apply text-accent;
-  }
+/* Code syntax highlighting helpers */
+@utility syntax-keyword {
+  @apply text-syntax-keyword;
+}
+@utility syntax-string {
+  @apply text-syntax-string;
+}
+@utility syntax-comment {
+  @apply text-syntax-comment;
+}
+@utility syntax-function {
+  @apply text-syntax-function;
+}
 
-  /* Animation stability for mobile devices */
-  .animated-code-content {
-    /* Prevent layout shifts during typing animation */
-    min-height: fit-content;
-    contain: layout;
-    /* Ensure consistent line spacing for mobile */
-    line-height: 1.5;
-  }
+/* Animation stability for mobile devices */
+@utility animated-code-content {
+  /* Prevent layout shifts during typing animation */
+  min-height: fit-content;
+  contain: layout;
+  /* Ensure consistent line spacing for mobile */
+  line-height: 1.5;
+}
 
-  /* Pre-allocate height for common card sizes to prevent expansion */
-  .card-content-small {
-    min-height: 8rem; /* ~5-6 lines of code */
-  }
-
-  .card-content-medium {
-    min-height: 12rem; /* ~8-10 lines of code */
-  }
-
-  .card-content-large {
-    min-height: 18rem; /* ~12-15 lines of code */
-  }
+/* Pre-allocate height for common card sizes to prevent expansion */
+@utility card-content-small {
+  min-height: 8rem; /* ~5-6 lines of code */
+}
+@utility card-content-medium {
+  min-height: 12rem; /* ~8-10 lines of code */
+}
+@utility card-content-large {
+  min-height: 18rem; /* ~12-15 lines of code */
 }
 
 /* Honour the OS reduced-motion setting: stop the cursor pulse and the

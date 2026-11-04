@@ -1,7 +1,7 @@
 import { render, screen, fireEvent } from '@testing-library/react';
 import { BrowserRouter } from 'react-router';
 import { describe, it, expect } from 'vitest';
-import App from '../App';
+import App from '@/App';
 
 describe('App', () => {
   it('renders VS Code-style navigation with file extensions', () => {
