@@ -154,10 +154,12 @@ src/
 ├── test/           # Test utilities and setup
 │   ├── Accessibility.test.tsx
 │   ├── App.test.tsx
+│   ├── Home.test.tsx
 │   └── setup.ts
 ├── App.tsx         # Main app component with routing
 ├── main.tsx        # Application entry point
-└── index.css       # Global styles
+├── index.css       # Global styles
+└── vite-env.d.ts   # Vite environment type declarations
 ```
 
 ## License
