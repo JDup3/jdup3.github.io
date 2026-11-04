@@ -1,0 +1,25 @@
+# Keep the build context small and free of host-only files
+node_modules
+dist
+dist-ssr
+coverage
+*.log
+*.local
+
+# Version control, CI and editor/agent state
+.git
+.github
+.claude
+.lavish
+.vscode
+.idea
+.DS_Store
+
+# Secrets
+.env
+.env.*
+
+# Docker and Make files are not needed inside the image
+Dockerfile
+.dockerignore
+Makefile

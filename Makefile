@@ -9,7 +9,6 @@ build:
 	rm -rf ./node_modules
 	CID=$$(docker create $(project_name)); \
 	docker cp $$CID:$(DOCKER_HOME)/node_modules ./node_modules; \
-	docker cp $$CID:$(DOCKER_HOME)/package-lock.json ./package-lock.json; \
 	docker rm $$CID
 
 # Force rebuild without cache
