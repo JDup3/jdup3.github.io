@@ -1,25 +1,23 @@
-FROM  node:24.21.0-alpine3.24
+# Development image for the Makefile targets. Keep the Node version in sync
+# with .nvmrc (24).
+FROM node:24.21.0-alpine3.24
 
 # Add bash to make package scripts easier to write
-RUN apk add bash
+RUN apk add --no-cache bash
 
-# make the 'app' folder the current working directory
+# make the 'app' folder the current working directory, owned by the
+# unprivileged 'node' user that ships with the image
 WORKDIR /app
+RUN chown node:node /app
+USER node
 
-# copy 'package.json' (if available)
-COPY package.json ./
+# Install exactly what package-lock.json pins. Copying the manifest and the
+# lockfile first keeps this layer cached until dependencies change.
+COPY --chown=node:node package.json package-lock.json ./
+RUN npm ci
 
-# install project dependencies
-RUN npm install
-
-# explicityly copy project files (after npm install for better caching)
-COPY tailwind.config.cjs ./
-COPY tsconfig*.json ./
-COPY vite.config.ts ./
-COPY postcss.config.cjs ./
-COPY eslint.config.js ./
-COPY .prettierrc .prettierignore ./
-COPY src ./src
-COPY public ./public
+# Copy the rest of the project (.dockerignore keeps node_modules, .git and
+# build output out of the build context)
+COPY --chown=node:node . .
 
 EXPOSE 5173
