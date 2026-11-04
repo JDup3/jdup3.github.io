@@ -1,14 +1,12 @@
 import { render, screen, fireEvent } from '@testing-library/react';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter } from 'react-router';
 import { describe, it, expect } from 'vitest';
 import App from '../App';
 
 describe('App', () => {
   it('renders VS Code-style navigation with file extensions', () => {
     render(
-      <BrowserRouter
-        future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
-      >
+      <BrowserRouter>
         <App />
       </BrowserRouter>
     );
@@ -22,9 +20,7 @@ describe('App', () => {
 
   it('navigates routes and invokes window.scrollTo stub', () => {
     render(
-      <BrowserRouter
-        future={{ v7_startTransition: true, v7_relativeSplatPath: true }}
-      >
+      <BrowserRouter>
         <App />
       </BrowserRouter>
     );

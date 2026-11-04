@@ -7,86 +7,89 @@ import { cn } from '../../lib/utils';
 const defaultTypingSpeed = 10;
 const defaultLineDelay = 50;
 
-const Card = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn(
-      'rounded-lg border bg-card text-card-foreground shadow-sm',
-      className
-    )}
-    {...props}
-  />
-));
-Card.displayName = 'Card';
+function Card({ className, ...props }: React.ComponentProps<'div'>) {
+  return (
+    <div
+      className={cn(
+        'rounded-lg border bg-card text-card-foreground shadow-sm',
+        className
+      )}
+      {...props}
+    />
+  );
+}
 
-const CardHeader = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn('flex flex-col space-y-1.5 p-6', className)}
-    {...props}
-  />
-));
-CardHeader.displayName = 'CardHeader';
+function CardHeader({ className, ...props }: React.ComponentProps<'div'>) {
+  return (
+    <div
+      className={cn('flex flex-col space-y-1.5 p-6', className)}
+      {...props}
+    />
+  );
+}
 
-const CardTitle = React.forwardRef<
-  HTMLParagraphElement,
-  React.HTMLAttributes<HTMLHeadingElement>
->(({ className, children, ...props }, ref) => (
-  <h3
-    ref={ref}
-    className={cn(
-      'text-2xl font-semibold leading-none tracking-tight',
-      className
-    )}
-    {...props}
-  >
-    {children}
-  </h3>
-));
-CardTitle.displayName = 'CardTitle';
+function CardTitle({
+  className,
+  children,
+  ...props
+}: React.ComponentProps<'h3'>) {
+  return (
+    <h3
+      className={cn(
+        'text-2xl font-semibold leading-none tracking-tight',
+        className
+      )}
+      {...props}
+    >
+      {children}
+    </h3>
+  );
+}
 
-const CardDescription = React.forwardRef<
-  HTMLParagraphElement,
-  React.HTMLAttributes<HTMLParagraphElement>
->(({ className, ...props }, ref) => (
-  <p
-    ref={ref}
-    className={cn('text-sm text-muted-foreground', className)}
-    {...props}
-  />
-));
-CardDescription.displayName = 'CardDescription';
+function CardDescription({ className, ...props }: React.ComponentProps<'p'>) {
+  return (
+    <p className={cn('text-sm text-muted-foreground', className)} {...props} />
+  );
+}
 
-const CardContent = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div ref={ref} className={cn('p-6 pt-0', className)} {...props} />
-));
-CardContent.displayName = 'CardContent';
+function CardContent({ className, ...props }: React.ComponentProps<'div'>) {
+  return <div className={cn('p-6 pt-0', className)} {...props} />;
+}
 
-const CardFooter = React.forwardRef<
-  HTMLDivElement,
-  React.HTMLAttributes<HTMLDivElement>
->(({ className, ...props }, ref) => (
-  <div
-    ref={ref}
-    className={cn('flex items-center p-6 pt-0', className)}
-    {...props}
-  />
-));
-CardFooter.displayName = 'CardFooter';
+function CardFooter({ className, ...props }: React.ComponentProps<'div'>) {
+  return (
+    <div className={cn('flex items-center p-6 pt-0', className)} {...props} />
+  );
+}
+
+// React 19 types element props as `unknown`; the typing animation only reads
+// `children`, so narrow elements to that shape.
+type ChildrenProps = { children?: React.ReactNode };
+
+const isElementWithChildren = (
+  node: React.ReactNode
+): node is React.ReactElement<ChildrenProps> =>
+  React.isValidElement<ChildrenProps>(node);
+
+// Convert ReactNode to string for character-by-character typing
+const getTextContent = (node: React.ReactNode): string => {
+  if (typeof node === 'string') return node;
+  if (typeof node === 'number') return node.toString();
+  if (isElementWithChildren(node)) {
+    return React.Children.toArray(node.props.children)
+      .map(getTextContent)
+      .join('');
+  }
+  if (Array.isArray(node)) {
+    return node.map(getTextContent).join('');
+  }
+  return '';
+};
 
 // Custom hook for intersection observer with React context animation tracking
 const useIntersectionObserver = (
   options: { threshold?: number; rootMargin?: string; cardId?: string } = {}
-): [React.MutableRefObject<HTMLDivElement | null>, boolean] => {
+): [React.RefObject<HTMLDivElement | null>, boolean] => {
   const [isIntersecting, setIsIntersecting] = useState(false);
   const [hasStartedAnimation, setHasStartedAnimation] = useState(false);
   const ref = useRef<HTMLDivElement | null>(null);
@@ -222,21 +225,6 @@ const useTypingAnimation = (
 
     const currentLine = lines[currentLineIndex];
 
-    // Convert ReactNode to string for character-by-character typing
-    const getTextContent = (node: React.ReactNode): string => {
-      if (typeof node === 'string') return node;
-      if (typeof node === 'number') return node.toString();
-      if (React.isValidElement(node)) {
-        return React.Children.toArray(node.props.children)
-          .map(getTextContent)
-          .join('');
-      }
-      if (Array.isArray(node)) {
-        return node.map(getTextContent).join('');
-      }
-      return '';
-    };
-
     const lineText = getTextContent(currentLine);
 
     if (currentCharIndex < lineText.length) {
@@ -274,7 +262,7 @@ const useTypingAnimation = (
       return line.substring(0, charCount);
     }
 
-    if (React.isValidElement(line)) {
+    if (isElementWithChildren(line)) {
       // For React elements, we need to handle the typing more carefully
       const children = React.Children.toArray(line.props.children);
       let remainingChars = charCount;
@@ -291,10 +279,8 @@ const useTypingAnimation = (
             partialChildren.push(child.substring(0, remainingChars));
             remainingChars = 0;
           }
-        } else if (React.isValidElement(child)) {
-          const childText = React.Children.toArray(child.props.children).join(
-            ''
-          );
+        } else if (isElementWithChildren(child)) {
+          const childText = getTextContent(child.props.children);
           if (remainingChars >= childText.length) {
             partialChildren.push(child);
             remainingChars -= childText.length;
@@ -302,7 +288,6 @@ const useTypingAnimation = (
             // Create partial child element
             partialChildren.push(
               React.cloneElement(child, {
-                ...child.props,
                 children: childText.substring(0, remainingChars),
               })
             );
@@ -311,10 +296,7 @@ const useTypingAnimation = (
         }
       }
 
-      return React.cloneElement(line, {
-        ...line.props,
-        children: partialChildren,
-      });
+      return React.cloneElement(line, { children: partialChildren });
     }
 
     return line;
@@ -333,24 +315,22 @@ const useTypingAnimation = (
   };
 };
 
-interface CodeLineProps extends React.HTMLAttributes<HTMLDivElement> {
+interface CodeLineProps extends React.ComponentProps<'div'> {
   lineNumber?: number;
   showLineNumber?: boolean;
   lineNumberClassName?: string;
 }
 
-const CodeLine = React.forwardRef<HTMLDivElement, CodeLineProps>(
-  (
-    {
-      className,
-      children,
-      lineNumber,
-      showLineNumber = true,
-      lineNumberClassName,
-      ...props
-    },
-    ref
-  ) => (
+function CodeLine({
+  className,
+  children,
+  lineNumber,
+  showLineNumber = true,
+  lineNumberClassName,
+  ref,
+  ...props
+}: CodeLineProps) {
+  return (
     <div ref={ref} className={cn('flex', className)} {...props}>
       {showLineNumber && lineNumber !== undefined && (
         <span
@@ -364,34 +344,28 @@ const CodeLine = React.forwardRef<HTMLDivElement, CodeLineProps>(
       )}
       <div className="min-w-0 flex-1">{children}</div>
     </div>
-  )
-);
-CodeLine.displayName = 'CodeLine';
+  );
+}
 
 // Animated code line with cursor
-interface AnimatedCodeLineProps extends React.HTMLAttributes<HTMLDivElement> {
+interface AnimatedCodeLineProps extends React.ComponentProps<'div'> {
   lineNumber?: number;
   showLineNumber?: boolean;
   lineNumberClassName?: string;
   showCursor?: boolean;
 }
 
-const AnimatedCodeLine = React.forwardRef<
-  HTMLDivElement,
-  AnimatedCodeLineProps
->(
-  (
-    {
-      className,
-      children,
-      lineNumber,
-      showLineNumber = true,
-      lineNumberClassName,
-      showCursor = false,
-      ...props
-    },
-    ref
-  ) => (
+function AnimatedCodeLine({
+  className,
+  children,
+  lineNumber,
+  showLineNumber = true,
+  lineNumberClassName,
+  showCursor = false,
+  ref,
+  ...props
+}: AnimatedCodeLineProps) {
+  return (
     <div ref={ref} className={cn('flex', className)} {...props}>
       {showLineNumber && lineNumber !== undefined && (
         <span
@@ -410,29 +384,26 @@ const AnimatedCodeLine = React.forwardRef<
         )}
       </div>
     </div>
-  )
-);
-AnimatedCodeLine.displayName = 'AnimatedCodeLine';
+  );
+}
 
-interface CodeBlockProps extends React.HTMLAttributes<HTMLDivElement> {
+interface CodeBlockProps extends React.ComponentProps<'div'> {
   startLine?: number;
   showLineNumbers?: boolean;
   lineNumberClassName?: string;
   lines: React.ReactNode[];
 }
 
-const CodeBlock = React.forwardRef<HTMLDivElement, CodeBlockProps>(
-  (
-    {
-      className,
-      startLine = 1,
-      showLineNumbers = true,
-      lineNumberClassName,
-      lines,
-      ...props
-    },
-    ref
-  ) => (
+function CodeBlock({
+  className,
+  startLine = 1,
+  showLineNumbers = true,
+  lineNumberClassName,
+  lines,
+  ref,
+  ...props
+}: CodeBlockProps) {
+  return (
     <div ref={ref} className={cn('space-y-1', className)} {...props}>
       {lines.map((line, index) => (
         <CodeLine
@@ -445,12 +416,11 @@ const CodeBlock = React.forwardRef<HTMLDivElement, CodeBlockProps>(
         </CodeLine>
       ))}
     </div>
-  )
-);
-CodeBlock.displayName = 'CodeBlock';
+  );
+}
 
 // Animated code block with typing effect
-interface AnimatedCodeBlockProps extends React.HTMLAttributes<HTMLDivElement> {
+interface AnimatedCodeBlockProps extends React.ComponentProps<'div'> {
   startLine?: number;
   showLineNumbers?: boolean;
   lineNumberClassName?: string;
@@ -461,104 +431,73 @@ interface AnimatedCodeBlockProps extends React.HTMLAttributes<HTMLDivElement> {
   cardId?: string; // Optional unique identifier for global animation tracking
 }
 
-const AnimatedCodeBlock = React.forwardRef<
-  HTMLDivElement,
-  AnimatedCodeBlockProps
->(
-  (
-    {
-      className,
-      startLine = 1,
-      showLineNumbers = true,
-      lineNumberClassName,
+function AnimatedCodeBlock({
+  className,
+  startLine = 1,
+  showLineNumbers = true,
+  lineNumberClassName,
+  lines,
+  typingSpeed = defaultTypingSpeed,
+  lineDelay = defaultLineDelay,
+  enableAnimation = true,
+  cardId,
+  ref,
+  ...props
+}: AnimatedCodeBlockProps) {
+  // Generate a unique card ID if not provided - do this once at the top
+  const uniqueCardId =
+    cardId || `card-${Math.random().toString(36).substr(2, 9)}`;
+
+  const [intersectionRef, isVisible] = useIntersectionObserver({
+    threshold: 0.1,
+    rootMargin: '0px',
+    cardId: uniqueCardId, // Use the same ID
+  });
+
+  // Check if this card has already been animated using context
+  const { hasAnimated } = useAnimationState();
+  const hasBeenAnimated = hasAnimated(uniqueCardId);
+
+  // Debug logging
+  console.log(`🔍 Animation Debug for ${uniqueCardId}:`, {
+    isVisible,
+    hasBeenAnimated,
+    enableAnimation,
+  });
+
+  const { displayedLines, currentLine, isTypingComplete, showCursor } =
+    useTypingAnimation(
       lines,
-      typingSpeed = defaultTypingSpeed,
-      lineDelay = defaultLineDelay,
-      enableAnimation = true,
-      cardId,
-      ...props
-    },
-    ref
-  ) => {
-    // Generate a unique card ID if not provided - do this once at the top
-    const uniqueCardId =
-      cardId || `card-${Math.random().toString(36).substr(2, 9)}`;
-
-    const [intersectionRef, isVisible] = useIntersectionObserver({
-      threshold: 0.1,
-      rootMargin: '0px',
-      cardId: uniqueCardId, // Use the same ID
-    });
-
-    // Check if this card has already been animated using context
-    const { hasAnimated } = useAnimationState();
-    const hasBeenAnimated = hasAnimated(uniqueCardId);
-
-    // Debug logging
-    console.log(`🔍 Animation Debug for ${uniqueCardId}:`, {
+      typingSpeed,
+      lineDelay,
       isVisible,
       hasBeenAnimated,
-      enableAnimation,
-    });
-
-    const { displayedLines, currentLine, isTypingComplete, showCursor } =
-      useTypingAnimation(
-        lines,
-        typingSpeed,
-        lineDelay,
-        isVisible,
-        hasBeenAnimated,
-        uniqueCardId
-      );
-
-    // Combine refs
-    const combinedRef = useCallback(
-      (node: HTMLDivElement | null) => {
-        // Set intersection observer ref
-        if (intersectionRef.current !== node) {
-          intersectionRef.current = node;
-        }
-
-        // Set forwarded ref
-        if (typeof ref === 'function') {
-          ref(node);
-        } else if (ref) {
-          ref.current = node;
-        }
-      },
-      [intersectionRef, ref]
+      uniqueCardId
     );
 
-    // If animation is disabled, show all lines immediately
-    if (!enableAnimation) {
-      return (
-        <div
-          ref={combinedRef}
-          className={cn('space-y-1', className)}
-          {...props}
-        >
-          {lines.map((line, index) => (
-            <CodeLine
-              key={startLine + index}
-              lineNumber={startLine + index}
-              showLineNumber={showLineNumbers}
-              lineNumberClassName={lineNumberClassName}
-            >
-              {line}
-            </CodeLine>
-          ))}
-          <div className="flex items-center space-x-2 pt-1">
-            <span className="text-primary">$</span>
-            <span className="h-4 w-2 animate-pulse bg-primary"></span>
-          </div>
-        </div>
-      );
-    }
+  // Combine refs
+  const combinedRef = useCallback(
+    (node: HTMLDivElement | null) => {
+      // Set intersection observer ref
+      if (intersectionRef.current !== node) {
+        intersectionRef.current = node;
+      }
 
+      // Set forwarded ref
+      if (typeof ref === 'function') {
+        ref(node);
+      } else if (ref) {
+        ref.current = node;
+      }
+    },
+    [intersectionRef, ref]
+  );
+
+  // If animation is disabled, show all lines immediately
+  if (!enableAnimation) {
     return (
       <div ref={combinedRef} className={cn('space-y-1', className)} {...props}>
-        {/* Render completed lines */}
-        {displayedLines.map((line, index) => (
+        {lines.map((line, index) => (
           <CodeLine
             key={startLine + index}
             lineNumber={startLine + index}
@@ -568,54 +507,68 @@ const AnimatedCodeBlock = React.forwardRef<
             {line}
           </CodeLine>
         ))}
-
-        {/* Render current typing line */}
-        {currentLine && (
-          <AnimatedCodeLine
-            lineNumber={startLine + displayedLines.length}
-            showLineNumber={showLineNumbers}
-            lineNumberClassName={lineNumberClassName}
-            showCursor={showCursor}
-          >
-            {currentLine}
-          </AnimatedCodeLine>
-        )}
-
-        {/* Show persistent cursor after typing is complete */}
-        {isTypingComplete && (
-          <div className="flex items-center space-x-2 pt-1">
-            <span className="text-primary">$</span>
-            <span className="h-4 w-2 animate-pulse bg-primary"></span>
-          </div>
-        )}
+        <div className="flex items-center space-x-2 pt-1">
+          <span className="text-primary">$</span>
+          <span className="h-4 w-2 animate-pulse bg-primary"></span>
+        </div>
       </div>
     );
   }
-);
-AnimatedCodeBlock.displayName = 'AnimatedCodeBlock';
 
-interface CardContentWithCodeProps extends React.HTMLAttributes<HTMLDivElement> {
+  return (
+    <div ref={combinedRef} className={cn('space-y-1', className)} {...props}>
+      {/* Render completed lines */}
+      {displayedLines.map((line, index) => (
+        <CodeLine
+          key={startLine + index}
+          lineNumber={startLine + index}
+          showLineNumber={showLineNumbers}
+          lineNumberClassName={lineNumberClassName}
+        >
+          {line}
+        </CodeLine>
+      ))}
+
+      {/* Render current typing line */}
+      {currentLine && (
+        <AnimatedCodeLine
+          lineNumber={startLine + displayedLines.length}
+          showLineNumber={showLineNumbers}
+          lineNumberClassName={lineNumberClassName}
+          showCursor={showCursor}
+        >
+          {currentLine}
+        </AnimatedCodeLine>
+      )}
+
+      {/* Show persistent cursor after typing is complete */}
+      {isTypingComplete && (
+        <div className="flex items-center space-x-2 pt-1">
+          <span className="text-primary">$</span>
+          <span className="h-4 w-2 animate-pulse bg-primary"></span>
+        </div>
+      )}
+    </div>
+  );
+}
+
+interface CardContentWithCodeProps extends React.ComponentProps<'div'> {
   startLine?: number;
   showLineNumbers?: boolean;
   lineNumberClassName?: string;
   lines: React.ReactNode[];
 }
 
-const CardContentWithCode = React.forwardRef<
-  HTMLDivElement,
-  CardContentWithCodeProps
->(
-  (
-    {
-      className,
-      startLine = 1,
-      showLineNumbers = true,
-      lineNumberClassName,
-      lines,
-      ...props
-    },
-    ref
-  ) => (
+function CardContentWithCode({
+  className,
+  startLine = 1,
+  showLineNumbers = true,
+  lineNumberClassName,
+  lines,
+  ref,
+  ...props
+}: CardContentWithCodeProps) {
+  return (
     <div ref={ref} className={cn('p-6 pt-0', className)} {...props}>
       <div className="font-mono text-sm">
         <CodeBlock
@@ -626,12 +579,11 @@ const CardContentWithCode = React.forwardRef<
         />
       </div>
     </div>
-  )
-);
-CardContentWithCode.displayName = 'CardContentWithCode';
+  );
+}
 
 // Animated version of CardContentWithCode
-interface AnimatedCardContentWithCodeProps extends React.HTMLAttributes<HTMLDivElement> {
+interface AnimatedCardContentWithCodeProps extends React.ComponentProps<'div'> {
   startLine?: number;
   showLineNumbers?: boolean;
   lineNumberClassName?: string;
@@ -642,58 +594,46 @@ interface AnimatedCardContentWithCodeProps extends React.HTMLAttributes<HTMLDivE
   cardId?: string; // Optional unique identifier for global animation tracking
 }
 
-const AnimatedCardContentWithCode = React.forwardRef<
-  HTMLDivElement,
-  AnimatedCardContentWithCodeProps
->(
-  (
-    {
-      className,
-      startLine = 1,
-      showLineNumbers = true,
-      lineNumberClassName,
-      lines,
-      typingSpeed = defaultTypingSpeed,
-      lineDelay = defaultLineDelay,
-      enableAnimation = true,
-      cardId,
-      ...props
-    },
-    ref
-  ) => {
-    // Determine card size class based on number of lines to prevent mobile layout shifts
-    const getCardSizeClass = () => {
-      const lineCount = lines.length;
-      if (lineCount <= 6) return 'card-content-small';
-      if (lineCount <= 10) return 'card-content-medium';
-      return 'card-content-large';
-    };
+function AnimatedCardContentWithCode({
+  className,
+  startLine = 1,
+  showLineNumbers = true,
+  lineNumberClassName,
+  lines,
+  typingSpeed = defaultTypingSpeed,
+  lineDelay = defaultLineDelay,
+  enableAnimation = true,
+  cardId,
+  ref,
+  ...props
+}: AnimatedCardContentWithCodeProps) {
+  // Determine card size class based on number of lines to prevent mobile layout shifts
+  const getCardSizeClass = () => {
+    const lineCount = lines.length;
+    if (lineCount <= 6) return 'card-content-small';
+    if (lineCount <= 10) return 'card-content-medium';
+    return 'card-content-large';
+  };
 
-    const sizeClass = enableAnimation ? getCardSizeClass() : '';
+  const sizeClass = enableAnimation ? getCardSizeClass() : '';
 
-    return (
-      <div
-        ref={ref}
-        className={cn('p-6 pt-0', sizeClass, className)}
-        {...props}
-      >
-        <div className="animated-code-content font-mono text-sm">
-          <AnimatedCodeBlock
-            startLine={startLine}
-            showLineNumbers={showLineNumbers}
-            lineNumberClassName={lineNumberClassName}
-            lines={lines}
-            typingSpeed={typingSpeed}
-            lineDelay={lineDelay}
-            enableAnimation={enableAnimation}
-            cardId={cardId}
-          />
-        </div>
+  return (
+    <div ref={ref} className={cn('p-6 pt-0', sizeClass, className)} {...props}>
+      <div className="animated-code-content font-mono text-sm">
+        <AnimatedCodeBlock
+          startLine={startLine}
+          showLineNumbers={showLineNumbers}
+          lineNumberClassName={lineNumberClassName}
+          lines={lines}
+          typingSpeed={typingSpeed}
+          lineDelay={lineDelay}
+          enableAnimation={enableAnimation}
+          cardId={cardId}
+        />
       </div>
-    );
-  }
-);
-AnimatedCardContentWithCode.displayName = 'AnimatedCardContentWithCode';
+    </div>
+  );
+}
 
 export {
   Card,
