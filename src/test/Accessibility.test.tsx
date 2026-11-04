@@ -77,15 +77,20 @@ describe('accessibility', () => {
     );
   };
 
-  it('waits to type code blocks until they scroll into view', () => {
+  it('keeps untyped code readable by screen readers until it scrolls into view', () => {
     stubMotionPreference(false);
     renderApp('/');
-    expect(screen.queryByText("'Jonathan Dupe'")).toBeNull();
+    // The text is in the DOM (and the accessibility tree) but not yet shown.
+    const text = screen.getByText("'Jonathan Dupe'");
+    expect(text.closest('.opacity-0')).not.toBeNull();
+    expect(text.closest('[aria-hidden="true"]')).toBeNull();
   });
 
   it('shows code blocks in full when the user prefers reduced motion', () => {
     stubMotionPreference(true);
     renderApp('/');
-    expect(screen.getByText("'Jonathan Dupe'")).toBeInTheDocument();
+    expect(
+      screen.getByText("'Jonathan Dupe'").closest('.opacity-0')
+    ).toBeNull();
   });
 });

@@ -1,185 +1,75 @@
 import { version } from 'react';
-import {
-  Card,
-  CardContent,
-  CardHeader,
-  AnimatedCardContentWithCode,
-} from '@/components/ui/card';
-import { Button } from '@/components/ui/button';
+import { Card, CardContent } from '@/components/ui/card';
+import { CodeFileCard } from '@/components/code/CodeFileCard';
+import { CodeWindow } from '@/components/code/CodeWindow';
+import { CommandLink } from '@/components/code/CommandLink';
+import { MarkdownBullet } from '@/components/code/MarkdownBullet';
+import { PageHeader } from '@/components/code/PageHeader';
+import { aboutMe, currentProject, header, statusBar } from '@/content/home';
 
 function Home() {
   return (
     <div className="space-y-8">
-      {/* Hero Section */}
-      <div className="space-y-2">
-        <div className="flex items-center space-x-2 font-mono text-sm text-muted-foreground">
-          <span className="text-primary"># Personal Portfolio</span>
-        </div>
-        <h1 className="font-mono text-xl font-bold text-foreground sm:text-2xl md:text-3xl">
-          <span className="text-accent">class</span>
-          <span className="text-foreground"> </span>
-          <span className="text-primary">JonathanDupe</span>
-          <span className="text-foreground">(</span>
-          <span className="text-primary">SoftwareArchitect</span>
-          <span className="text-foreground">):</span>
-        </h1>
+      <PageHeader
+        eyebrow={header.eyebrow}
+        title={header.title}
+        titleClassName="text-xl sm:text-2xl md:text-3xl"
+      >
         <p className="max-w-6xl font-mono text-sm text-muted-foreground sm:text-base md:text-lg">
-          """ Lead Software Developer with 7+ years of experience architecting
-          and developing scalable systems with AWS, Python, modern web
-          technologies, and Machine Learning & AI. Passionate about building
-          efficient, data-driven solutions, while learning as much as possible
-          along the way. """
+          {header.intro}
         </p>
-      </div>
+      </PageHeader>
 
-      {/* Main Content */}
       <div className="grid gap-6 md:grid-cols-2">
-        <Card className="border-border/50 bg-card/50 backdrop-blur-xs">
-          <CardHeader className="pb-3">
-            <div className="flex items-center space-x-2">
-              <span className="h-3 w-3 rounded-full bg-success"></span>
-              <span className="font-mono text-xs text-muted-foreground">
-                about_me.ts
-              </span>
-            </div>
-          </CardHeader>
-          <AnimatedCardContentWithCode
-            className="space-y-3"
-            typingSpeed={15}
-            lineDelay={150}
-            cardId="home-about-me"
-            lines={[
-              <>
-                <span className="ml-2 text-accent">interface</span>
-                <span className="text-primary"> Developer </span>
-                <span className="text-foreground">{'{'}</span>
-              </>,
-              <>
-                <span className="ml-6 text-primary">name</span>
-                <span className="text-foreground">: </span>
-                <span className="text-syntax-string">'Jonathan Dupe'</span>
-              </>,
-              <>
-                <span className="ml-6 text-primary">role</span>
-                <span className="text-foreground">: </span>
-                <span className="text-syntax-string">
-                  'Lead Software Developer'
-                </span>
-              </>,
-              <>
-                <span className="ml-6 text-primary">stack</span>
-                <span className="text-foreground">: [</span>
-                <span className="text-syntax-string">'Python'</span>
-                <span className="text-foreground">, </span>
-                <span className="text-syntax-string">'AWS'</span>
-                <span className="text-foreground">, </span>
-                <span className="text-syntax-string">'TypeScript'</span>
-                <span className="text-foreground">]</span>
-              </>,
-              <>
-                <span className="ml-6 text-primary">topSkills</span>
-                <span className="text-foreground">: [</span>
-              </>,
-              <>
-                <span className="ml-10 text-syntax-string">
-                  'System Design'
-                </span>
-                <span className="text-foreground">,</span>
-              </>,
-              <>
-                <span className="ml-10 text-syntax-string">
-                  'Technical Product Management'
-                </span>
-                <span className="text-foreground">,</span>
-              </>,
-              <>
-                <span className="ml-10 text-syntax-string">'MLOps'</span>
-                <span className="text-foreground">,</span>
-              </>,
-              <>
-                <span className="ml-6 text-foreground">]</span>
-              </>,
-              <>
-                <span className="ml-2 text-foreground">{'}'}</span>
-              </>,
-            ]}
-          />
-        </Card>
+        <CodeFileCard card={aboutMe} typingSpeed={15} lineDelay={150} />
 
-        <Card className="border-border/50 bg-card/50 backdrop-blur-xs">
-          <CardHeader className="pb-3">
-            <div className="flex items-center space-x-2">
-              <span className="h-3 w-3 rounded-full bg-success"></span>
-              <span className="font-mono text-xs text-muted-foreground">
-                current_project.md
-              </span>
-            </div>
-          </CardHeader>
+        <CodeWindow file={currentProject.file} dot="success">
           <CardContent className="space-y-3 font-mono text-sm">
             <div className="space-y-2">
               <p className="text-muted-foreground">
-                <span className="text-primary">#</span> Current Experience
+                <span className="text-primary">#</span> {currentProject.heading}
               </p>
               <div className="ml-4 space-y-1">
                 <p className="text-foreground">
-                  <span className="text-primary">## **</span>Pendulum Intel
-                  <span className="text-primary">**</span> - Lead Software
-                  Developer
+                  <span className="text-primary">## **</span>
+                  {currentProject.company}
+                  <span className="text-primary">**</span> -{' '}
+                  {currentProject.role}
                 </p>
-                <div className="flex text-foreground text-muted-foreground">
-                  <span className="mr-2">-</span>
-                  <span className="flex-1">
-                    Architecting and developing a Big Data Social Media
-                    Listening Platform and Analytics Tools in AWS
-                  </span>
-                </div>
-                <div className="flex text-foreground text-muted-foreground">
-                  <span className="mr-2">-</span>
-                  <span className="flex-1">
-                    Providing mentorship and technical leadership to a team of
-                    developers
-                  </span>
-                </div>
-                <div className="flex text-foreground text-muted-foreground">
-                  <span className="mr-2">-</span>
-                  <span className="flex-1">
-                    Collaborating with cross-functional teams to align on
-                    product vision and technical requirements
-                  </span>
-                </div>
+                {currentProject.bullets.map((bullet) => (
+                  <MarkdownBullet
+                    key={bullet}
+                    className="text-foreground text-muted-foreground"
+                  >
+                    {bullet}
+                  </MarkdownBullet>
+                ))}
               </div>
             </div>
             <div className="pt-2">
-              <Button
+              <CommandLink
+                href={currentProject.link.href}
+                command={currentProject.link.command}
                 variant="outline"
-                size="sm"
-                asChild
-                className="font-mono text-xs"
-              >
-                <a
-                  href="https://github.com/JDup3"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  <span className="whitespace-pre text-primary">$ </span>git
-                  clone profile
-                </a>
-              </Button>
+              />
             </div>
           </CardContent>
-        </Card>
+        </CodeWindow>
       </div>
 
       {/* Status Bar */}
-      <Card className="border-border/50 bg-card/50 backdrop-blur-xs">
+      <Card className="border-border/50 bg-card/50">
         <CardContent className="py-4">
           <div className="flex items-center justify-between font-mono text-xs">
             <div className="flex items-center space-x-4 text-muted-foreground">
-              <span>WSL: Ubuntu 22.04</span>
-              <span>portfolio-deployment*</span>
+              {statusBar.left.map((item) => (
+                <span key={item}>{item}</span>
+              ))}
             </div>
             <div className="flex items-center space-x-4 text-muted-foreground">
-              <span>Python 3.13</span>
+              {statusBar.right.map((item) => (
+                <span key={item}>{item}</span>
+              ))}
               <span>React {version}</span>
               <span>TypeScript {__TYPESCRIPT_VERSION__}</span>
             </div>
