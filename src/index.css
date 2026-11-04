@@ -151,28 +151,13 @@
   @apply text-syntax-function;
 }
 
-/* Animation stability for mobile devices */
+/* Code card bodies: typing re-renders stay inside the card's layout box */
 @utility animated-code-content {
-  /* Prevent layout shifts during typing animation */
-  min-height: fit-content;
   contain: layout;
-  /* Ensure consistent line spacing for mobile */
-  line-height: 1.5;
-}
-
-/* Pre-allocate height for common card sizes to prevent expansion */
-@utility card-content-small {
-  min-height: 8rem; /* ~5-6 lines of code */
-}
-@utility card-content-medium {
-  min-height: 12rem; /* ~8-10 lines of code */
-}
-@utility card-content-large {
-  min-height: 18rem; /* ~12-15 lines of code */
 }
 
 /* Honour the OS reduced-motion setting: stop the cursor pulse and the
-   menu/hover transitions. Typing animations are skipped in AnimatedCodeBlock. */
+   menu/hover transitions. Code blocks skip typing (components/code/CodeBlock). */
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,

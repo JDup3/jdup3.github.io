@@ -27,18 +27,6 @@ export default defineConfig([
     },
   },
   {
-    // card.tsx is split and its animation hooks rewritten in a later task
-    // (component split, stable IDs). Fixing these now would change animation
-    // behaviour, so they stay off for this file only until then.
-    files: ['src/components/ui/card.tsx'],
-    rules: {
-      // Typing animation resets/advances state inside effects.
-      'react-hooks/set-state-in-effect': 'off',
-      // Fallback card IDs come from Math.random() during render.
-      'react-hooks/purity': 'off',
-    },
-  },
-  {
     files: ['*.config.{js,ts}'],
     languageOptions: {
       globals: globals.node,

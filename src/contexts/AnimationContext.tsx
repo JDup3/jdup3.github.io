@@ -43,17 +43,7 @@ export const AnimationProvider: React.FC<AnimationProviderProps> = ({
   );
 
   const markAsAnimated = useCallback((cardId: string): void => {
-    setAnimatedCards((prev) => {
-      const newSet = new Set(prev);
-      newSet.add(cardId);
-      console.log(
-        '🎬 Animation state: Marked card as animated',
-        cardId,
-        'Total animated cards:',
-        newSet.size
-      );
-      return newSet;
-    });
+    setAnimatedCards((prev) => new Set(prev).add(cardId));
   }, []);
 
   const value = {
