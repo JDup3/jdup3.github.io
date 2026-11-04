@@ -7,8 +7,8 @@ A modern React portfolio website built with Vite and TypeScript, deployed automa
 - **Modern React Stack**: Built with React 18, TypeScript, and Vite for fast development and builds
 - **Responsive Design**: Mobile-first design
 - **React Router**: Client-side routing for a smooth single-page application experience
-- **Automated CI/CD**: GitHub Actions workflow for formatting, linting, testing, and deployment
-- **Code Quality**: ESLint, Prettier, and Vitest for maintaining high code standards
+- **Automated CI/CD**: GitHub Actions workflows for CI (format, lint, typecheck, test, build) and deployment
+- **Code Quality**: ESLint, Prettier, TypeScript, and Vitest for maintaining high code standards
 - **GitHub Pages**: Automatically deployed to GitHub Pages on every push to main
 
 ## Tech Stack
@@ -27,7 +27,7 @@ A modern React portfolio website built with Vite and TypeScript, deployed automa
 
 **Option 1: Local Development**
 
-- Node.js 18 or higher
+- Node.js >=22.12 (Node 24 recommended, see `.nvmrc`)
 - npm or yarn
 
 **Option 2: Docker Development**
@@ -71,7 +71,7 @@ A modern React portfolio website built with Vite and TypeScript, deployed automa
 
 The Docker setup automatically:
 
-- Uses Node.js 18.20.4 in an Alpine Linux container
+- Uses Node.js 24.21.0 in an Alpine Linux container
 - Installs all dependencies
 - Mounts your local project directory for live reloading
 - Exposes the development server on port 5173
@@ -80,7 +80,7 @@ The Docker setup automatically:
 
 This project includes Docker support for a containerized development environment. The Docker setup provides:
 
-- **Consistent Environment**: Same Node.js version (18.20.4) across all development machines
+- **Consistent Environment**: Same Node.js version (24.21.0) across all development machines
 - **No Local Node Installation**: Run the project without installing Node.js locally
 - **Isolated Dependencies**: Project dependencies are contained within the Docker container
 - **Live Reloading**: Changes to your local files are automatically reflected in the container
@@ -96,7 +96,7 @@ This project includes Docker support for a containerized development environment
 
 The Dockerfile:
 
-- Uses `node:18.20.4-alpine3.20` as the base image
+- Uses `node:24.21.0-alpine3.24` as the base image
 - Installs bash for better script compatibility
 - Sets up the working directory at `/app`
 - Installs project dependencies
@@ -111,7 +111,8 @@ The Makefile provides convenient commands that:
 ## Available Scripts
 
 - `npm run dev` - Start development server
-- `npm run build` - Build for production
+- `npm run build` - Build for production (`tsc -b && vite build`)
+- `npm run typecheck` - Typecheck with TypeScript (`tsc -b`)
 - `npm run preview` - Preview production build locally
 - `npm run lint` - Run ESLint
 - `npm run lint:fix` - Fix ESLint issues automatically
@@ -125,10 +126,10 @@ The Makefile provides convenient commands that:
 
 The site is automatically deployed to GitHub Pages when changes are pushed to the main branch. The deployment process includes:
 
-1. **Code Quality Checks**: Prettier formatting and ESLint linting
+1. **Code Quality Checks**: Prettier formatting, ESLint linting, and TypeScript typechecking
 2. **Testing**: Automated test suite with Vitest
-3. **Build**: Production build with Vite
-4. **Deploy**: Automatic deployment to GitHub Pages
+3. **Build**: Production build with TypeScript and Vite
+4. **Deploy**: Automatic deployment to GitHub Pages (on push to `main` or manual workflow dispatch)
 
 ## Project Structure
 

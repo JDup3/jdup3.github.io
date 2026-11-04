@@ -1,4 +1,4 @@
-FROM  node:18.20.4-alpine3.20
+FROM  node:24.21.0-alpine3.24
 
 # Add bash to make package scripts easier to write
 RUN apk add bash
@@ -14,7 +14,7 @@ RUN npm install
 
 # explicityly copy project files (after npm install for better caching)
 COPY tailwind.config.cjs ./
-COPY tsconfig.json ./
+COPY tsconfig*.json ./
 COPY vite.config.ts ./
 COPY postcss.config.cjs ./
 COPY .eslintrc.cjs ./
