@@ -130,3 +130,16 @@
     min-height: 18rem; /* ~12-15 lines of code */
   }
 }
+
+/* Honour the OS reduced-motion setting: stop the cursor pulse and the
+   menu/hover transitions. Typing animations are skipped in AnimatedCodeBlock. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

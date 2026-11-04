@@ -1,9 +1,10 @@
 import { NavLink } from 'react-router';
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import { cn } from '../lib/utils';
 
 function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const mobileMenuId = useId();
 
   const navItems = [
     { to: '/', label: 'home.tsx' },
@@ -45,11 +46,17 @@ function Navigation() {
 
           {/* Mobile Menu Button */}
           <button
+            type="button"
             className="rounded-sm p-2 transition-colors hover:bg-secondary md:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
+            onClick={() => setIsMenuOpen((open) => !open)}
             aria-label="Toggle menu"
+            aria-expanded={isMenuOpen}
+            aria-controls={mobileMenuId}
           >
-            <div className="relative flex h-5 w-5 flex-col justify-center">
+            <div
+              className="relative flex h-5 w-5 flex-col justify-center"
+              aria-hidden="true"
+            >
               <span
                 className={cn(
                   'block h-0.5 w-5 bg-foreground transition-all duration-300',
@@ -74,10 +81,12 @@ function Navigation() {
 
         {/* Mobile Navigation Menu */}
         <div
+          id={mobileMenuId}
           className={cn(
             'overflow-hidden transition-all duration-300 md:hidden',
             isMenuOpen ? 'max-h-64 pb-4' : 'max-h-0'
           )}
+          inert={!isMenuOpen}
         >
           <ul className="space-y-1">
             {navItems.map((item) => (

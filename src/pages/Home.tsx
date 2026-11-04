@@ -158,7 +158,8 @@ function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <span className="text-primary">$</span> git clone profile
+                  <span className="whitespace-pre text-primary">$ </span>git
+                  clone profile
                 </a>
               </Button>
             </div>

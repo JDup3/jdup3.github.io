@@ -1,5 +1,11 @@
 import * as React from 'react';
-import { useState, useEffect, useRef, useCallback } from 'react';
+import {
+  useState,
+  useEffect,
+  useRef,
+  useCallback,
+  useSyncExternalStore,
+} from 'react';
 import { useAnimationState } from '../../contexts/AnimationContext';
 
 import { cn } from '../../lib/utils';
@@ -85,6 +91,27 @@ const getTextContent = (node: React.ReactNode): string => {
   }
   return '';
 };
+
+const reducedMotionQuery = '(prefers-reduced-motion: reduce)';
+
+const subscribeToReducedMotion = (onChange: () => void) => {
+  if (typeof window.matchMedia !== 'function') return () => {};
+  const mediaQuery = window.matchMedia(reducedMotionQuery);
+  mediaQuery.addEventListener('change', onChange);
+  return () => mediaQuery.removeEventListener('change', onChange);
+};
+
+const getPrefersReducedMotion = () =>
+  typeof window.matchMedia === 'function' &&
+  window.matchMedia(reducedMotionQuery).matches;
+
+// Tracks the OS "reduce motion" setting so code blocks can skip typing.
+const usePrefersReducedMotion = () =>
+  useSyncExternalStore(
+    subscribeToReducedMotion,
+    getPrefersReducedMotion,
+    () => false
+  );
 
 // Custom hook for intersection observer with React context animation tracking
 const useIntersectionObserver = (
@@ -465,12 +492,17 @@ function AnimatedCodeBlock({
     enableAnimation,
   });
 
+  // Reduced motion takes the same path as enableAnimation={false}: every line
+  // renders at once and the typing timers never start.
+  const prefersReducedMotion = usePrefersReducedMotion();
+  const shouldAnimate = enableAnimation && !prefersReducedMotion;
+
   const { displayedLines, currentLine, isTypingComplete, showCursor } =
     useTypingAnimation(
       lines,
       typingSpeed,
       lineDelay,
-      isVisible,
+      shouldAnimate && isVisible,
       hasBeenAnimated,
       uniqueCardId
     );
@@ -494,7 +526,7 @@ function AnimatedCodeBlock({
   );
 
   // If animation is disabled, show all lines immediately
-  if (!enableAnimation) {
+  if (!shouldAnimate) {
     return (
       <div ref={combinedRef} className={cn('space-y-1', className)} {...props}>
         {lines.map((line, index) => (
