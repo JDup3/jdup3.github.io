@@ -1,21 +1,23 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen, fireEvent, within } from '@testing-library/react';
 import { BrowserRouter } from 'react-router';
 import { describe, it, expect } from 'vitest';
 import App from '@/App';
 
 describe('App', () => {
-  it('renders VS Code-style navigation with file extensions', () => {
+  it('renders the navigation as editor tabs named after source files', () => {
     render(
       <BrowserRouter>
         <App />
       </BrowserRouter>
     );
 
-    // Check that navigation items appear (should have both desktop and mobile versions)
-    expect(screen.getAllByText('home.tsx')).toHaveLength(2);
-    expect(screen.getAllByText('about.tsx')).toHaveLength(2);
-    expect(screen.getAllByText('experience.tsx')).toHaveLength(2);
-    expect(screen.getAllByText('contact.tsx')).toHaveLength(2);
+    const tabs = within(screen.getByRole('navigation', { name: 'Pages' }));
+    expect(tabs.getAllByRole('link').map((link) => link.textContent)).toEqual([
+      'home.tsx',
+      'about.tsx',
+      'experience.tsx',
+      'contact.tsx',
+    ]);
   });
 
   it('navigates routes and invokes window.scrollTo stub', () => {
@@ -25,9 +27,7 @@ describe('App', () => {
       </BrowserRouter>
     );
 
-    const aboutLinks = screen.getAllByText('about.tsx');
-    expect(aboutLinks.length).toBeGreaterThan(0);
-    fireEvent.click(aboutLinks[0]);
+    fireEvent.click(screen.getByRole('link', { name: 'about.tsx' }));
 
     // eslint-disable-next-line @typescript-eslint/unbound-method
     expect(window.scrollTo).toHaveBeenCalled();

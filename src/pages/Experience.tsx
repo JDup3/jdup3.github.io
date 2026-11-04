@@ -49,10 +49,10 @@ function Experience() {
                 {certifications.items.map((cert) => (
                   <div
                     key={cert.name}
-                    className="flex items-center justify-between rounded border border-border/50 bg-background/50 p-3"
+                    className="flex flex-wrap items-center justify-between gap-x-3 gap-y-1 rounded-sm border border-border bg-terminal p-3"
                   >
-                    <span className="text-primary">{cert.name}</span>
-                    <span className="text-xs text-muted-foreground">
+                    <span className="text-syntax-name">{cert.name}</span>
+                    <span className="text-label text-muted-foreground">
                       {cert.status}
                     </span>
                   </div>
@@ -80,7 +80,7 @@ function Experience() {
             >
               <CardContent className="space-y-4">
                 <div>
-                  <h3 className="mb-2 font-mono text-lg text-primary">
+                  <h3 className="mb-2 font-mono text-base font-bold text-balance text-syntax-keyword sm:text-lg">
                     {project.title}
                   </h3>
                   <p className="font-mono text-sm text-muted-foreground">
@@ -91,7 +91,7 @@ function Experience() {
                   {project.tags.map((tag) => (
                     <span
                       key={tag}
-                      className="rounded bg-primary/10 px-2 py-1 font-mono text-xs text-primary"
+                      className="rounded-sm bg-secondary px-2 py-0.5 font-mono text-label text-syntax-name"
                     >
                       {tag}
                     </span>
@@ -108,8 +108,10 @@ function Experience() {
           <div className="grid gap-4 md:grid-cols-3">
             {skillsSummary.columns.map((column) => (
               <div key={column.heading}>
-                <h4 className="mb-2 text-primary">{column.heading}</h4>
-                <ul className="space-y-1 text-xs text-muted-foreground">
+                <h4 className="mb-2 font-bold text-syntax-keyword">
+                  {column.heading}
+                </h4>
+                <ul className="space-y-1 text-label text-muted-foreground">
                   {column.items.map((item) => (
                     <li key={item}>- {item}</li>
                   ))}

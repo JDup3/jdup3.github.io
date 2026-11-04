@@ -11,10 +11,12 @@ The site's code-styled cards are built from small components in `src/components/
 | `src/content/tokens.ts` | Helpers for writing code lines: `kw`, `nm`, `str`, `num`, `p`, `txt`, `line`.                                                 |
 | `src/components/code/`  | `CodeWindow`, `CodeFileCard`, `CodeBlock`, `PageHeader`, `SectionHeading`, `TerminalPrompt`, `CommandLink`, `MarkdownBullet`. |
 | `src/hooks/`            | `usePrefersReducedMotion`, `useInView`, `useTypingAnimation`.                                                                 |
+| `src/content/site.ts`   | The page list (tab label, title, description) used by the tab bar, the head tags and the sitemap.                             |
+| `src/components/frame/` | The VS Code window around every page: `TitleBar`, `EditorTabs` (the navigation), `Breadcrumbs`, `StatusBar`.                  |
 
 ## Writing a code card
 
-A code line is an indent level (0, 1 or 2) and a list of tokens. Each token kind has one colour: `kw` keyword, `nm` name, `str` string, `num` number, `p` plain text, `txt` inherited colour.
+A code line is an indent level (0, 1 or 2) and a list of tokens. A line too long for the card wraps with a hanging indent. Each token kind has one VS Code Dark+ colour: `kw` keyword, `nm` name, `str` string, `num` number, `p` plain text, `txt` inherited colour.
 
 ```ts
 // src/content/about.ts

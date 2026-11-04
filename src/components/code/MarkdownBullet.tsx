@@ -10,8 +10,8 @@ export function MarkdownBullet({
 }) {
   return (
     <div className={cn('flex', className)}>
-      <span className="mr-2">-</span>
-      <span className="flex-1">{children}</span>
+      <span className="mr-2 text-syntax-keyword">-</span>
+      <span className="min-w-0 flex-1">{children}</span>
     </div>
   );
 }

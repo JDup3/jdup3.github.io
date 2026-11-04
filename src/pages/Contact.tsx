@@ -18,17 +18,17 @@ function Contact() {
               {links.items.map((link) => (
                 <div
                   key={link.key}
-                  className="flex items-center justify-between rounded border border-border/50 bg-background/50 p-3"
+                  className="flex flex-wrap items-center justify-between gap-x-2 rounded-sm border border-border bg-terminal py-1.5 pr-1.5 pl-3"
                 >
                   <div className="flex items-center space-x-2">
-                    <span className="text-primary">{link.key}</span>
+                    <span className="text-syntax-name">{link.key}</span>
                     <span className="text-muted-foreground">:</span>
                   </div>
                   <Button
                     variant="ghost"
                     size="sm"
                     asChild
-                    className="font-mono text-xs"
+                    className="font-mono text-label text-primary"
                   >
                     {link.external ? (
                       <a
@@ -51,7 +51,7 @@ function Contact() {
         <CodeWindow file={readme.file} dot="success">
           <CardContent className="space-y-4 font-mono text-sm">
             <div className="space-y-2">
-              <p className="text-muted-foreground">{readme.heading}</p>
+              <p className="font-bold text-syntax-keyword">{readme.heading}</p>
               <div className="text-foreground">
                 <p className="mb-2">{readme.intro}</p>
                 <div className="ml-4 space-y-1">
@@ -67,7 +67,10 @@ function Contact() {
         </CodeWindow>
       </div>
 
-      <TerminalPrompt command={signOff.command} outputClassName="text-accent">
+      <TerminalPrompt
+        command={signOff.command}
+        outputClassName="text-syntax-function"
+      >
         {signOff.output}
       </TerminalPrompt>
     </div>
