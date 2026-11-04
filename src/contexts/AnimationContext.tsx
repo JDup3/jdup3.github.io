@@ -10,7 +10,6 @@ import React, {
 interface AnimationContextType {
   hasAnimated: (id: string) => boolean;
   markAsAnimated: (id: string) => void;
-  resetAllAnimations: () => void;
 }
 
 const AnimationContext = createContext<AnimationContextType | undefined>(
@@ -57,15 +56,9 @@ export const AnimationProvider: React.FC<AnimationProviderProps> = ({
     });
   }, []);
 
-  const resetAllAnimations = useCallback((): void => {
-    console.log('🎬 Animation state: Resetting all animations');
-    setAnimatedCards(new Set());
-  }, []);
-
   const value = {
     hasAnimated,
     markAsAnimated,
-    resetAllAnimations,
   };
 
   return (

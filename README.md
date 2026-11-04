@@ -4,7 +4,7 @@ A modern React portfolio website built with Vite and TypeScript, deployed automa
 
 ## Features
 
-- **Modern React Stack**: Built with React 18, TypeScript, and Vite for fast development and builds
+- **Modern React Stack**: Built with React 19, TypeScript, and Vite for fast development and builds
 - **Responsive Design**: Mobile-first design
 - **React Router**: Client-side routing for a smooth single-page application experience
 - **Automated CI/CD**: GitHub Actions workflows for CI (format, lint, typecheck, test, build) and deployment
@@ -13,7 +13,7 @@ A modern React portfolio website built with Vite and TypeScript, deployed automa
 
 ## Tech Stack
 
-- **Frontend**: React 18, TypeScript, React Router
+- **Frontend**: React 19, TypeScript, React Router
 - **Build Tool**: Vite
 - **Styling**: CSS3 with custom properties
 - **Testing**: Vitest, React Testing Library
@@ -152,11 +152,14 @@ src/
 │   ├── Contact.tsx
 │   └── Experience.tsx
 ├── test/           # Test utilities and setup
+│   ├── Accessibility.test.tsx
 │   ├── App.test.tsx
+│   ├── Home.test.tsx
 │   └── setup.ts
 ├── App.tsx         # Main app component with routing
 ├── main.tsx        # Application entry point
-└── index.css       # Global styles
+├── index.css       # Global styles
+└── vite-env.d.ts   # Vite environment type declarations
 ```
 
 ## License

@@ -1,5 +1,5 @@
-import { Routes, Route, useLocation } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { Routes, Route, useLocation } from 'react-router';
+import { useEffect } from 'react';
 import Navigation from './components/Navigation';
 import Home from './pages/Home';
 import About from './pages/About';
@@ -12,27 +12,29 @@ function ScrollToTop() {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    // Check if window.scrollTo is available (not in test environments)
-    try {
-      window.scrollTo(0, 0);
-    } catch {
-      // Ignore scrollTo errors in test environments
-    }
+    window.scrollTo(0, 0);
   }, [pathname]);
 
   return null;
 }
 
 function App() {
-  // Create a unique key that changes on page refresh but persists during navigation
-  const [appKey] = useState(() => `app-${Date.now()}`);
-
   return (
     <div className="min-h-screen bg-background font-mono">
-      <AnimationProvider key={appKey}>
+      <a
+        href="#main-content"
+        className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-sm focus:bg-secondary focus:px-3 focus:py-2 focus:text-sm focus:text-primary"
+      >
+        Skip to main content
+      </a>
+      <AnimationProvider>
         <ScrollToTop />
         <Navigation />
-        <main className="container mx-auto max-w-5xl px-4 py-12 sm:px-6">
+        <main
+          id="main-content"
+          tabIndex={-1}
+          className="container mx-auto max-w-5xl px-4 py-12 focus:outline-none sm:px-6"
+        >
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
@@ -40,6 +42,18 @@ function App() {
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
+        <footer className="border-t border-border">
+          <div className="container mx-auto max-w-5xl px-4 py-6 font-mono text-xs text-muted-foreground sm:px-6">
+            <a
+              href="https://github.com/JDup3"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:text-primary"
+            >
+              github.com/JDup3
+            </a>
+          </div>
+        </footer>
       </AnimationProvider>
     </div>
   );

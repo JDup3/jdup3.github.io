@@ -1,3 +1,4 @@
+import { version } from 'react';
 import {
   Card,
   CardContent,
@@ -158,7 +159,8 @@ function Home() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <span className="text-primary">$</span> git clone profile
+                  <span className="whitespace-pre text-primary">$ </span>git
+                  clone profile
                 </a>
               </Button>
             </div>
@@ -176,8 +178,8 @@ function Home() {
             </div>
             <div className="flex items-center space-x-4 text-muted-foreground">
               <span>Python 3.13</span>
-              <span>React 18.2.0</span>
-              <span>TypeScript 5.2.2</span>
+              <span>React {version}</span>
+              <span>TypeScript {__TYPESCRIPT_VERSION__}</span>
             </div>
           </div>
         </CardContent>

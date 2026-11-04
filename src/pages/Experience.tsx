@@ -528,13 +528,18 @@ function Experience() {
                     social-media-platform.md
                   </span>
                 </div>
-                <Button variant="ghost" size="sm" className="font-mono text-xs">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  asChild
+                  className="font-mono text-xs"
+                >
                   <a
                     href="https://www.pendulumintel.com/"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <span className="text-primary">$</span> curl
+                    <span className="whitespace-pre text-primary">$ </span>curl
                     pendulumintel.com
                   </a>
                 </Button>
@@ -582,13 +587,19 @@ function Experience() {
                     xdr-platform.md
                   </span>
                 </div>
-                <Button variant="ghost" size="sm" className="font-mono text-xs">
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  asChild
+                  className="font-mono text-xs"
+                >
                   <a
                     href="https://www.esentire.com/"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <span className="text-primary">$</span> curl esentire.com
+                    <span className="whitespace-pre text-primary">$ </span>curl
+                    esentire.com
                   </a>
                 </Button>
               </div>
@@ -646,7 +657,8 @@ function Experience() {
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    <span className="text-primary">$ </span> git clone
+                    <span className="whitespace-pre text-primary">$ </span>git
+                    clone
                   </a>
                 </Button>
               </div>
