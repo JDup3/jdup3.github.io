@@ -1,6 +1,6 @@
 import { NavLink } from 'react-router';
 import { useId, useState } from 'react';
-import { cn } from '../lib/utils';
+import { cn } from '@/lib/utils';
 
 function Navigation() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,7 +14,7 @@ function Navigation() {
   ];
 
   return (
-    <nav className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-sm">
+    <nav className="sticky top-0 z-50 border-b border-border bg-background/95 backdrop-blur-xs">
       <div className="container mx-auto max-w-5xl px-4 sm:px-6">
         <div className="flex items-center justify-between py-4">
           <div className="flex items-center space-x-2">

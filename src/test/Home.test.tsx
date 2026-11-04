@@ -2,7 +2,7 @@ import { version as reactVersion } from 'react';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
 import { describe, it, expect } from 'vitest';
-import App from '../App';
+import App from '@/App';
 
 describe('Home status bar', () => {
   it('shows the React and TypeScript versions the site is built with', () => {

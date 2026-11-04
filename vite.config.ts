@@ -1,6 +1,8 @@
 /// <reference types="vitest/config" />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+import tailwindcss from '@tailwindcss/vite';
+import { fileURLToPath, URL } from 'node:url';
 import { createRequire } from 'node:module';
 
 const require = createRequire(import.meta.url);
@@ -11,7 +13,11 @@ const { version: typescriptVersion } = require('typescript/package.json') as {
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [react()],
+  plugins: [react(), tailwindcss()],
+  resolve: {
+    // `@/*` alias, mirrored in tsconfig.json and tsconfig.app.json
+    alias: { '@': fileURLToPath(new URL('./src', import.meta.url)) },
+  },
   base: '/',
   define: {
     __TYPESCRIPT_VERSION__: JSON.stringify(typescriptVersion),

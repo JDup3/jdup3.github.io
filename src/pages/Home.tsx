@@ -4,8 +4,8 @@ import {
   CardContent,
   CardHeader,
   AnimatedCardContentWithCode,
-} from '../components/ui/card';
-import { Button } from '../components/ui/button';
+} from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 
 function Home() {
   return (
@@ -34,11 +34,11 @@ function Home() {
 
       {/* Main Content */}
       <div className="grid gap-6 md:grid-cols-2">
-        <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
+        <Card className="border-border/50 bg-card/50 backdrop-blur-xs">
           <CardHeader className="pb-3">
             <div className="flex items-center space-x-2">
-              <span className="h-3 w-3 rounded-full bg-green-500"></span>
-              <span className="ml-2 font-mono text-xs text-muted-foreground">
+              <span className="h-3 w-3 rounded-full bg-success"></span>
+              <span className="font-mono text-xs text-muted-foreground">
                 about_me.ts
               </span>
             </div>
@@ -57,23 +57,23 @@ function Home() {
               <>
                 <span className="ml-6 text-primary">name</span>
                 <span className="text-foreground">: </span>
-                <span className="text-green-400">'Jonathan Dupe'</span>
+                <span className="text-syntax-string">'Jonathan Dupe'</span>
               </>,
               <>
                 <span className="ml-6 text-primary">role</span>
                 <span className="text-foreground">: </span>
-                <span className="text-green-400">
+                <span className="text-syntax-string">
                   'Lead Software Developer'
                 </span>
               </>,
               <>
                 <span className="ml-6 text-primary">stack</span>
                 <span className="text-foreground">: [</span>
-                <span className="text-green-400">'Python'</span>
+                <span className="text-syntax-string">'Python'</span>
                 <span className="text-foreground">, </span>
-                <span className="text-green-400">'AWS'</span>
+                <span className="text-syntax-string">'AWS'</span>
                 <span className="text-foreground">, </span>
-                <span className="text-green-400">'TypeScript'</span>
+                <span className="text-syntax-string">'TypeScript'</span>
                 <span className="text-foreground">]</span>
               </>,
               <>
@@ -81,17 +81,19 @@ function Home() {
                 <span className="text-foreground">: [</span>
               </>,
               <>
-                <span className="ml-10 text-green-400">'System Design'</span>
+                <span className="ml-10 text-syntax-string">
+                  'System Design'
+                </span>
                 <span className="text-foreground">,</span>
               </>,
               <>
-                <span className="ml-10 text-green-400">
+                <span className="ml-10 text-syntax-string">
                   'Technical Product Management'
                 </span>
                 <span className="text-foreground">,</span>
               </>,
               <>
-                <span className="ml-10 text-green-400">'MLOps'</span>
+                <span className="ml-10 text-syntax-string">'MLOps'</span>
                 <span className="text-foreground">,</span>
               </>,
               <>
@@ -104,11 +106,11 @@ function Home() {
           />
         </Card>
 
-        <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
+        <Card className="border-border/50 bg-card/50 backdrop-blur-xs">
           <CardHeader className="pb-3">
             <div className="flex items-center space-x-2">
-              <span className="h-3 w-3 rounded-full bg-green-500"></span>
-              <span className="ml-2 font-mono text-xs text-muted-foreground">
+              <span className="h-3 w-3 rounded-full bg-success"></span>
+              <span className="font-mono text-xs text-muted-foreground">
                 current_project.md
               </span>
             </div>
@@ -169,7 +171,7 @@ function Home() {
       </div>
 
       {/* Status Bar */}
-      <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
+      <Card className="border-border/50 bg-card/50 backdrop-blur-xs">
         <CardContent className="py-4">
           <div className="flex items-center justify-between font-mono text-xs">
             <div className="flex items-center space-x-4 text-muted-foreground">

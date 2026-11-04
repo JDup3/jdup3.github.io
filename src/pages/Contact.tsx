@@ -1,5 +1,5 @@
-import { Card, CardContent, CardHeader } from '../components/ui/card';
-import { Button } from '../components/ui/button';
+import { Card, CardContent, CardHeader } from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 
 function Contact() {
   return (
@@ -12,7 +12,7 @@ function Contact() {
           <span className="text-accent">contact</span>
           <span className="text-foreground">{'}'}</span>
           <span className="text-primary">from</span>
-          <span className="text-green-400">'./jdup3'</span>
+          <span className="text-syntax-string">'./jdup3'</span>
         </div>
         <h1 className="font-mono text-3xl font-bold text-foreground">
           <span className="text-accent">async function</span>
@@ -25,11 +25,11 @@ function Contact() {
       {/* Contact Methods */}
       <div className="grid gap-6 md:grid-cols-2">
         {/* Links */}
-        <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
+        <Card className="border-border/50 bg-card/50 backdrop-blur-xs">
           <CardHeader className="pb-3">
             <div className="flex items-center space-x-2">
-              <span className="h-3 w-3 rounded-full bg-green-500"></span>
-              <span className="ml-2 font-mono text-xs text-muted-foreground">
+              <span className="h-3 w-3 rounded-full bg-success"></span>
+              <span className="font-mono text-xs text-muted-foreground">
                 links.ts
               </span>
             </div>
@@ -97,11 +97,11 @@ function Contact() {
         </Card>
 
         {/* Message */}
-        <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
+        <Card className="border-border/50 bg-card/50 backdrop-blur-xs">
           <CardHeader className="pb-3">
             <div className="flex items-center space-x-2">
-              <span className="h-3 w-3 rounded-full bg-green-500"></span>
-              <span className="ml-2 font-mono text-xs text-muted-foreground">
+              <span className="h-3 w-3 rounded-full bg-success"></span>
+              <span className="font-mono text-xs text-muted-foreground">
                 README.md
               </span>
             </div>
@@ -146,7 +146,7 @@ function Contact() {
       </div>
 
       {/* Terminal */}
-      <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
+      <Card className="border-border/50 bg-card/50 backdrop-blur-xs">
         <CardContent className="py-4">
           <div className="space-y-1 font-mono text-sm">
             <div className="flex items-center space-x-2">

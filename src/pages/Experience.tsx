@@ -3,8 +3,8 @@ import {
   CardContent,
   CardHeader,
   AnimatedCardContentWithCode,
-} from '../components/ui/card';
-import { Button } from '../components/ui/button';
+} from '@/components/ui/card';
+import { Button } from '@/components/ui/button';
 
 function Experience() {
   return (
@@ -17,7 +17,7 @@ function Experience() {
           <span className="text-accent">experience</span>
           <span className="text-foreground">{'}'}</span>
           <span className="text-primary">from</span>
-          <span className="text-green-400">'./career-journey'</span>
+          <span className="text-syntax-string">'./career-journey'</span>
         </div>
         <h1 className="font-mono text-3xl font-bold text-foreground">
           <span className="text-accent">const</span>
@@ -37,11 +37,11 @@ function Experience() {
 
         <div className="grid gap-6 md:grid-cols-2">
           {/* Current Position */}
-          <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
+          <Card className="border-border/50 bg-card/50 backdrop-blur-xs">
             <CardHeader className="pb-3">
               <div className="flex items-center space-x-2">
-                <span className="h-3 w-3 rounded-full bg-green-500"></span>
-                <span className="ml-2 font-mono text-xs text-muted-foreground">
+                <span className="h-3 w-3 rounded-full bg-success"></span>
+                <span className="font-mono text-xs text-muted-foreground">
                   current_role.py
                 </span>
               </div>
@@ -58,38 +58,38 @@ function Experience() {
                 <>
                   <span className="ml-6 text-primary">company</span>
                   <span className="text-foreground"> = </span>
-                  <span className="text-green-400">"Pendulum Intel"</span>
+                  <span className="text-syntax-string">"Pendulum Intel"</span>
                 </>,
                 <>
                   <span className="ml-6 text-primary">position</span>
                   <span className="text-foreground"> = </span>
-                  <span className="text-green-400">
+                  <span className="text-syntax-string">
                     "Lead Software Developer"
                   </span>
                 </>,
                 <>
                   <span className="ml-6 text-primary">duration</span>
                   <span className="text-foreground"> = </span>
-                  <span className="text-green-400">"2023 - Present"</span>
+                  <span className="text-syntax-string">"2023 - Present"</span>
                 </>,
                 <>
                   <span className="ml-6 text-primary">focus</span>
                   <span className="text-foreground"> = [</span>
                 </>,
                 <>
-                  <span className="ml-10 text-green-400">
+                  <span className="ml-10 text-syntax-string">
                     "Big Data Platforms"
                   </span>
                   <span className="text-foreground">,</span>
                 </>,
                 <>
-                  <span className="ml-10 text-green-400">
+                  <span className="ml-10 text-syntax-string">
                     "Leadership and Mentorship"
                   </span>
                   <span className="text-foreground">,</span>
                 </>,
                 <>
-                  <span className="ml-10 text-green-400">
+                  <span className="ml-10 text-syntax-string">
                     "System Design and Architecture"
                   </span>
                 </>,
@@ -101,19 +101,19 @@ function Experience() {
                   <span className="text-foreground"> = [</span>
                 </>,
                 <>
-                  <span className="ml-10 text-green-400">
+                  <span className="ml-10 text-syntax-string">
                     "Realtime ML Enrichment Pipeline"
                   </span>
                   <span className="text-foreground">,</span>
                 </>,
                 <>
-                  <span className="ml-10 text-green-400">
+                  <span className="ml-10 text-syntax-string">
                     "Realtime Smart Social Alerting System"
                   </span>
                   <span className="text-foreground">,</span>
                 </>,
                 <>
-                  <span className="ml-10 text-green-400">
+                  <span className="ml-10 text-syntax-string">
                     "Company Munch and Learns"
                   </span>
                 </>,
@@ -125,11 +125,11 @@ function Experience() {
           </Card>
 
           {/* Previous Role */}
-          <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
+          <Card className="border-border/50 bg-card/50 backdrop-blur-xs">
             <CardHeader className="pb-3">
               <div className="flex items-center space-x-2">
                 <span className="h-3 w-3 rounded-full bg-yellow-500"></span>
-                <span className="ml-2 font-mono text-xs text-muted-foreground">
+                <span className="font-mono text-xs text-muted-foreground">
                   previous_role.py
                 </span>
               </div>
@@ -146,38 +146,38 @@ function Experience() {
                 <>
                   <span className="ml-6 text-primary">company</span>
                   <span className="text-foreground"> = </span>
-                  <span className="text-green-400">"eSentire Inc"</span>
+                  <span className="text-syntax-string">"eSentire Inc"</span>
                 </>,
                 <>
                   <span className="ml-6 text-primary">position</span>
                   <span className="text-foreground"> = </span>
-                  <span className="text-green-400">
+                  <span className="text-syntax-string">
                     "Lead Software Developer"
                   </span>
                 </>,
                 <>
                   <span className="ml-6 text-primary">duration</span>
                   <span className="text-foreground"> = </span>
-                  <span className="text-green-400">"2016 - 2023"</span>
+                  <span className="text-syntax-string">"2016 - 2023"</span>
                 </>,
                 <>
                   <span className="ml-6 text-primary">previous_positions</span>
                   <span className="text-foreground"> = [</span>
                 </>,
                 <>
-                  <span className="ml-10 text-green-400">
+                  <span className="ml-10 text-syntax-string">
                     "Senior Software Developer"
                   </span>
                   <span className="text-foreground">,</span>
                 </>,
                 <>
-                  <span className="ml-10 text-green-400">
+                  <span className="ml-10 text-syntax-string">
                     "Software Developer"
                   </span>
                   <span className="text-foreground">,</span>
                 </>,
                 <>
-                  <span className="ml-10 text-green-400">
+                  <span className="ml-10 text-syntax-string">
                     "Software Developer Coop"
                   </span>
                 </>,
@@ -189,19 +189,19 @@ function Experience() {
                   <span className="text-foreground"> = [</span>
                 </>,
                 <>
-                  <span className="ml-10 text-green-400">
+                  <span className="ml-10 text-syntax-string">
                     "XDR Platform Development"
                   </span>
                   <span className="text-foreground">,</span>
                 </>,
                 <>
-                  <span className="ml-10 text-green-400">
+                  <span className="ml-10 text-syntax-string">
                     "Founded the Architecture Review Board"
                   </span>
                   <span className="text-foreground">,</span>
                 </>,
                 <>
-                  <span className="ml-10 text-green-400">
+                  <span className="ml-10 text-syntax-string">
                     "On-prem to AWS Migration"
                   </span>
                 </>,
@@ -221,11 +221,11 @@ function Experience() {
           Frameworks
         </h2>
         <div className="grid gap-6 md:grid-cols-2">
-          <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
+          <Card className="border-border/50 bg-card/50 backdrop-blur-xs">
             <CardHeader className="pb-3">
               <div className="flex items-center space-x-2">
                 <span className="h-3 w-3 rounded-full bg-purple-500"></span>
-                <span className="ml-2 font-mono text-xs text-muted-foreground">
+                <span className="font-mono text-xs text-muted-foreground">
                   services.js
                 </span>
               </div>
@@ -246,45 +246,45 @@ function Experience() {
                 <>
                   <span className="ml-10 text-primary">compute</span>
                   <span className="text-foreground">: [</span>
-                  <span className="text-green-400">"Lambda"</span>
+                  <span className="text-syntax-string">"Lambda"</span>
                   <span className="text-foreground">, </span>
-                  <span className="text-green-400">"Step Functions"</span>
+                  <span className="text-syntax-string">"Step Functions"</span>
                   <span className="text-foreground">]</span>
                 </>,
                 <>
                   <span className="ml-10 text-primary">api</span>
                   <span className="text-foreground">: [</span>
-                  <span className="text-green-400">"API Gateway"</span>
+                  <span className="text-syntax-string">"API Gateway"</span>
                   <span className="text-foreground">, </span>
-                  <span className="text-green-400">"Cognito"</span>
+                  <span className="text-syntax-string">"Cognito"</span>
                   <span className="text-foreground">]</span>
                 </>,
                 <>
                   <span className="ml-10 text-primary">ml</span>
                   <span className="text-foreground">: [</span>
-                  <span className="text-green-400">"SageMaker"</span>
+                  <span className="text-syntax-string">"SageMaker"</span>
                   <span className="text-foreground">]</span>
                 </>,
                 <>
                   <span className="ml-10 text-primary">messaging</span>
                   <span className="text-foreground">: [</span>
-                  <span className="text-green-400">"SQS"</span>
+                  <span className="text-syntax-string">"SQS"</span>
                   <span className="text-foreground">, </span>
-                  <span className="text-green-400">"Kinesis"</span>
+                  <span className="text-syntax-string">"Kinesis"</span>
                   <span className="text-foreground">, </span>
-                  <span className="text-green-400">"EventBridge"</span>
+                  <span className="text-syntax-string">"EventBridge"</span>
                   <span className="text-foreground">]</span>
                 </>,
                 <>
                   <span className="ml-10 text-primary">data</span>
                   <span className="text-foreground">: [</span>
-                  <span className="text-green-400">"DynamoDB"</span>
+                  <span className="text-syntax-string">"DynamoDB"</span>
                   <span className="text-foreground">, </span>
-                  <span className="text-green-400">"S3"</span>
+                  <span className="text-syntax-string">"S3"</span>
                   <span className="text-foreground">, </span>
-                  <span className="text-green-400">"RDS"</span>
+                  <span className="text-syntax-string">"RDS"</span>
                   <span className="text-foreground">, </span>
-                  <span className="text-green-400">"Glue"</span>
+                  <span className="text-syntax-string">"Glue"</span>
                   <span className="text-foreground">]</span>
                 </>,
                 <>
@@ -297,19 +297,19 @@ function Experience() {
                 <>
                   <span className="ml-10 text-primary">ml</span>
                   <span className="text-foreground">: [</span>
-                  <span className="text-green-400">"Vertex AI"</span>
+                  <span className="text-syntax-string">"Vertex AI"</span>
                   <span className="text-foreground">]</span>
                 </>,
                 <>
                   <span className="ml-10 text-primary">compute</span>
                   <span className="text-foreground">: [</span>
-                  <span className="text-green-400">"App Engine"</span>
+                  <span className="text-syntax-string">"App Engine"</span>
                   <span className="text-foreground">]</span>
                 </>,
                 <>
                   <span className="ml-10 text-primary">data</span>
                   <span className="text-foreground">: [</span>
-                  <span className="text-green-400">"Cloud SQL"</span>
+                  <span className="text-syntax-string">"Cloud SQL"</span>
                   <span className="text-foreground">]</span>
                 </>,
                 <>
@@ -322,11 +322,11 @@ function Experience() {
             />
           </Card>
           {/* Frameworks */}
-          <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
+          <Card className="border-border/50 bg-card/50 backdrop-blur-xs">
             <CardHeader className="pb-3">
               <div className="flex items-center space-x-2">
                 <span className="h-3 w-3 rounded-full bg-purple-500"></span>
-                <span className="ml-2 font-mono text-xs text-muted-foreground">
+                <span className="font-mono text-xs text-muted-foreground">
                   frameworks.js
                 </span>
               </div>
@@ -347,21 +347,21 @@ function Experience() {
                 <>
                   <span className="ml-10 text-primary">ml</span>
                   <span className="text-foreground">: [</span>
-                  <span className="text-green-400">"transformers"</span>
+                  <span className="text-syntax-string">"transformers"</span>
                   <span className="text-foreground">]</span>
                 </>,
                 <>
                   <span className="ml-10 text-primary">bigData</span>
                   <span className="text-foreground">: [</span>
-                  <span className="text-green-400">"pyspark"</span>
+                  <span className="text-syntax-string">"pyspark"</span>
                   <span className="text-foreground">, </span>
-                  <span className="text-green-400">"pandas"</span>
+                  <span className="text-syntax-string">"pandas"</span>
                   <span className="text-foreground">]</span>
                 </>,
                 <>
                   <span className="ml-10 text-primary">cloud</span>
                   <span className="text-foreground">: [</span>
-                  <span className="text-green-400">"boto3"</span>
+                  <span className="text-syntax-string">"boto3"</span>
                   <span className="text-foreground">]</span>
                 </>,
                 <>
@@ -374,19 +374,19 @@ function Experience() {
                 <>
                   <span className="ml-10 text-primary">backend</span>
                   <span className="text-foreground">: [</span>
-                  <span className="text-green-400">"django"</span>
+                  <span className="text-syntax-string">"django"</span>
                   <span className="text-foreground">, </span>
-                  <span className="text-green-400">"flask"</span>
+                  <span className="text-syntax-string">"flask"</span>
                   <span className="text-foreground">]</span>
                 </>,
                 <>
                   <span className="ml-10 text-primary">frontend</span>
                   <span className="text-foreground">: [</span>
-                  <span className="text-green-400">"React"</span>
+                  <span className="text-syntax-string">"React"</span>
                   <span className="text-foreground">, </span>
-                  <span className="text-green-400">"Vue.js"</span>
+                  <span className="text-syntax-string">"Vue.js"</span>
                   <span className="text-foreground">, </span>
-                  <span className="text-green-400">"Vite"</span>
+                  <span className="text-syntax-string">"Vite"</span>
                   <span className="text-foreground">]</span>
                 </>,
                 <>
@@ -410,11 +410,11 @@ function Experience() {
 
         <div className="grid gap-6 md:grid-cols-2">
           {/* Education */}
-          <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
+          <Card className="border-border/50 bg-card/50 backdrop-blur-xs">
             <CardHeader className="pb-3">
               <div className="flex items-center space-x-2">
                 <span className="h-3 w-3 rounded-full bg-blue-500"></span>
-                <span className="ml-2 font-mono text-xs text-muted-foreground">
+                <span className="font-mono text-xs text-muted-foreground">
                   education.json
                 </span>
               </div>
@@ -429,7 +429,7 @@ function Experience() {
                 <>
                   <span className="ml-6 text-primary">"bachelor"</span>
                   <span className="text-foreground">: </span>
-                  <span className="text-green-400">
+                  <span className="text-syntax-string">
                     "Computer Science, Honours"
                   </span>
                   <span className="text-foreground">,</span>
@@ -437,7 +437,7 @@ function Experience() {
                 <>
                   <span className="ml-6 text-primary">"university"</span>
                   <span className="text-foreground">: </span>
-                  <span className="text-green-400">
+                  <span className="text-syntax-string">
                     "University of Waterloo"
                   </span>
                   <span className="text-foreground">,</span>
@@ -453,19 +453,19 @@ function Experience() {
                   <span className="text-foreground">: [</span>
                 </>,
                 <>
-                  <span className="ml-10 text-green-400">
+                  <span className="ml-10 text-syntax-string">
                     "Quality Assurance"
                   </span>
                   <span className="text-foreground">,</span>
                 </>,
                 <>
-                  <span className="ml-10 text-green-400">
+                  <span className="ml-10 text-syntax-string">
                     "Artificial Intelligence"
                   </span>
                   <span className="text-foreground">,</span>
                 </>,
                 <>
-                  <span className="ml-10 text-green-400">
+                  <span className="ml-10 text-syntax-string">
                     "Database Design"
                   </span>
                 </>,
@@ -480,11 +480,11 @@ function Experience() {
           </Card>
 
           {/* Certifications */}
-          <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
+          <Card className="border-border/50 bg-card/50 backdrop-blur-xs">
             <CardHeader className="pb-3">
               <div className="flex items-center space-x-2">
                 <span className="h-3 w-3 rounded-full bg-purple-500"></span>
-                <span className="ml-2 font-mono text-xs text-muted-foreground">
+                <span className="font-mono text-xs text-muted-foreground">
                   certifications.txt
                 </span>
               </div>
@@ -519,12 +519,12 @@ function Experience() {
 
         <div className="grid gap-6">
           {/* Project 1 */}
-          <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
+          <Card className="border-border/50 bg-card/50 backdrop-blur-xs">
             <CardHeader className="pb-3">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <span className="h-3 w-3 rounded-full bg-green-500"></span>
-                  <span className="ml-2 font-mono text-xs text-muted-foreground">
+                  <span className="h-3 w-3 rounded-full bg-success"></span>
+                  <span className="font-mono text-xs text-muted-foreground">
                     social-media-platform.md
                   </span>
                 </div>
@@ -578,12 +578,12 @@ function Experience() {
           </Card>
 
           {/* Project 2 */}
-          <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
+          <Card className="border-border/50 bg-card/50 backdrop-blur-xs">
             <CardHeader className="pb-3">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
                   <span className="h-3 w-3 rounded-full bg-yellow-500"></span>
-                  <span className="ml-2 font-mono text-xs text-muted-foreground">
+                  <span className="font-mono text-xs text-muted-foreground">
                     xdr-platform.md
                   </span>
                 </div>
@@ -637,12 +637,12 @@ function Experience() {
           </Card>
 
           {/* Project 3 */}
-          <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
+          <Card className="border-border/50 bg-card/50 backdrop-blur-xs">
             <CardHeader className="pb-3">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
                   <span className="h-3 w-3 rounded-full bg-blue-500"></span>
-                  <span className="ml-2 font-mono text-xs text-muted-foreground">
+                  <span className="font-mono text-xs text-muted-foreground">
                     portfolio.md
                   </span>
                 </div>
@@ -694,11 +694,11 @@ function Experience() {
       </div>
 
       {/* Skills Summary */}
-      <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
+      <Card className="border-border/50 bg-card/50 backdrop-blur-xs">
         <CardHeader className="pb-3">
           <div className="flex items-center space-x-2">
-            <span className="h-3 w-3 rounded-full bg-green-500"></span>
-            <span className="ml-2 font-mono text-xs text-muted-foreground">
+            <span className="h-3 w-3 rounded-full bg-success"></span>
+            <span className="font-mono text-xs text-muted-foreground">
               skills_summary.md
             </span>
           </div>
