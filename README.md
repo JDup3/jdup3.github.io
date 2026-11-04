@@ -142,9 +142,11 @@ src/
 ├── components/     # Reusable React components
 │   ├── Navigation.tsx
 │   └── ui/         # UI component library
+│       ├── badge.tsx
 │       ├── button.tsx
 │       ├── card.tsx
-│       └── card-examples.md
+│       ├── card-examples.md
+│       └── separator.tsx
 ├── contexts/       # React context providers
 │   └── AnimationContext.tsx
 ├── lib/            # Utility functions and helpers
