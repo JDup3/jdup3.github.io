@@ -139,6 +139,7 @@ The site is automatically deployed to GitHub Pages when changes are pushed to th
 
 ```
 src/
+├── assets/         # Self-hosted JetBrains Mono font and OFL licence
 ├── components/     # Reusable React components
 │   ├── frame/      # VS Code window frame: title bar, tabs (navigation), breadcrumbs, status bar
 │   ├── code/       # Code-themed building blocks (windows, typed code, terminal)
@@ -148,6 +149,7 @@ src/
 │   └── AnimationContext.tsx
 ├── hooks/          # Reduced motion, in-view and typing animation hooks
 ├── lib/            # Utility functions and helpers
+│   ├── pageMeta.ts
 │   └── utils.ts
 ├── pages/          # React page components
 │   ├── Home.tsx

@@ -7,7 +7,7 @@ import { createRequire } from 'node:module';
 import { pages, pageUrl, site, type Page } from './src/content/site.ts';
 
 const require = createRequire(import.meta.url);
-// Installed TypeScript version, shown in the Home page status bar.
+// Installed TypeScript version, shown in the status bar.
 const { version: typescriptVersion } = require('typescript/package.json') as {
   version: string;
 };
