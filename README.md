@@ -122,7 +122,6 @@ The Makefile provides convenient commands that:
 - `npm run test:ui` - Run tests with UI
 - `npm run test:coverage` - Run tests with coverage report
 - `npm run check` - Run the format check, lint, typecheck, tests and build in one go
-- `npm run check` - Run format check, lint, typecheck, tests and build in one go
 
 ## Deployment
 
