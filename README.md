@@ -141,14 +141,12 @@ The site is automatically deployed to GitHub Pages when changes are pushed to th
 src/
 ├── components/     # Reusable React components
 │   ├── Navigation.tsx
-│   └── ui/         # UI component library
-│       ├── badge.tsx
-│       ├── button.tsx
-│       ├── card.tsx
-│       ├── card-examples.md
-│       └── separator.tsx
+│   ├── code/       # Code-themed building blocks (windows, typed code, terminal)
+│   └── ui/         # shadcn/ui components (CLI-owned)
+├── content/        # Site text and code samples, one file per page
 ├── contexts/       # React context providers
 │   └── AnimationContext.tsx
+├── hooks/          # Reduced motion, in-view and typing animation hooks
 ├── lib/            # Utility functions and helpers
 │   └── utils.ts
 ├── pages/          # React page components
@@ -156,16 +154,13 @@ src/
 │   ├── About.tsx
 │   ├── Contact.tsx
 │   └── Experience.tsx
-├── test/           # Test utilities and setup
-│   ├── Accessibility.test.tsx
-│   ├── App.test.tsx
-│   ├── Home.test.tsx
-│   └── setup.ts
+├── test/           # Vitest + Testing Library tests and setup
 ├── App.tsx         # Main app component with routing
 ├── main.tsx        # Application entry point
 ├── index.css       # Global styles
 └── vite-env.d.ts   # Vite environment type declarations
 
+docs/               # Developer notes (code components)
 public/             # Static assets (favicon, 404.html redirect for GitHub Pages)
 .github/workflows/  # CI and deploy workflows
 ```

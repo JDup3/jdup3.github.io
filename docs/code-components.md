@@ -1,89 +1,52 @@
-# Enhanced Card Components with Line Numbers & Typing Animation
+# Code components
 
-## Overview
+The site's code-styled cards are built from small components in `src/components/code/`, fed by data in `src/content/`. `src/components/ui/` holds only shadcn/ui components, which the shadcn CLI owns.
 
-The Card component system includes two main features: static line-numbered code display and animated typing effects that simulate real-time code writing.
+## Where things live
 
-## Core Components
+| Path                    | What it holds                                                                                                                 |
+| ----------------------- | ----------------------------------------------------------------------------------------------------------------------------- |
+| `src/content/*.ts`      | All page text and code samples, one file per page. Edit wording here.                                                         |
+| `src/content/types.ts`  | Content shapes: `Token`, `CodeLine`, `CodeCard`, `Project`.                                                                   |
+| `src/content/tokens.ts` | Helpers for writing code lines: `kw`, `nm`, `str`, `num`, `p`, `txt`, `line`.                                                 |
+| `src/components/code/`  | `CodeWindow`, `CodeFileCard`, `CodeBlock`, `PageHeader`, `SectionHeading`, `TerminalPrompt`, `CommandLink`, `MarkdownBullet`. |
+| `src/hooks/`            | `usePrefersReducedMotion`, `useInView`, `useTypingAnimation`.                                                                 |
 
-### Static Components
+## Writing a code card
 
-- **`CardContentWithCode`** - Code display with automatic line numbering
-- **`CodeBlock`** - Standalone code container with line numbers
-- **`CodeLine`** - Individual line with optional numbering
+A code line is an indent level (0, 1 or 2) and a list of tokens. Each token kind has one colour: `kw` keyword, `nm` name, `str` string, `num` number, `p` plain text, `txt` inherited colour.
 
-### Animated Components
-
-- **`AnimatedCardContentWithCode`** - Drop-in replacement with typing animation
-- **`AnimatedCodeBlock`** - Sequential line-by-line typing container
-- **`AnimatedCodeLine`** - Individual line with typing cursor support
-
-## Key Features
-
-### Line Numbering System
-
-- Automatic sequential numbering starting from any line
-- Fixed-width alignment that prevents layout shifts
-- Responsive design with proper text wrapping
-- Customizable styling for different themes
-
-### Typing Animation
-
-- Character-by-character typing simulation
-- **Viewport-triggered**: Animations start only when cards become visible
-- **One-time execution**: Each animation runs once per website visit
-- **Session persistence**: Animations persist until browser refresh or new session
-- Configurable speed (30-50ms per character) and line delays (300-500ms)
-- Flashing cursor during typing and persistent terminal cursor after completion
-- Preserves all React element styling and structure during animation
-
-## Usage Examples
-
-### Static Code Card
-
-```tsx
-<CardContentWithCode
-  startLine={1}
-  lines={[<>const message = "Hello World";</>, <>console.log(message);</>]}
-/>
+```ts
+// src/content/about.ts
+export const interests: CodeCard = {
+  id: 'about-interests', // remembers the card was typed during this visit
+  file: 'interests.js',
+  dot: 'warning',
+  lines: [
+    line(0, kw('const'), nm(' interests '), p('= [')),
+    line(1, str("'Software development'"), p(',')),
+    line(0, p(']')),
+  ],
+};
 ```
 
-### Animated Code Card
-
 ```tsx
-<AnimatedCardContentWithCode
-  typingSpeed={30}        // Fast typing
-  lineDelay={300}         // Quick line transitions
-  lines={[
-    <>interface Developer {</>,
-    <>  name: string;</>,
-    <>  skills: string[];</>,
-    <>}</>,
-  ]}
-/>
+// src/pages/About.tsx
+<CodeFileCard card={interests} />
 ```
 
-## Animation Behavior
+`CodeFileCard` takes optional `typingSpeed` (ms per character, default 10) and `lineDelay` (ms pause per line, default 50).
 
-1. **Viewport Detection**: Card waits until it becomes visible (10% threshold)
-2. **Start**: Card appears empty and animation begins
-3. **Typing**: Each line types character-by-character with flashing cursor
-4. **Transition**: Brief pause between lines for readability
-5. **Completion**: Shows persistent terminal prompt (`$` with flashing cursor)
-6. **Session Persistence**: Animation state persists across page navigation
-7. **Reset**: Animation only resets on browser refresh or new session
+## Typing animation
 
-## Technical Implementation
+`CodeBlock` types its lines out once, when the block first scrolls into view (`useInView`, 10% threshold).
 
-- **State Management**: Tracks current line, character position, and completion status
-- **Content Processing**: Recursively handles React elements while preserving styling
-- **Performance**: Uses efficient timers with proper cleanup and minimal re-renders
-- **Responsive**: Maintains mobile compatibility and proper text wrapping
+- Every line is rendered from the first paint. Lines not yet typed are transparent, so the card has its final height from the start and the page does not shift while it types.
+- The line being typed shows its typed part over a transparent copy of the whole line. The copy stays in the accessibility tree, so screen readers get the full text at any point; the typed overlay is `aria-hidden`.
+- Each block types once per visit: `AnimationContext` remembers finished block IDs until the page is reloaded. A block without an `id` gets a stable one from `useId`.
+- With `prefers-reduced-motion: reduce`, or `animate={false}`, the code is shown in full straight away, and `index.css` stops the cursor pulse.
 
-## Benefits
+## Tests
 
-- **Engaging UX**: Creates dynamic, interactive feel for portfolio content
-- **Consistent Styling**: Matches VS Code theme with proper syntax highlighting
-- **Flexible Configuration**: Adjustable speeds for different content types
-- **Accessibility Ready**: Framework supports reduced motion preferences
-- **Type Safe**: Full TypeScript support with comprehensive prop types
+- `src/test/content.test.tsx` snapshots each route's rendered text. A wording change shows up as a snapshot diff; update the snapshot (`npx vitest run -u`) only when the change is intended.
+- `src/test/CodeBlock.test.tsx` covers typing, height reservation, screen-reader text, the once-per-visit rule and reduced motion.
