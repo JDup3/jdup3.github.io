@@ -6,7 +6,7 @@ function Contact() {
     <div className="space-y-8">
       {/* Header */}
       <div className="space-y-2">
-        <div className="flex items-center space-x-2 text-sm font-mono text-muted-foreground">
+        <div className="flex items-center space-x-2 font-mono text-sm text-muted-foreground">
           <span className="text-primary">import</span>
           <span className="text-foreground">{'{'}</span>
           <span className="text-accent">contact</span>
@@ -14,7 +14,7 @@ function Contact() {
           <span className="text-primary">from</span>
           <span className="text-green-400">'./jdup3'</span>
         </div>
-        <h1 className="text-3xl font-mono font-bold text-foreground">
+        <h1 className="font-mono text-3xl font-bold text-foreground">
           <span className="text-accent">async function</span>
           <span className="text-foreground"> </span>
           <span className="text-primary">getInTouch</span>
@@ -28,15 +28,15 @@ function Contact() {
         <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
           <CardHeader className="pb-3">
             <div className="flex items-center space-x-2">
-              <span className="w-3 h-3 bg-green-500 rounded-full"></span>
-              <span className="text-xs font-mono text-muted-foreground ml-2">
+              <span className="h-3 w-3 rounded-full bg-green-500"></span>
+              <span className="ml-2 font-mono text-xs text-muted-foreground">
                 links.ts
               </span>
             </div>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="space-y-3 font-mono text-sm">
-              <div className="flex items-center justify-between p-3 border border-border/50 rounded bg-background/50">
+              <div className="flex items-center justify-between rounded border border-border/50 bg-background/50 p-3">
                 <div className="flex items-center space-x-2">
                   <span className="text-primary">github</span>
                   <span className="text-muted-foreground">:</span>
@@ -57,7 +57,7 @@ function Contact() {
                 </Button>
               </div>
 
-              <div className="flex items-center justify-between p-3 border border-border/50 rounded bg-background/50">
+              <div className="flex items-center justify-between rounded border border-border/50 bg-background/50 p-3">
                 <div className="flex items-center space-x-2">
                   <span className="text-primary">email</span>
                   <span className="text-muted-foreground">:</span>
@@ -72,7 +72,7 @@ function Contact() {
                 </Button>
               </div>
 
-              <div className="flex items-center justify-between p-3 border border-border/50 rounded bg-background/50">
+              <div className="flex items-center justify-between rounded border border-border/50 bg-background/50 p-3">
                 <div className="flex items-center space-x-2">
                   <span className="text-primary">website</span>
                   <span className="text-muted-foreground">:</span>
@@ -100,8 +100,8 @@ function Contact() {
         <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
           <CardHeader className="pb-3">
             <div className="flex items-center space-x-2">
-              <span className="w-3 h-3 bg-green-500 rounded-full"></span>
-              <span className="text-xs font-mono text-muted-foreground ml-2">
+              <span className="h-3 w-3 rounded-full bg-green-500"></span>
+              <span className="ml-2 font-mono text-xs text-muted-foreground">
                 README.md
               </span>
             </div>
@@ -113,26 +113,26 @@ function Contact() {
               </p>
               <div className="text-foreground">
                 <p className="mb-2">Always excited to discuss:</p>
-                <div className="space-y-1 ml-4">
-                  <div className="text-foreground flex">
+                <div className="ml-4 space-y-1">
+                  <div className="flex text-foreground">
                     <span className="mr-2">-</span>
                     <span className="flex-1">
                       Software architecture and scalable systems
                     </span>
                   </div>
-                  <div className="text-foreground flex">
+                  <div className="flex text-foreground">
                     <span className="mr-2">-</span>
                     <span className="flex-1">
                       AWS cloud solutions and infrastructure
                     </span>
                   </div>
-                  <div className="text-foreground flex">
+                  <div className="flex text-foreground">
                     <span className="mr-2">-</span>
                     <span className="flex-1">
                       Technical leadership opportunities
                     </span>
                   </div>
-                  <div className="text-foreground flex">
+                  <div className="flex text-foreground">
                     <span className="mr-2">-</span>
                     <span className="flex-1">
                       Hardware tinkering and game development
@@ -148,19 +148,19 @@ function Contact() {
       {/* Terminal */}
       <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
         <CardContent className="py-4">
-          <div className="font-mono text-sm space-y-1">
+          <div className="space-y-1 font-mono text-sm">
             <div className="flex items-center space-x-2">
               <span className="text-primary">$</span>
               <span className="text-muted-foreground">
                 echo "Looking forward to hearing from you!"
               </span>
             </div>
-            <div className="text-accent ml-4">
+            <div className="ml-4 text-accent">
               Looking forward to hearing from you!
             </div>
             <div className="flex items-center space-x-2 pt-2">
               <span className="text-primary">$</span>
-              <span className="w-2 h-4 bg-primary animate-pulse"></span>
+              <span className="h-4 w-2 animate-pulse bg-primary"></span>
             </div>
           </div>
         </CardContent>

@@ -17,8 +17,8 @@ COPY tailwind.config.cjs ./
 COPY tsconfig*.json ./
 COPY vite.config.ts ./
 COPY postcss.config.cjs ./
-COPY .eslintrc.cjs ./
-COPY .prettierrc ./
+COPY eslint.config.js ./
+COPY .prettierrc .prettierignore ./
 COPY src ./src
 COPY public ./public
 

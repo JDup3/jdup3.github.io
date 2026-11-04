@@ -10,12 +10,12 @@ function About() {
     <div className="space-y-8">
       {/* Header */}
       <div className="space-y-2">
-        <div className="flex items-center space-x-2 text-sm font-mono text-muted-foreground">
+        <div className="flex items-center space-x-2 font-mono text-sm text-muted-foreground">
           <span className="text-primary">/**</span>
           <span>About me</span>
           <span className="text-primary">*/</span>
         </div>
-        <h1 className="text-3xl font-mono font-bold text-foreground">
+        <h1 className="font-mono text-3xl font-bold text-foreground">
           <span className="text-accent">class</span>
           <span className="text-foreground"> </span>
           <span className="text-primary">JonathanDupe</span>
@@ -27,12 +27,12 @@ function About() {
       {/* Terminal Output */}
       <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
         <CardContent className="py-4">
-          <div className="font-mono text-sm space-y-1">
+          <div className="space-y-1 font-mono text-sm">
             <div className="flex items-center space-x-2">
               <span className="text-primary">$</span>
               <span className="text-muted-foreground">whoami</span>
             </div>
-            <div className="text-foreground ml-4">
+            <div className="ml-4 text-foreground">
               Computer Scientist & Software Developer/Architect with expertise
               in building scalable platforms and data pipelines using AWS and
               Python while promoting a culture of learning, growth, and
@@ -40,7 +40,7 @@ function About() {
             </div>
             <div className="flex items-center space-x-2 pt-2">
               <span className="text-primary">$</span>
-              <span className="w-2 h-4 bg-primary animate-pulse"></span>
+              <span className="h-4 w-2 animate-pulse bg-primary"></span>
             </div>
           </div>
         </CardContent>
@@ -52,8 +52,8 @@ function About() {
         <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
           <CardHeader className="pb-3">
             <div className="flex items-center space-x-2">
-              <span className="w-3 h-3 bg-warning rounded-full"></span>
-              <span className="text-xs font-mono text-muted-foreground ml-2">
+              <span className="h-3 w-3 rounded-full bg-warning"></span>
+              <span className="ml-2 font-mono text-xs text-muted-foreground">
                 philosophy.md
               </span>
             </div>
@@ -61,33 +61,33 @@ function About() {
           <CardContent className="space-y-4 font-mono text-sm">
             <div className="space-y-2">
               <p className="text-muted-foreground"># Professional Philosophy</p>
-              <div className="space-y-1 ml-4">
-                <div className="text-foreground flex">
+              <div className="ml-4 space-y-1">
+                <div className="flex text-foreground">
                   <span className="mr-2">-</span>
                   <span className="flex-1">
                     Be committed to continuous learning and growth
                   </span>
                 </div>
-                <div className="text-foreground flex">
+                <div className="flex text-foreground">
                   <span className="mr-2">-</span>
                   <span className="flex-1">
                     Pay it forward through mentorship and knowledge sharing
                   </span>
                 </div>
-                <div className="text-foreground flex">
+                <div className="flex text-foreground">
                   <span className="mr-2">-</span>
                   <span className="flex-1">
                     Quality over quantity, correctness over speed
                   </span>
                 </div>
-                <div className="text-foreground flex">
+                <div className="flex text-foreground">
                   <span className="mr-2">-</span>
                   <span className="flex-1">
                     Systems are as scalable and maintainable as the people who
                     build them
                   </span>
                 </div>
-                <div className="text-foreground flex">
+                <div className="flex text-foreground">
                   <span className="mr-2">-</span>
                   <span className="flex-1">
                     Code can tell a story; write it well
@@ -101,8 +101,8 @@ function About() {
         <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
           <CardHeader className="pb-3">
             <div className="flex items-center space-x-2">
-              <span className="w-3 h-3 bg-warning rounded-full"></span>
-              <span className="text-xs font-mono text-muted-foreground ml-2">
+              <span className="h-3 w-3 rounded-full bg-warning"></span>
+              <span className="ml-2 font-mono text-xs text-muted-foreground">
                 interests.js
               </span>
             </div>
@@ -159,8 +159,8 @@ function About() {
         <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
           <CardHeader className="pb-3">
             <div className="flex items-center space-x-2">
-              <span className="w-3 h-3 bg-green-500 rounded-full"></span>
-              <span className="text-xs font-mono text-muted-foreground ml-2">
+              <span className="h-3 w-3 rounded-full bg-green-500"></span>
+              <span className="ml-2 font-mono text-xs text-muted-foreground">
                 backend.json
               </span>
             </div>
@@ -235,8 +235,8 @@ function About() {
         <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
           <CardHeader className="pb-3">
             <div className="flex items-center space-x-2">
-              <span className="w-3 h-3 bg-green-500 rounded-full"></span>
-              <span className="text-xs font-mono text-muted-foreground ml-2">
+              <span className="h-3 w-3 rounded-full bg-green-500"></span>
+              <span className="ml-2 font-mono text-xs text-muted-foreground">
                 infrastructure.tfvars
               </span>
             </div>

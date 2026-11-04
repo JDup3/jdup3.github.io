@@ -37,7 +37,7 @@ CardHeader.displayName = 'CardHeader';
 const CardTitle = React.forwardRef<
   HTMLParagraphElement,
   React.HTMLAttributes<HTMLHeadingElement>
->(({ className, ...props }, ref) => (
+>(({ className, children, ...props }, ref) => (
   <h3
     ref={ref}
     className={cn(
@@ -45,7 +45,9 @@ const CardTitle = React.forwardRef<
       className
     )}
     {...props}
-  />
+  >
+    {children}
+  </h3>
 ));
 CardTitle.displayName = 'CardTitle';
 
@@ -353,14 +355,14 @@ const CodeLine = React.forwardRef<HTMLDivElement, CodeLineProps>(
       {showLineNumber && lineNumber !== undefined && (
         <span
           className={cn(
-            'text-muted-foreground mr-2 flex-shrink-0 w-6 text-right',
+            'mr-2 w-6 flex-shrink-0 text-right text-muted-foreground',
             lineNumberClassName
           )}
         >
           {lineNumber}
         </span>
       )}
-      <div className="flex-1 min-w-0">{children}</div>
+      <div className="min-w-0 flex-1">{children}</div>
     </div>
   )
 );
@@ -394,17 +396,17 @@ const AnimatedCodeLine = React.forwardRef<
       {showLineNumber && lineNumber !== undefined && (
         <span
           className={cn(
-            'text-muted-foreground mr-2 flex-shrink-0 w-6 text-right',
+            'mr-2 w-6 flex-shrink-0 text-right text-muted-foreground',
             lineNumberClassName
           )}
         >
           {lineNumber}
         </span>
       )}
-      <div className="flex-1 min-w-0 flex items-center">
+      <div className="flex min-w-0 flex-1 items-center">
         <span>{children}</span>
         {showCursor && (
-          <span className="w-2 h-4 bg-primary animate-pulse ml-1"></span>
+          <span className="ml-1 h-4 w-2 animate-pulse bg-primary"></span>
         )}
       </div>
     </div>
@@ -547,7 +549,7 @@ const AnimatedCodeBlock = React.forwardRef<
           ))}
           <div className="flex items-center space-x-2 pt-1">
             <span className="text-primary">$</span>
-            <span className="w-2 h-4 bg-primary animate-pulse"></span>
+            <span className="h-4 w-2 animate-pulse bg-primary"></span>
           </div>
         </div>
       );
@@ -583,7 +585,7 @@ const AnimatedCodeBlock = React.forwardRef<
         {isTypingComplete && (
           <div className="flex items-center space-x-2 pt-1">
             <span className="text-primary">$</span>
-            <span className="w-2 h-4 bg-primary animate-pulse"></span>
+            <span className="h-4 w-2 animate-pulse bg-primary"></span>
           </div>
         )}
       </div>
@@ -592,8 +594,7 @@ const AnimatedCodeBlock = React.forwardRef<
 );
 AnimatedCodeBlock.displayName = 'AnimatedCodeBlock';
 
-interface CardContentWithCodeProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+interface CardContentWithCodeProps extends React.HTMLAttributes<HTMLDivElement> {
   startLine?: number;
   showLineNumbers?: boolean;
   lineNumberClassName?: string;
@@ -630,8 +631,7 @@ const CardContentWithCode = React.forwardRef<
 CardContentWithCode.displayName = 'CardContentWithCode';
 
 // Animated version of CardContentWithCode
-interface AnimatedCardContentWithCodeProps
-  extends React.HTMLAttributes<HTMLDivElement> {
+interface AnimatedCardContentWithCodeProps extends React.HTMLAttributes<HTMLDivElement> {
   startLine?: number;
   showLineNumbers?: boolean;
   lineNumberClassName?: string;
@@ -677,7 +677,7 @@ const AnimatedCardContentWithCode = React.forwardRef<
         className={cn('p-6 pt-0', sizeClass, className)}
         {...props}
       >
-        <div className="font-mono text-sm animated-code-content">
+        <div className="animated-code-content font-mono text-sm">
           <AnimatedCodeBlock
             startLine={startLine}
             showLineNumbers={showLineNumbers}

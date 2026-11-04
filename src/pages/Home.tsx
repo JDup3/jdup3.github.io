@@ -11,10 +11,10 @@ function Home() {
     <div className="space-y-8">
       {/* Hero Section */}
       <div className="space-y-2">
-        <div className="flex items-center space-x-2 text-sm font-mono text-muted-foreground">
+        <div className="flex items-center space-x-2 font-mono text-sm text-muted-foreground">
           <span className="text-primary"># Personal Portfolio</span>
         </div>
-        <h1 className="text-xl sm:text-2xl md:text-3xl font-mono font-bold text-foreground">
+        <h1 className="font-mono text-xl font-bold text-foreground sm:text-2xl md:text-3xl">
           <span className="text-accent">class</span>
           <span className="text-foreground"> </span>
           <span className="text-primary">JonathanDupe</span>
@@ -22,7 +22,7 @@ function Home() {
           <span className="text-primary">SoftwareArchitect</span>
           <span className="text-foreground">):</span>
         </h1>
-        <p className="text-sm sm:text-base md:text-lg text-muted-foreground font-mono max-w-6xl">
+        <p className="max-w-6xl font-mono text-sm text-muted-foreground sm:text-base md:text-lg">
           """ Lead Software Developer with 7+ years of experience architecting
           and developing scalable systems with AWS, Python, modern web
           technologies, and Machine Learning & AI. Passionate about building
@@ -36,8 +36,8 @@ function Home() {
         <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
           <CardHeader className="pb-3">
             <div className="flex items-center space-x-2">
-              <span className="w-3 h-3 bg-green-500 rounded-full"></span>
-              <span className="text-xs font-mono text-muted-foreground ml-2">
+              <span className="h-3 w-3 rounded-full bg-green-500"></span>
+              <span className="ml-2 font-mono text-xs text-muted-foreground">
                 about_me.ts
               </span>
             </div>
@@ -106,8 +106,8 @@ function Home() {
         <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
           <CardHeader className="pb-3">
             <div className="flex items-center space-x-2">
-              <span className="w-3 h-3 bg-green-500 rounded-full"></span>
-              <span className="text-xs font-mono text-muted-foreground ml-2">
+              <span className="h-3 w-3 rounded-full bg-green-500"></span>
+              <span className="ml-2 font-mono text-xs text-muted-foreground">
                 current_project.md
               </span>
             </div>
@@ -117,27 +117,27 @@ function Home() {
               <p className="text-muted-foreground">
                 <span className="text-primary">#</span> Current Experience
               </p>
-              <div className="space-y-1 ml-4">
+              <div className="ml-4 space-y-1">
                 <p className="text-foreground">
                   <span className="text-primary">## **</span>Pendulum Intel
                   <span className="text-primary">**</span> - Lead Software
                   Developer
                 </p>
-                <div className="text-foreground flex text-muted-foreground">
+                <div className="flex text-foreground text-muted-foreground">
                   <span className="mr-2">-</span>
                   <span className="flex-1">
                     Architecting and developing a Big Data Social Media
                     Listening Platform and Analytics Tools in AWS
                   </span>
                 </div>
-                <div className="text-foreground flex text-muted-foreground">
+                <div className="flex text-foreground text-muted-foreground">
                   <span className="mr-2">-</span>
                   <span className="flex-1">
                     Providing mentorship and technical leadership to a team of
                     developers
                   </span>
                 </div>
-                <div className="text-foreground flex text-muted-foreground">
+                <div className="flex text-foreground text-muted-foreground">
                   <span className="mr-2">-</span>
                   <span className="flex-1">
                     Collaborating with cross-functional teams to align on
@@ -169,7 +169,7 @@ function Home() {
       {/* Status Bar */}
       <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
         <CardContent className="py-4">
-          <div className="flex items-center justify-between text-xs font-mono">
+          <div className="flex items-center justify-between font-mono text-xs">
             <div className="flex items-center space-x-4 text-muted-foreground">
               <span>WSL: Ubuntu 22.04</span>
               <span>portfolio-deployment*</span>

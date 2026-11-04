@@ -15,7 +15,7 @@ function ScrollToTop() {
     // Check if window.scrollTo is available (not in test environments)
     try {
       window.scrollTo(0, 0);
-    } catch (error) {
+    } catch {
       // Ignore scrollTo errors in test environments
     }
   }, [pathname]);
@@ -32,7 +32,7 @@ function App() {
       <AnimationProvider key={appKey}>
         <ScrollToTop />
         <Navigation />
-        <main className="container mx-auto px-4 sm:px-6 py-12 max-w-5xl">
+        <main className="container mx-auto max-w-5xl px-4 py-12 sm:px-6">
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
