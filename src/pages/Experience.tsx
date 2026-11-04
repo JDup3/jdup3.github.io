@@ -11,7 +11,7 @@ function Experience() {
     <div className="space-y-8">
       {/* Header */}
       <div className="space-y-2">
-        <div className="flex items-center space-x-2 text-sm font-mono text-muted-foreground">
+        <div className="flex items-center space-x-2 font-mono text-sm text-muted-foreground">
           <span className="text-primary">import</span>
           <span className="text-foreground">{'{'}</span>
           <span className="text-accent">experience</span>
@@ -19,7 +19,7 @@ function Experience() {
           <span className="text-primary">from</span>
           <span className="text-green-400">'./career-journey'</span>
         </div>
-        <h1 className="text-3xl font-mono font-bold text-foreground">
+        <h1 className="font-mono text-3xl font-bold text-foreground">
           <span className="text-accent">const</span>
           <span className="text-foreground"> </span>
           <span className="text-primary">professionalJourney</span>
@@ -31,7 +31,7 @@ function Experience() {
 
       {/* Work Experience */}
       <div className="space-y-6">
-        <h2 className="text-xl font-mono font-semibold text-primary">
+        <h2 className="font-mono text-xl font-semibold text-primary">
           <span className="text-muted-foreground">//</span> Work Experience
         </h2>
 
@@ -40,8 +40,8 @@ function Experience() {
           <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
             <CardHeader className="pb-3">
               <div className="flex items-center space-x-2">
-                <span className="w-3 h-3 bg-green-500 rounded-full"></span>
-                <span className="text-xs font-mono text-muted-foreground ml-2">
+                <span className="h-3 w-3 rounded-full bg-green-500"></span>
+                <span className="ml-2 font-mono text-xs text-muted-foreground">
                   current_role.py
                 </span>
               </div>
@@ -128,8 +128,8 @@ function Experience() {
           <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
             <CardHeader className="pb-3">
               <div className="flex items-center space-x-2">
-                <span className="w-3 h-3 bg-yellow-500 rounded-full"></span>
-                <span className="text-xs font-mono text-muted-foreground ml-2">
+                <span className="h-3 w-3 rounded-full bg-yellow-500"></span>
+                <span className="ml-2 font-mono text-xs text-muted-foreground">
                   previous_role.py
                 </span>
               </div>
@@ -216,7 +216,7 @@ function Experience() {
 
       {/* Services and Frameworks */}
       <div className="space-y-6">
-        <h2 className="text-xl font-mono font-semibold text-primary">
+        <h2 className="font-mono text-xl font-semibold text-primary">
           <span className="text-muted-foreground">//</span> Top Services &
           Frameworks
         </h2>
@@ -224,8 +224,8 @@ function Experience() {
           <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
             <CardHeader className="pb-3">
               <div className="flex items-center space-x-2">
-                <span className="w-3 h-3 bg-purple-500 rounded-full"></span>
-                <span className="text-xs font-mono text-muted-foreground ml-2">
+                <span className="h-3 w-3 rounded-full bg-purple-500"></span>
+                <span className="ml-2 font-mono text-xs text-muted-foreground">
                   services.js
                 </span>
               </div>
@@ -325,8 +325,8 @@ function Experience() {
           <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
             <CardHeader className="pb-3">
               <div className="flex items-center space-x-2">
-                <span className="w-3 h-3 bg-purple-500 rounded-full"></span>
-                <span className="text-xs font-mono text-muted-foreground ml-2">
+                <span className="h-3 w-3 rounded-full bg-purple-500"></span>
+                <span className="ml-2 font-mono text-xs text-muted-foreground">
                   frameworks.js
                 </span>
               </div>
@@ -403,7 +403,7 @@ function Experience() {
 
       {/* Education and Certifications */}
       <div className="space-y-6">
-        <h2 className="text-xl font-mono font-semibold text-primary">
+        <h2 className="font-mono text-xl font-semibold text-primary">
           <span className="text-muted-foreground">//</span> Education &
           Certifications
         </h2>
@@ -413,8 +413,8 @@ function Experience() {
           <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
             <CardHeader className="pb-3">
               <div className="flex items-center space-x-2">
-                <span className="w-3 h-3 bg-blue-500 rounded-full"></span>
-                <span className="text-xs font-mono text-muted-foreground ml-2">
+                <span className="h-3 w-3 rounded-full bg-blue-500"></span>
+                <span className="ml-2 font-mono text-xs text-muted-foreground">
                   education.json
                 </span>
               </div>
@@ -483,25 +483,25 @@ function Experience() {
           <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
             <CardHeader className="pb-3">
               <div className="flex items-center space-x-2">
-                <span className="w-3 h-3 bg-purple-500 rounded-full"></span>
-                <span className="text-xs font-mono text-muted-foreground ml-2">
+                <span className="h-3 w-3 rounded-full bg-purple-500"></span>
+                <span className="ml-2 font-mono text-xs text-muted-foreground">
                   certifications.txt
                 </span>
               </div>
             </CardHeader>
             <CardContent className="space-y-3 font-mono text-sm">
               <div className="space-y-2">
-                <div className="flex items-center justify-between p-3 border border-border/50 rounded bg-background/50">
+                <div className="flex items-center justify-between rounded border border-border/50 bg-background/50 p-3">
                   <span className="text-primary">AWS Solutions Architect</span>
                   <span className="text-xs text-muted-foreground">Planned</span>
                 </div>
-                <div className="flex items-center justify-between p-3 border border-border/50 rounded bg-background/50">
+                <div className="flex items-center justify-between rounded border border-border/50 bg-background/50 p-3">
                   <span className="text-primary">Python Professional</span>
                   <span className="text-xs text-muted-foreground">
                     In Progress
                   </span>
                 </div>
-                <div className="flex items-center justify-between p-3 border border-border/50 rounded bg-background/50">
+                <div className="flex items-center justify-between rounded border border-border/50 bg-background/50 p-3">
                   <span className="text-primary">Terraform Associate</span>
                   <span className="text-xs text-muted-foreground">Planned</span>
                 </div>
@@ -513,7 +513,7 @@ function Experience() {
 
       {/* Key Projects */}
       <div className="space-y-6">
-        <h2 className="text-xl font-mono font-semibold text-primary">
+        <h2 className="font-mono text-xl font-semibold text-primary">
           <span className="text-muted-foreground">//</span> Notable Projects
         </h2>
 
@@ -523,8 +523,8 @@ function Experience() {
             <CardHeader className="pb-3">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <span className="w-3 h-3 bg-green-500 rounded-full"></span>
-                  <span className="text-xs font-mono text-muted-foreground ml-2">
+                  <span className="h-3 w-3 rounded-full bg-green-500"></span>
+                  <span className="ml-2 font-mono text-xs text-muted-foreground">
                     social-media-platform.md
                   </span>
                 </div>
@@ -542,10 +542,10 @@ function Experience() {
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <h3 className="font-mono text-lg text-primary mb-2">
+                <h3 className="mb-2 font-mono text-lg text-primary">
                   # Big Data Social Media Analytics Platform
                 </h3>
-                <p className="text-sm text-muted-foreground font-mono">
+                <p className="font-mono text-sm text-muted-foreground">
                   Architected and developed a scalable social media listening
                   platform processing millions of posts daily for near realtime
                   brand analytics and alerts. Built with AWS services, Python,
@@ -553,19 +553,19 @@ function Experience() {
                 </p>
               </div>
               <div className="flex flex-wrap gap-2">
-                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">
+                <span className="rounded bg-primary/10 px-2 py-1 font-mono text-xs text-primary">
                   AWS
                 </span>
-                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">
+                <span className="rounded bg-primary/10 px-2 py-1 font-mono text-xs text-primary">
                   Machine Learning
                 </span>
-                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">
+                <span className="rounded bg-primary/10 px-2 py-1 font-mono text-xs text-primary">
                   Python
                 </span>
-                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">
+                <span className="rounded bg-primary/10 px-2 py-1 font-mono text-xs text-primary">
                   Big Data
                 </span>
-                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">
+                <span className="rounded bg-primary/10 px-2 py-1 font-mono text-xs text-primary">
                   Real-time Analytics
                 </span>
               </div>
@@ -577,8 +577,8 @@ function Experience() {
             <CardHeader className="pb-3">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <span className="w-3 h-3 bg-yellow-500 rounded-full"></span>
-                  <span className="text-xs font-mono text-muted-foreground ml-2">
+                  <span className="h-3 w-3 rounded-full bg-yellow-500"></span>
+                  <span className="ml-2 font-mono text-xs text-muted-foreground">
                     xdr-platform.md
                   </span>
                 </div>
@@ -595,10 +595,10 @@ function Experience() {
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <h3 className="font-mono text-lg text-primary mb-2">
+                <h3 className="mb-2 font-mono text-lg text-primary">
                   # Extended Detection & Response (XDR) Platform
                 </h3>
-                <p className="text-sm text-muted-foreground font-mono">
+                <p className="font-mono text-sm text-muted-foreground">
                   Architected and developed major components for a cybersecurity
                   platform for threat detection and response. Implemented
                   real-time data processing pipelines, Restful APIs, UIs, and
@@ -606,19 +606,19 @@ function Experience() {
                 </p>
               </div>
               <div className="flex flex-wrap gap-2">
-                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">
+                <span className="rounded bg-primary/10 px-2 py-1 font-mono text-xs text-primary">
                   Cybersecurity
                 </span>
-                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">
+                <span className="rounded bg-primary/10 px-2 py-1 font-mono text-xs text-primary">
                   AWS
                 </span>
-                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">
+                <span className="rounded bg-primary/10 px-2 py-1 font-mono text-xs text-primary">
                   UI Development
                 </span>
-                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">
+                <span className="rounded bg-primary/10 px-2 py-1 font-mono text-xs text-primary">
                   Data Pipelines
                 </span>
-                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">
+                <span className="rounded bg-primary/10 px-2 py-1 font-mono text-xs text-primary">
                   Team Leadership
                 </span>
               </div>
@@ -630,8 +630,8 @@ function Experience() {
             <CardHeader className="pb-3">
               <div className="flex items-center justify-between">
                 <div className="flex items-center space-x-2">
-                  <span className="w-3 h-3 bg-blue-500 rounded-full"></span>
-                  <span className="text-xs font-mono text-muted-foreground ml-2">
+                  <span className="h-3 w-3 rounded-full bg-blue-500"></span>
+                  <span className="ml-2 font-mono text-xs text-muted-foreground">
                     portfolio.md
                   </span>
                 </div>
@@ -653,26 +653,26 @@ function Experience() {
             </CardHeader>
             <CardContent className="space-y-4">
               <div>
-                <h3 className="font-mono text-lg text-primary mb-2">
+                <h3 className="mb-2 font-mono text-lg text-primary">
                   # Code Themed Portfolio Website
                 </h3>
-                <p className="text-sm text-muted-foreground font-mono">
+                <p className="font-mono text-sm text-muted-foreground">
                   Modern portfolio website built with React, TypeScript, and
                   Tailwind CSS. Features code-themed design with reusable
                   components and responsive layout.
                 </p>
               </div>
               <div className="flex flex-wrap gap-2">
-                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">
+                <span className="rounded bg-primary/10 px-2 py-1 font-mono text-xs text-primary">
                   React
                 </span>
-                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">
+                <span className="rounded bg-primary/10 px-2 py-1 font-mono text-xs text-primary">
                   TypeScript
                 </span>
-                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">
+                <span className="rounded bg-primary/10 px-2 py-1 font-mono text-xs text-primary">
                   Tailwind CSS
                 </span>
-                <span className="px-2 py-1 text-xs bg-primary/10 text-primary rounded font-mono">
+                <span className="rounded bg-primary/10 px-2 py-1 font-mono text-xs text-primary">
                   Responsive Design
                 </span>
               </div>
@@ -685,8 +685,8 @@ function Experience() {
       <Card className="border-border/50 bg-card/50 backdrop-blur-sm">
         <CardHeader className="pb-3">
           <div className="flex items-center space-x-2">
-            <span className="w-3 h-3 bg-green-500 rounded-full"></span>
-            <span className="text-xs font-mono text-muted-foreground ml-2">
+            <span className="h-3 w-3 rounded-full bg-green-500"></span>
+            <span className="ml-2 font-mono text-xs text-muted-foreground">
               skills_summary.md
             </span>
           </div>
@@ -694,8 +694,8 @@ function Experience() {
         <CardContent className="space-y-4 font-mono text-sm">
           <div className="grid gap-4 md:grid-cols-3">
             <div>
-              <h4 className="text-primary mb-2"># Backend & Cloud</h4>
-              <ul className="space-y-1 text-muted-foreground text-xs">
+              <h4 className="mb-2 text-primary"># Backend & Cloud</h4>
+              <ul className="space-y-1 text-xs text-muted-foreground">
                 <li>- AWS & GCP</li>
                 <li>- Docker & Containerization</li>
                 <li>- Terraform Infrastructure</li>
@@ -703,8 +703,8 @@ function Experience() {
               </ul>
             </div>
             <div>
-              <h4 className="text-primary mb-2"># Frontend & Mobile</h4>
-              <ul className="space-y-1 text-muted-foreground text-xs">
+              <h4 className="mb-2 text-primary"># Frontend & Mobile</h4>
+              <ul className="space-y-1 text-xs text-muted-foreground">
                 <li>- Javascript & TypeScript</li>
                 <li>- React & Vue</li>
                 <li>- Modern CSS (Tailwind)</li>
@@ -712,8 +712,8 @@ function Experience() {
               </ul>
             </div>
             <div>
-              <h4 className="text-primary mb-2"># Data & Analytics</h4>
-              <ul className="space-y-1 text-muted-foreground text-xs">
+              <h4 className="mb-2 text-primary"># Data & Analytics</h4>
+              <ul className="space-y-1 text-xs text-muted-foreground">
                 <li>- Big Data Processing</li>
                 <li>- Real-time Analytics</li>
                 <li>- Machine Learning Pipelines</li>

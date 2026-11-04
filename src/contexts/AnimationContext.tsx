@@ -7,13 +7,11 @@ import React, {
   ReactNode,
 } from 'react';
 
-/* eslint-disable no-unused-vars */
 interface AnimationContextType {
   hasAnimated: (id: string) => boolean;
   markAsAnimated: (id: string) => void;
   resetAllAnimations: () => void;
 }
-/* eslint-enable no-unused-vars */
 
 const AnimationContext = createContext<AnimationContextType | undefined>(
   undefined
