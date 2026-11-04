@@ -34,8 +34,6 @@ exports[`page content > renders the same text on / 1`] = `
   "-Providing mentorship and technical leadership to a team of developers",
   "-Collaborating with cross-functional teams to align on product vision and technical requirements",
   "$ git clone profile <https://github.com/JDup3>",
-  "WSL: Ubuntu 22.04portfolio-deployment*",
-  "Python 3.13React <version>TypeScript <version>",
 ]
 `;
 

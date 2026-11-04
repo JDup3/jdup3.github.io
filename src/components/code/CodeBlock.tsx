@@ -24,12 +24,22 @@ function typedPart(line: CodeLine, chars: number): CodeLine {
 
 function Cursor({ className }: { className?: string }) {
   return (
-    <span className={cn('h-4 w-2 animate-pulse bg-primary', className)}></span>
+    <span className={cn('h-4 w-2 animate-pulse bg-cursor', className)}></span>
   );
 }
 
+// Hanging indent: the line starts at its indent level (2ch per level) and a
+// line that wraps on a narrow screen continues 2ch further in, so wrapped
+// code still reads as one indented statement.
+const indentClass: Record<CodeLine['indent'], string> = {
+  0: 'pl-[2ch] indent-[-2ch]',
+  1: 'pl-[4ch] indent-[-2ch]',
+  2: 'pl-[6ch] indent-[-2ch]',
+};
+
 interface CodeLineRowProps {
   number: number;
+  indent: CodeLine['indent'];
   className?: string;
   contentClassName?: string;
   children: React.ReactNode;
@@ -37,16 +47,21 @@ interface CodeLineRowProps {
 
 function CodeLineRow({
   number,
+  indent,
   className,
   contentClassName,
   children,
 }: CodeLineRowProps) {
   return (
     <div className={cn('flex', className)}>
-      <span className="mr-2 w-6 shrink-0 text-right text-muted-foreground">
+      <span className="mr-3 w-6 shrink-0 text-right text-muted-foreground tabular-nums select-none">
         {number}
       </span>
-      <div className={cn('min-w-0 flex-1', contentClassName)}>{children}</div>
+      <div
+        className={cn('min-w-0 flex-1', indentClass[indent], contentClassName)}
+      >
+        {children}
+      </div>
     </div>
   );
 }
@@ -108,26 +123,41 @@ export function CodeBlock({
         const number = startLine + index;
         if (!typing || index < position.line) {
           return (
-            <CodeLineRow key={number} number={number}>
-              <CodeTokens tokens={line.tokens} indent={line.indent} />
+            <CodeLineRow key={number} number={number} indent={line.indent}>
+              <CodeTokens tokens={line.tokens} />
             </CodeLineRow>
           );
         }
         if (index > position.line) {
           return (
-            <CodeLineRow key={number} number={number} className="opacity-0">
-              <CodeTokens tokens={line.tokens} indent={line.indent} />
+            <CodeLineRow
+              key={number}
+              number={number}
+              indent={line.indent}
+              className="opacity-0"
+            >
+              <CodeTokens tokens={line.tokens} />
             </CodeLineRow>
           );
         }
         const typed = typedPart(line, position.char);
         return (
-          <CodeLineRow key={number} number={number} contentClassName="relative">
+          <CodeLineRow
+            key={number}
+            number={number}
+            indent={line.indent}
+            contentClassName="relative"
+          >
             <span className="opacity-0">
-              <CodeTokens tokens={line.tokens} indent={line.indent} />
+              <CodeTokens tokens={line.tokens} />
             </span>
-            <span aria-hidden="true" className="absolute inset-0">
-              <CodeTokens tokens={typed.tokens} indent={typed.indent} />
+            {/* Same padding as the row, so the overlay's text sits exactly
+                on the transparent copy, wrapped lines included. */}
+            <span
+              aria-hidden="true"
+              className={cn('absolute inset-0', indentClass[line.indent])}
+            >
+              <CodeTokens tokens={typed.tokens} />
               <Cursor className="ml-1 inline-block align-middle" />
             </span>
           </CodeLineRow>

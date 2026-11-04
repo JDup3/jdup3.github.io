@@ -1,4 +1,4 @@
-import { render, screen, fireEvent } from '@testing-library/react';
+import { render, screen } from '@testing-library/react';
 import { MemoryRouter } from 'react-router';
 import { afterEach, describe, it, expect, vi } from 'vitest';
 import App from '@/App';
@@ -13,23 +13,6 @@ const renderApp = (path = '/') =>
 describe('accessibility', () => {
   afterEach(() => {
     vi.unstubAllGlobals();
-  });
-
-  it('links the mobile menu button to the menu and keeps it inert while closed', () => {
-    renderApp();
-
-    const toggle = screen.getByRole('button', { name: 'Toggle menu' });
-    const menuId = toggle.getAttribute('aria-controls');
-    expect(menuId).toBeTruthy();
-    const menu = document.getElementById(menuId!);
-    expect(menu).not.toBeNull();
-
-    expect(toggle).toHaveAttribute('aria-expanded', 'false');
-    expect(menu).toHaveAttribute('inert');
-
-    fireEvent.click(toggle);
-    expect(toggle).toHaveAttribute('aria-expanded', 'true');
-    expect(menu).not.toHaveAttribute('inert');
   });
 
   it('provides a skip link to the main landmark and a footer', () => {

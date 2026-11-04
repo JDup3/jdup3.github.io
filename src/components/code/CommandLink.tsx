@@ -14,9 +14,14 @@ export function CommandLink({
   variant = 'ghost',
 }: CommandLinkProps) {
   return (
-    <Button variant={variant} size="sm" asChild className="font-mono text-xs">
+    <Button
+      variant={variant}
+      size="sm"
+      asChild
+      className="font-mono text-label"
+    >
       <a href={href} target="_blank" rel="noopener noreferrer">
-        <span className="whitespace-pre text-primary">$ </span>
+        <span className="whitespace-pre text-success">$ </span>
         {command}
       </a>
     </Button>

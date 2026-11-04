@@ -29,7 +29,9 @@ function About() {
         <CodeWindow file={philosophy.file} dot="warning">
           <CardContent className="space-y-4 font-mono text-sm">
             <div className="space-y-2">
-              <p className="text-muted-foreground">{philosophy.heading}</p>
+              <p className="font-bold text-syntax-keyword">
+                {philosophy.heading}
+              </p>
               <div className="ml-4 space-y-1">
                 {philosophy.items.map((item) => (
                   <MarkdownBullet key={item} className="text-foreground">

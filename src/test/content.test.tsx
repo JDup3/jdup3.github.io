@@ -21,8 +21,7 @@ const BLOCK_TAGS = new Set([
 
 // The page's visible text, one entry per rendered line, with whitespace
 // collapsed the way the browser does. Links are suffixed with their target so
-// a changed URL also shows up in the snapshot. The Home status bar's React and
-// TypeScript versions are masked so dependency bumps don't break the snapshot.
+// a changed URL also shows up in the snapshot.
 function renderedLines(root: Element): string[] {
   const lines: string[] = [];
   let current = '';

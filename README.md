@@ -139,15 +139,17 @@ The site is automatically deployed to GitHub Pages when changes are pushed to th
 
 ```
 src/
+├── assets/         # Self-hosted JetBrains Mono font and OFL licence
 ├── components/     # Reusable React components
-│   ├── Navigation.tsx
+│   ├── frame/      # VS Code window frame: title bar, tabs (navigation), breadcrumbs, status bar
 │   ├── code/       # Code-themed building blocks (windows, typed code, terminal)
 │   └── ui/         # shadcn/ui components (CLI-owned)
-├── content/        # Site text and code samples, one file per page
+├── content/        # Site text and code samples, one file per page; site.ts lists the pages and their SEO details
 ├── contexts/       # React context providers
 │   └── AnimationContext.tsx
 ├── hooks/          # Reduced motion, in-view and typing animation hooks
 ├── lib/            # Utility functions and helpers
+│   ├── pageMeta.ts
 │   └── utils.ts
 ├── pages/          # React page components
 │   ├── Home.tsx
@@ -157,11 +159,11 @@ src/
 ├── test/           # Vitest + Testing Library tests and setup
 ├── App.tsx         # Main app component with routing
 ├── main.tsx        # Application entry point
-├── index.css       # Global styles
+├── index.css       # Global styles, VS Code Dark+ colour tokens and the self-hosted font
 └── vite-env.d.ts   # Vite environment type declarations
 
 docs/               # Developer notes (code components)
-public/             # Static assets (favicon, 404.html redirect for GitHub Pages)
+public/             # Static assets (favicon, social card image, robots.txt, 404.html redirect for GitHub Pages)
 .github/workflows/  # CI and deploy workflows
 ```
 

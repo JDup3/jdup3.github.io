@@ -40,35 +40,60 @@ describe('routes', () => {
   );
 });
 
-describe('mobile menu', () => {
-  it('opens, navigates and closes again', async () => {
+describe('tab bar', () => {
+  const tab = (name: string) =>
+    within(screen.getByRole('navigation', { name: 'Pages' })).getByRole(
+      'link',
+      { name }
+    );
+
+  it.each([
+    ['/', 'home.tsx'],
+    ['/about', 'about.tsx'],
+    ['/experience', 'experience.tsx'],
+    ['/contact', 'contact.tsx'],
+  ])('marks the %s tab as the current page', (path, file) => {
+    renderApp(path);
+    const current = screen
+      .getAllByRole('link')
+      .filter((link) => link.getAttribute('aria-current') === 'page');
+    expect(current).toEqual([tab(file)]);
+  });
+
+  it('opens a page from its tab and moves the current marker', async () => {
     const user = userEvent.setup();
     renderApp('/');
 
-    const toggle = screen.getByRole('button', { name: 'Toggle menu' });
-    const menu = document.getElementById(
-      toggle.getAttribute('aria-controls')!
-    )!;
-    expect(toggle).toHaveAttribute('aria-expanded', 'false');
+    await user.click(tab('experience.tsx'));
+    expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
+      'const professionalJourney = await getExperience()'
+    );
+    expect(tab('experience.tsx')).toHaveAttribute('aria-current', 'page');
+    expect(tab('home.tsx')).not.toHaveAttribute('aria-current');
+  });
 
-    await user.click(toggle);
-    expect(toggle).toHaveAttribute('aria-expanded', 'true');
+  it('can be used from the keyboard', async () => {
+    const user = userEvent.setup();
+    renderApp('/');
 
-    await user.click(within(menu).getByRole('link', { name: 'about.tsx' }));
-    expect(toggle).toHaveAttribute('aria-expanded', 'false');
-    expect(menu).toHaveAttribute('inert');
+    await user.tab(); // skip link
+    await user.tab();
+    expect(tab('home.tsx')).toHaveFocus();
+    await user.tab();
+    expect(tab('about.tsx')).toHaveFocus();
+    await user.keyboard('{Enter}');
     expect(screen.getByRole('heading', { level: 1 })).toHaveTextContent(
       'class JonathanDupe extends SoftwareArchitect'
     );
   });
 
-  it('closes when the toggle is pressed again', async () => {
-    const user = userEvent.setup();
-    renderApp('/');
-    const toggle = screen.getByRole('button', { name: 'Toggle menu' });
-
-    await user.click(toggle);
-    await user.click(toggle);
-    expect(toggle).toHaveAttribute('aria-expanded', 'false');
+  it.each([
+    ['/', 'Jonathan Dupe · Lead Software Developer'],
+    ['/about', 'About me · Jonathan Dupe'],
+    ['/experience', 'Work Experience · Jonathan Dupe'],
+    ['/contact', 'Contact · Jonathan Dupe'],
+  ])('gives %s its own document title', (path, title) => {
+    renderApp(path);
+    expect(document.title).toBe(title);
   });
 });

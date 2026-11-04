@@ -4,45 +4,79 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
-  Design tokens. The site is dark only (VS Code Dark+ inspired), so the tokens
-  live on :root and there is no light/.dark split. Values are OKLCH; each is
-  the exact equivalent of the HSL value the site used on Tailwind 3, so the
-  rendered colours are unchanged. The hex comment is the sRGB value.
+  The site's one font: JetBrains Mono (variable weight, Latin subset),
+  self-hosted under the SIL Open Font License (assets/fonts/OFL.txt).
+  `swap` shows the fallback stack until the file arrives.
+*/
+@font-face {
+  font-family: 'JetBrains Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 800;
+  src: url('./assets/fonts/jetbrains-mono-latin-wght-normal.woff2')
+    format('woff2');
+  unicode-range:
+    U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC,
+    U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212,
+    U+2215, U+FEFF, U+FFFD;
+}
+
+/*
+  Design tokens. The site is dark only and framed as a VS Code window, so the
+  colours are VS Code's Dark+ theme colours (hex) and live on :root with no
+  light/.dark split. Every text colour meets WCAG AA (4.5:1) on the surface it
+  sits on; the ratio is in the comment.
 */
 :root {
-  --radius: 0.25rem;
+  --radius: 0.375rem;
 
   /* shadcn/ui tokens */
-  --background: oklch(19.88% 0.012 259.9); /* #13161b */
-  --foreground: oklch(90.79% 0 0); /* #e0e0e0 */
-  --card: oklch(23.05% 0.0155 259.88); /* #191d24 */
+  --background: #1e1e1e; /* editor.background */
+  --foreground: #d4d4d4; /* editor.foreground, 11.3:1 */
+  --card: #1e1e1e;
   --card-foreground: var(--foreground);
-  --popover: var(--card);
+  --popover: #252526;
   --popover-foreground: var(--foreground);
-  --primary: oklch(75.05% 0.1369 245.75); /* #5cb6ff */
-  --primary-foreground: var(--background);
-  --secondary: oklch(26.11% 0.0187 259.87); /* #1f252e */
+  --primary: #3794ff; /* textLink.foreground, 5.4:1 */
+  --primary-foreground: #ffffff;
+  --secondary: #2d2d2d; /* tab.inactiveBackground */
   --secondary-foreground: var(--foreground);
   --muted: var(--secondary);
-  --muted-foreground: oklch(68.3% 0 0); /* #999999 */
-  --accent: oklch(89.02% 0.1832 96.08); /* #ffd900 */
-  --accent-foreground: var(--background);
-  --destructive: oklch(68.43% 0.2045 24.3); /* #ff5757 */
-  --destructive-foreground: var(--foreground);
-  --border: oklch(29.08% 0.0219 259.86); /* #252c37 */
-  --input: var(--secondary);
-  --ring: var(--primary);
+  --muted-foreground: #9d9d9d; /* 6.2:1 on editor, 5.1:1 on tabs */
+  --accent: #2a2d2e; /* list.hoverBackground: ghost/outline button hover */
+  --accent-foreground: #ffffff;
+  --destructive: #f14c4c;
+  --destructive-foreground: #ffffff;
+  --border: #3c3c3c;
+  --input: #3c3c3c;
+  --ring: #007fd4; /* focusBorder, 4.0:1 against the editor */
 
-  /* Status colours */
-  --success: oklch(72.27% 0.192 149.58); /* #22c55e */
-  --warning: oklch(86.66% 0.1647 88.68); /* #ffcc33 */
-  --info: oklch(80.39% 0.1192 232.69); /* #66ccff */
+  /* Window frame */
+  --titlebar: #3c3c3c; /* titleBar.activeBackground */
+  --titlebar-foreground: #cccccc; /* 6.9:1 */
+  --tabbar: #252526; /* editorGroupHeader.tabsBackground */
+  --tab-active-border: #007fd4;
+  --statusbar: #007acc; /* statusBar.background */
+  --statusbar-foreground: #ffffff; /* 4.5:1 */
+  --statusbar-remote: #16825d; /* statusBarItem.remoteBackground, 4.8:1 */
+  --terminal: #181818; /* panel.background */
+  --cursor: #aeafad; /* editorCursor.foreground */
+  --file-icon: #519aba; /* the .tsx file icon */
 
-  /* Syntax colours for the code-styled cards */
-  --syntax-keyword: var(--primary);
-  --syntax-string: oklch(80.03% 0.1821 151.71); /* #4ade80 */
-  --syntax-comment: var(--muted-foreground);
-  --syntax-function: var(--accent);
+  /* Window dots */
+  --success: #89d185;
+  --warning: #cca700;
+  --info: #3794ff;
+
+  /* Syntax colours (Dark+ token colours), all >= 5:1 on the editor */
+  --syntax-keyword: #569cd6; /* class, const, interface */
+  --syntax-name: #9cdcfe; /* variables and properties */
+  --syntax-type: #4ec9b0; /* classes and types */
+  --syntax-function: #dcdcaa;
+  --syntax-string: #ce9178;
+  --syntax-number: #b5cea8;
+  --syntax-comment: #6a9955;
+  --syntax-plain: var(--foreground);
 }
 
 @theme inline {
@@ -70,26 +104,42 @@
   --color-warning: var(--warning);
   --color-info: var(--info);
 
+  --color-titlebar: var(--titlebar);
+  --color-titlebar-foreground: var(--titlebar-foreground);
+  --color-tabbar: var(--tabbar);
+  --color-tab-active-border: var(--tab-active-border);
+  --color-statusbar: var(--statusbar);
+  --color-statusbar-foreground: var(--statusbar-foreground);
+  --color-statusbar-remote: var(--statusbar-remote);
+  --color-terminal: var(--terminal);
+  --color-cursor: var(--cursor);
+  --color-file-icon: var(--file-icon);
+
   --color-syntax-keyword: var(--syntax-keyword);
-  --color-syntax-string: var(--syntax-string);
-  --color-syntax-comment: var(--syntax-comment);
+  --color-syntax-name: var(--syntax-name);
+  --color-syntax-type: var(--syntax-type);
   --color-syntax-function: var(--syntax-function);
+  --color-syntax-string: var(--syntax-string);
+  --color-syntax-number: var(--syntax-number);
+  --color-syntax-comment: var(--syntax-comment);
+  --color-syntax-plain: var(--syntax-plain);
+
+  --font-mono:
+    'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, Consolas,
+    'Liberation Mono', monospace;
+
+  /* Smallest UI text: 13px (VS Code's tab and status bar size) */
+  --text-label: 0.8125rem;
+  --text-label--line-height: 1.25rem;
+
+  /* Page h1: ~18px on a 390px phone, so Home's 32-character
+     `JonathanDupe(SoftwareArchitect):` fits on one line, up to 30px. */
+  --text-title: clamp(1.0625rem, 0.5rem + 2.5vw, 1.875rem);
+  --text-title--line-height: 1.3;
 
   --radius-sm: calc(var(--radius) - 4px);
   --radius-md: calc(var(--radius) - 2px);
   --radius-lg: var(--radius);
-}
-
-/* Tailwind 3's `container` settings: centred, 2rem padding, 1400px max. */
-@utility container {
-  margin-inline: auto;
-  padding-inline: 2rem;
-  @media (width >= --theme(--breakpoint-sm)) {
-    max-width: none;
-  }
-  @media (width >= 1400px) {
-    max-width: 1400px;
-  }
 }
 
 @layer base {
@@ -98,15 +148,23 @@
   }
 
   html {
-    /* Force scrollbar to always be present to prevent layout shift */
-    overflow-y: scroll;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    /* Phones scroll the page: keep the scrollbar so routes don't shift. From
+       md up the editor pane scrolls instead (App.tsx). */
+    @media (width < 48rem) {
+      overflow-y: scroll;
+    }
   }
 
   body {
-    @apply bg-background text-foreground;
-    font-family:
-      'SF Mono', 'Monaco', 'Inconsolata', 'Roboto Mono', 'Source Code Pro',
-      monospace;
+    @apply bg-background font-mono text-foreground;
+  }
+
+  /* One visible focus style for every control, in VS Code's focus colour. */
+  :focus-visible {
+    outline: 2px solid var(--ring);
+    outline-offset: 2px;
   }
 
   /* Tailwind 4 resets buttons to the default cursor; keep Tailwind 3's pointer. */
@@ -115,40 +173,20 @@
     cursor: pointer;
   }
 
-  /* Custom scrollbar for webkit browsers */
+  /* VS Code's square, translucent scrollbars (webkit browsers) */
   ::-webkit-scrollbar {
-    width: 12px;
+    width: 10px;
+    height: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: var(--background);
+    background: transparent;
   }
   ::-webkit-scrollbar-thumb {
-    background: var(--border);
-    border-radius: 6px;
-    border: 2px solid var(--background);
+    background: rgb(121 121 121 / 0.4);
   }
   ::-webkit-scrollbar-thumb:hover {
-    background: var(--muted-foreground);
+    background: rgb(100 100 100 / 0.7);
   }
-}
-
-/* VS Code window effect */
-@utility vscode-window {
-  @apply border border-border/50 bg-card backdrop-blur-xs;
-}
-
-/* Code syntax highlighting helpers */
-@utility syntax-keyword {
-  @apply text-syntax-keyword;
-}
-@utility syntax-string {
-  @apply text-syntax-string;
-}
-@utility syntax-comment {
-  @apply text-syntax-comment;
-}
-@utility syntax-function {
-  @apply text-syntax-function;
 }
 
 /* Code card bodies: typing re-renders stay inside the card's layout box */
